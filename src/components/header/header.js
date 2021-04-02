@@ -18,7 +18,7 @@ class Header extends React.Component{
                      </a>
                      </div>
 				 <div class="nav">
-					<div class="mob-nav">
+					<div class="mob-nav" onClick={()=>alert("hi")}>
 						<span></span>
 						<span></span>
 						<span></span>
