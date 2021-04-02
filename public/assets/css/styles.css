@@ -11,6 +11,12 @@ body {
 .container {
   max-width: 1400px;
   padding: 0 15px;
+  margin: 0 auto;
+}
+header:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 header .logo {
   float: left;
@@ -50,9 +56,14 @@ header .nav {
 header .logo img {
   width: 295px;
 }
+.main-banner {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+}
 .main-banner img {
   display: block;
   width: 100%;
+  border-radius: 5px;
 }
 .main-catagory-outer:after,
 .home-blog-outer:after {
@@ -72,7 +83,7 @@ header .logo img {
 }
 .main-catagory-outer > div.main-cata img {
   width: 100%;
-  border: 1.5px solid #fff;
+  border: 2px dashed #ccc;
   border-radius: 100%;
   display: block;
 }
@@ -96,6 +107,8 @@ header .logo img {
   width: 100%;
   box-shadow: 0 0 10px #00000094;
   margin-bottom: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
 }
 .home-blog-outer > div.home-blog .title {
   color: #3b3b3b;
@@ -168,6 +181,29 @@ header .logo img {
   margin: 0 auto;
   line-height: 26px;
 }
+.review-cont-slider .container {
+  border: 2px dashed #fff;
+  padding: 50px 30px 75px;
+  width: 1000px;
+  position: relative;
+}
+.review-cont-slider .container:after {
+  content: "";
+  display: block;
+  clear: both;
+  background: #fff url(../images/stech-reviw-icon.png) no-repeat 0 0;
+  width: 40px;
+  height: 40px;
+  background-size: 85%;
+  border-radius: 100%;
+  padding: 15px;
+  background-position: center;
+  position: absolute;
+  bottom: -39px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: 0 0 10px #00000038;
+}
 footer {
   background: #161616;
   padding: 45px 0 0px 0px;
@@ -212,6 +248,9 @@ footer {
   vertical-align: top;
   margin: 0 20px;
 }
+.review-cont-slider img {
+  width: 100px;
+}
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
@@ -222,5 +261,133 @@ footer {
   }
   header .nav {
     margin-top: 29px;
+  }
+  .review-cont-slider .container {
+    width: 900px;
+  }
+  .review-cont-slider .cont {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  header .logo img {
+    width: 170px;
+  }
+  .review-cont-slider .container {
+    width: 640px;
+  }
+  .review-cont-slider .cont {
+    width: 100%;
+  }
+  .nav ul li a {
+    font-size: 12px;
+  }
+  .nav ul li {
+    padding: 0 8px;
+  }
+  header .nav {
+    margin-top: 21px;
+  }
+  .main-catagory-outer > div.main-cata a {
+    font-size: 20px;
+  }
+  .home-blog-outer > div.home-blog .title {
+    font-size: 17px;
+  }
+  .home-blog .cnt {
+    line-height: 19px;
+    font-size: 13px;
+  }
+  .review-title .title-inr {
+    font-size: 20px;
+    padding: 0 100px;
+  }
+  .review-title .title-inr:after {
+    width: 305px;
+  }
+  .review-cont-slider img {
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .review-cont-slider .container {
+    width: 85%;
+    padding: 24px 30px 50px;
+  }
+  .review-cont-slider .cont {
+    width: 100%;
+    font-size: 12px;
+  }
+  .review-cont-slider img {
+    width: 70px;
+  }
+  .review-cont-slider .container:after {
+    width: 32px;
+    height: 32px;
+    background-size: 83%;
+  }
+  header .logo img {
+    width: 200px;
+  }
+  .nav ul.nav-ul {
+    display: none;
+  }
+  .mob-nav > span {
+    display: block;
+    background: #666666;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 5px;
+  }
+  header .nav {
+    margin-top: 28px;
+  }
+  .mob-nav {
+    margin-right: 10px;
+  }
+  .main-catagory-outer > div.main-cata,
+  .home-blog-outer > div.home-blog {
+    vertical-align: top;
+  }
+  .main-catagory-outer > div.main-cata a {
+    font-size: 18px;
+  }
+  .main-catagory-outer > div.main-cata img {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .home-blog-outer > div.home-blog {
+    width: 43%;
+    margin: 0 3% 6%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .review-cont-slider .container {
+    width: 76%;
+  }
+  .review-title .title-inr {
+    padding: 0 92px;
+  }
+  .review-title .title-inr:after {
+    width: 300px;
+  }
+  .main-catagory-outer > div.main-cata {
+    width: 46.5%;
+    margin: 0 1% 8%;
+  }
+  .home-blog-outer {
+    margin: 10px 0 40px;
+  }
+  .main-catagory-outer {
+    margin: 25px 0 0;
+  }
+  .footer-inr > div {
+    width: 100%;
+    margin: 0 0 30px;
+  }
+  .copyright > span {
+    margin: 0 11px;
   }
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 // import connect from 'react-redux'
 
 // import component
@@ -15,11 +17,15 @@ class Home extends React.Component{
     return(
         <>
         <Header />
-        
+
     {/* start body */}
         <main>
             <div class="main-banner">
+            <Carousel showArrows={false} autoPlay={true} showStatus={false} showThumbs={false}>
                 <img src="assets/images/main-ban.jpg" alt=""/>
+                <img src="assets/images/main-ban.jpg" alt=""/>
+                <img src="assets/images/main-ban.jpg" alt=""/>
+            </Carousel>
             </div>
             <div class="container">
                 <div class="row">
