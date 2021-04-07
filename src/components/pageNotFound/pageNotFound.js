@@ -23,7 +23,6 @@ class PageNotFound extends React.Component {
   }
 
   renderAdmin() {
-    let url="";
     return (
       <div>
         <h1> This is for super admin </h1>
@@ -36,7 +35,7 @@ class PageNotFound extends React.Component {
           <span>1</span>
         </section>
         <div className="link-container">
-          <a  href={url}
+          <a href="#"
             className="btn btn-active-link"
             onClick={() => this.onClickGoBack()}>
             Go Back
@@ -48,7 +47,6 @@ class PageNotFound extends React.Component {
   }
 
   renderNotFound() {
-    let url="";
     return (
       <div>
         {this.props.code === '501' ? (
@@ -65,7 +63,7 @@ class PageNotFound extends React.Component {
           {this.props.code === '501' ? <span>1</span> : <span>4</span>}
         </section>
         <div className="link-container">
-          <a  href={url}
+          <a href="#"
             className="btn btn-active-link"
             onClick={() => this.onClickGoBack()}>
             Go Back

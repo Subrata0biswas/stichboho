@@ -7,7 +7,6 @@ class Footer extends React.Component{
     }
 
  render(){
-	let url="";
     return(
         <footer>
 		<div className="container">
@@ -19,14 +18,14 @@ class Footer extends React.Component{
 				<div className="footer-con footer-link">
 					<h2 className="title">Main Links</h2>
 					<ul>
-						<li className="active"><a href={url}>Home</a></li>
-						<li><a href={url}>About US</a></li>
-						<li><a href={url}>How it Works</a></li>
-						<li><a href={url}>How To Pay</a></li>
-						<li><a href={url}>Services</a></li>
-						<li><a href={url}>Blog</a></li>
-						<li><a href={url}>Contact Us </a></li>
-						<li><a href={url}>Career</a></li>
+						<li className="active"><a  href="#">Home</a></li>
+						<li><a  href="#">About US</a></li>
+						<li><a  href="#">How it Works</a></li>
+						<li><a  href="#">How To Pay</a></li>
+						<li><a  href="#">Services</a></li>
+						<li><a  href="#">Blog</a></li>
+						<li><a  href="#">Contact Us </a></li>
+						<li><a  href="#">Career</a></li>
 					</ul>
 				</div>
 				<div className="footer-con">
