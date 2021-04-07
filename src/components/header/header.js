@@ -4,27 +4,36 @@ import React from 'react';
 class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state={}
+        this.state={
+			isMenu:false
+		}
     }
 
+	onOpenMenu = () =>{
+		this.setState({
+			isMenu:!this.state.isMenu
+		})
+	}
+
  render(){
+	 const {isMenu} = this.state;
     return(
         <header>
-		<div class="container">
-			<div class="row">
-				 <div class="logo">
+		<div className="container">
+			<div className="row">
+				 <div className="logo">
                      <a href="#">
-                         <img class="desk-top-logo" src="/assets/images/logo.png" alt="logo"/>
+                         <img className="desk-top-logo" src="/assets/images/logo.png" alt="logo"/>
                      </a>
                      </div>
-				 <div class="nav">
-					<div class="mob-nav" onClick={()=>alert("hi")}>
+				 <div className="nav">
+					<div className="mob-nav" onClick={()=>this.onOpenMenu()}>
 						<span></span>
 						<span></span>
 						<span></span>
 					</div>
-					<ul class="nav-ul">
-						<li class="active"><a href="#">Home</a></li>
+					<ul className={isMenu? "nav-ul":null}>
+						<li className="active"><a href="#">Home</a></li>
 						<li><a href="#">About US</a></li>
 						<li><a href="#">How it Works</a></li>
 						<li><a href="#">How To Pay</a></li>
