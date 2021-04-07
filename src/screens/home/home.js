@@ -4,8 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 // import connect from 'react-redux'
 
 // import component
-import Header from '../../components/header/header'
-import Footer from '../../components/footer/footer'
 
 class Home extends React.Component{
     constructor(props){
@@ -15,10 +13,6 @@ class Home extends React.Component{
 
  render(){
     return(
-        <>
-        <Header />
-
-    {/* start body */}
         <main>
             <div className="main-banner">
             <Carousel showArrows={false} autoPlay={true} showStatus={false} showThumbs={false}>
@@ -116,10 +110,6 @@ class Home extends React.Component{
                 </div>
             </div>
         </main>
-        {/* end body */}
-
-        <Footer />
-   </>
     )
  }
 }

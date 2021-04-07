@@ -1,16 +1,48 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-// import component
-import Home from './screens/home/home'
+// import layout for comment component
+import Layout from './layout/layout'
+
+// // import component
+ import Home from './screens/home/home'
+ import PageNotFound from './components/pageNotFound/pageNotFound'
 
 class App extends React.Component{
   render(){
     return(
-      <div className='main'>
-      <Home/>
-    </div>
+      <Router>
+        <Switch>
+          <GeneralRoute exact path="/" component={Home} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Router>
     )
   }
 }
-
 export default App;
+
+
+ 
+
+
+
+
+// check general route
+const GeneralRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        <Layout>
+         <Component {...props} />
+        </Layout> 
+      }
+    />
+  )
+}
+

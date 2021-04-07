@@ -4,43 +4,35 @@ import React from 'react';
 class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-			isMenu:false
-		}
+        this.state={}
     }
 
-	onOpenMenu = () =>{
-		this.setState({
-			isMenu:!this.state.isMenu
-		})
-	}
-
  render(){
-	 const {isMenu} = this.state;
+	let url="";
     return(
         <header>
 		<div className="container">
 			<div className="row">
 				 <div className="logo">
-                     <a href="#">
+                     <a href={url}>
                          <img className="desk-top-logo" src="/assets/images/logo.png" alt="logo"/>
                      </a>
                      </div>
 				 <div className="nav">
-					<div className="mob-nav" onClick={()=>this.onOpenMenu()}>
+					<div className="mob-nav" onClick={()=>this.props.onOpenMenu()}>
 						<span></span>
 						<span></span>
 						<span></span>
 					</div>
-					<ul className={isMenu? "nav-ul":null}>
-						<li className="active"><a href="#">Home</a></li>
-						<li><a href="#">About US</a></li>
-						<li><a href="#">How it Works</a></li>
-						<li><a href="#">How To Pay</a></li>
-						<li><a href="#">Services</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Contact Us </a></li>
-						<li><a href="#">Career</a></li>
+					<ul className={this.props.isMenu? null: "nav-ul"}>
+						<li className="active"><a href={url}>Home</a></li>
+						<li><a href={url}>About US</a></li>
+						<li><a href={url}>How it Works</a></li>
+						<li><a href={url}>How To Pay</a></li>
+						<li><a href={url}>Services</a></li>
+						<li><a href={url}>Blog</a></li>
+						<li><a href={url}>Contact Us </a></li>
+						<li><a href={url}>Career</a></li>
 					</ul>
 				 </div>
 				 
