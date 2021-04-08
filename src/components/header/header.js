@@ -23,7 +23,7 @@ class Header extends React.Component{
 						<span></span>
 						<span></span>
 					</div>
-					<ul className={this.props.isMenu? null: "nav-ul"}>
+					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
 						<li className="active"><a  href="#">Home</a></li>
 						<li><a  href="#">About US</a></li>
 						<li><a  href="#">How it Works</a></li>

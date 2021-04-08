@@ -57,13 +57,13 @@ header .logo img {
   width: 295px;
 }
 .main-banner {
-  border: 2px dashed #ccc;
-  border-radius: 5px;
+  border: 0;
+  border-radius: 0px;
 }
 .main-banner img {
   display: block;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 0;
 }
 .main-catagory-outer:after,
 .home-blog-outer:after {
@@ -83,9 +83,10 @@ header .logo img {
 }
 .main-catagory-outer > div.main-cata img {
   width: 100%;
-  border: 2px dashed #ccc;
+  border: 2px dashed #a7a7a7;
   border-radius: 100%;
   display: block;
+  padding: 2px;
 }
 .main-catagory-outer > div.main-cata a {
   text-decoration: none;
@@ -145,6 +146,7 @@ header .logo img {
   position: relative;
   padding: 0 121px;
   font-size: 27px;
+  display: none;
 }
 .review-title .title-inr:after {
   content: "";
@@ -168,8 +170,9 @@ header .logo img {
 .review-cont-slider {
   background: #ff5aae;
   padding: 50px 0;
-  margin-top: 42px;
+  margin-top: 108px;
   color: #fff;
+  border-radius: 0;
 }
 .review-cont-slider .name {
   font-weight: bold;
@@ -177,13 +180,31 @@ header .logo img {
   margin: 15px 0;
 }
 .review-cont-slider .cont {
-  width: 80%;
+  width: 40%;
   margin: 0 auto;
   line-height: 26px;
+  padding-left: 0;
+  margin-left: 0;
+  float: right;
+  position: relative;
+  text-align: justify;
+}
+.review-cont-slider .cont:before {
+  content: "";
+  display: block;
+  clear: both;
+  background: url(../images/review-title-img.png) no-repeat 0 0;
+  width: 93px;
+  background-size: 100%;
+  height: 100%;
+  position: absolute;
+  top: -17px;
+  left: -152px;
+  padding-bottom: 52px;
 }
 .review-cont-slider .container {
-  border: 2px dashed #fff;
-  padding: 50px 30px 75px;
+  border: 0;
+  padding: 50px 30px 23px;
   width: 1000px;
   position: relative;
 }
@@ -192,17 +213,17 @@ header .logo img {
   display: block;
   clear: both;
   background: #fff url(../images/stech-reviw-icon.png) no-repeat 0 0;
-  width: 40px;
-  height: 40px;
-  background-size: 85%;
+  width: 110px;
+  height: 92px;
+  background-size: 55%;
   border-radius: 100%;
   padding: 15px;
-  background-position: center;
   position: absolute;
-  bottom: -39px;
+  top: -124px;
   left: 50%;
   transform: translate(-50%, 0);
-  box-shadow: 0 0 10px #00000038;
+  box-shadow: none;
+  background-position: center 29px;
 }
 footer {
   background: #161616;
@@ -250,6 +271,144 @@ footer {
 }
 .review-cont-slider img {
   width: 100px;
+}
+.review-con-outer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.review-con-outer {
+  text-align: center;
+}
+.review-con-outer > div {
+  display: inline-block;
+  vertical-align: top;
+}
+.review-con-outer .img-outer {
+  margin-top: 29px;
+  margin-left: 39px;
+}
+.review-con-outer .cont {
+  margin-top: 12px;
+}
+main {
+  padding: 21px;
+  margin-top: 100px;
+}
+.main-border {
+  border: 2px dashed #a7a7a7;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+.cut-item {
+  display: block;
+  width: 40px;
+  height: 33px;
+  background: url(../images/cutting-item-icon.png) no-repeat 0 0;
+  background-size: 100%;
+  position: absolute;
+}
+.cut-item.top-left {
+  top: 227px;
+  left: -23px;
+  transform: rotate(87deg);
+}
+.cut-item.left-bottom {
+  bottom: 394px;
+  left: -23px;
+  transform: rotate(87deg);
+}
+.cut-item.top-right {
+  top: 227px;
+  right: -23px;
+  transform: rotate(272deg);
+}
+.cut-item.right-bottom {
+  bottom: 394px;
+  right: -23px;
+  transform: rotate(272deg);
+}
+.cut-item.bottom {
+  left: 50%;
+}
+header {
+  position: fixed;
+  z-index: 9;
+  background: #fff;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+/*--------------List Page-----------*/
+.breadcumb ul {
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+}
+.breadcumb ul li {
+  display: inline-block;
+  color: #909090;
+  font-size: 14px;
+}
+.breadcumb ul li a {
+  color: #ff2391;
+  text-decoration: none;
+}
+.breadcumb ul li:after {
+  content: ">";
+  display: inline-block;
+  clear: both;
+  margin: 0 10px;
+}
+.breadcumb ul li:last-child:after {
+  display: none;
+}
+.breadcumb {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.list-catagory-item-outer {
+  background: #eeeeee;
+  margin: 0 13px 30px;
+}
+.list-catagory-item-outer .container > div {
+  display: inline-block;
+  padding: 15px 0;
+  color: #909090;
+}
+.list-catagory-item-outer .catagory-name {
+  font-size: 20px;
+  color: #909090;
+  font-weight: bold;
+  margin-right: 36px;
+}
+.list-catagory-item-outer .container .select-style {
+  float: right;
+}
+.pro-grid {
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+}
+.pro-grid li {
+  width: 21.54%;
+  display: inline-block;
+  box-shadow: 0 0 10px #00000078;
+  margin: 0 10px 25px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.pro-grid li img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.pro-grid li .name {
+  margin: 15px 0;
 }
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
@@ -324,15 +483,30 @@ footer {
     width: 70px;
   }
   .review-cont-slider .container:after {
-    width: 32px;
-    height: 32px;
-    background-size: 83%;
+    width: 100px;
+    height: 85px;
   }
   header .logo img {
     width: 200px;
   }
   .nav ul.nav-ul {
     display: none;
+  }
+  .nav ul.nav-ul.nav-active {
+    display: block;
+    position: absolute;
+    left: 0;
+    background: #fff;
+    top: 76px;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+  .nav ul li {
+    display: block;
+    margin: 0 0;
+    padding: 14px 17px;
+    border-right: 0;
+    border-bottom: 2px dashed #ccc;
   }
   .mob-nav > span {
     display: block;
@@ -361,6 +535,52 @@ footer {
   .home-blog-outer > div.home-blog {
     width: 43%;
     margin: 0 3% 6%;
+  }
+  main {
+    padding: 15px;
+    margin-top: 70px;
+  }
+  .container {
+    max-width: none;
+  }
+  .main-border .container {
+    padding: 0 0;
+  }
+  .home-blog-outer > div.home-blog .title {
+    font-size: 16px;
+  }
+  .home-blog-outer .btn-outer a {
+    padding: 8px 22px;
+  }
+  .review-cont-slider {
+    margin-top: 65px;
+  }
+  .review-con-outer .img-outer {
+    margin-left: 0;
+  }
+  .main-border {
+    padding: 15px 15px 35px;
+  }
+  .cut-item.bottom {
+    left: 50%;
+    bottom: -20px;
+  }
+  .pro-grid li {
+    width: 35.54%;
+    font-size: 15px;
+  }
+  .pro-grid li .name {
+    margin: 6px 0;
+  }
+  .list-catagory-item-outer {
+    margin: 0 0 30px;
+    padding: 0 12px;
+  }
+  .list-catagory-item-outer .container > div {
+    padding: 10px 0;
+  }
+  .list-catagory-item-outer .catagory-name {
+    padding-bottom: 0 !important;
   }
 }
 @media only screen and (max-width: 480px) {
