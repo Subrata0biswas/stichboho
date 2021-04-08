@@ -7,6 +7,7 @@ class ProductList extends React.Component{
     }
 
  render(){
+	 console.log("pro props", this.props.match.params)
     return(
         <main>
 		<div className="main-border">
@@ -14,7 +15,7 @@ class ProductList extends React.Component{
 				<div className="container">
 					<ul>
 						<li><a href='#' onClick={()=>this.props.history.replace('/')}>Home</a></li>
-						<li>{this.props.history.location.state.type}</li>
+						<li>{this.props.match.params.type}</li>
 					</ul>
 				</div>
 			</div>

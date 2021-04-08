@@ -20,7 +20,7 @@ class App extends React.Component{
       <Router>
         <Switch>
           <GeneralRoute exact path="/" component={Home} />
-          <GeneralRoute exact path="/product-list" component={ProductList} />
+          <GeneralRoute exact path="/product-list/:type/:id" component={ProductList} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>
@@ -36,11 +36,15 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props =>
+      render={props =>{
+        console.log("prpos1", props)
+        return(
         <Layout>
          <Component {...props} />
         </Layout>
+        )
     }
+  }
     />
   )
 }

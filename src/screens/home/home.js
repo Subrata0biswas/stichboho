@@ -11,9 +11,9 @@ class Home extends React.Component{
         this.state={}
     }
 
-    redirectToProductList = (type) =>{
+    redirectToProductList = (type, id) =>{
         console.log("type", type)
-        this.props.history.push('/product-list',{
+        this.props.history.push(`/product-list/${type}/${id}`,{
             type:type
         })
 
@@ -34,26 +34,26 @@ class Home extends React.Component{
                 <div className="row">
                     <div className="main-catagory-outer">
                         <div className="main-cata">
-                             <div onClick={()=>this.redirectToProductList('Mens')}>
+                             <div onClick={()=>this.redirectToProductList('Mens',1)}>
                                 <div className="img"><img src="assets/images/main-cata-1.jpg" alt=""/>
                                 </div>
                                 <div className="name">Men</div>
                             </div>
                         </div>
                         <div className="main-cata">
-                            <div onClick={()=>this.redirectToProductList('Womens')}>
+                            <div onClick={()=>this.redirectToProductList('Womens',2)}>
                                 <div className="img"><img src="assets/images/main-cata-2.jpg" alt=""/></div>
                                 <div className="name">Women</div>
                             </div>
                         </div>
                         <div className="main-cata">
-                            <div onClick={()=>this.redirectToProductList('Kids')}>
+                            <div onClick={()=>this.redirectToProductList('Kids',3)}>
                                 <div className="img"><img src="assets/images/main-cata-3.jpg" alt=""/></div>
                                 <div className="name">Kids</div>
                             </div>
                         </div>
                         <div className="main-cata">
-                        <div onClick={()=>this.redirectToProductList('Home Decor')}>
+                        <div onClick={()=>this.redirectToProductList('Home Decor',4)}>
                                 <div className="img"><img src="assets/images/main-cata-4.jpg" alt=""/></div>
                                 <div className="name">Home Decor</div>
                             </div>
