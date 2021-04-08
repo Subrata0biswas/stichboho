@@ -4,10 +4,13 @@ import React from 'react';
 class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state={}
+        this.state={
+			selectedTab:"home"
+		}
     }
 
  render(){
+	 const {selectedTab} = this.state;
     return(
         <header>
 		<div className="container">
@@ -24,7 +27,9 @@ class Header extends React.Component{
 						<span></span>
 					</div>
 					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
-						<li className="active"><a  href="#">Home</a></li>
+						<li className={selectedTab==='home'?"active":null}>
+							<a  href="#">Home</a>
+						</li>
 						<li><a  href="#">About US</a></li>
 						<li><a  href="#">How it Works</a></li>
 						<li><a  href="#">How To Pay</a></li>

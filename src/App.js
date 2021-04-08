@@ -10,6 +10,8 @@ import Layout from './layout/layout'
 
 // // import component
  import Home from './screens/home/home'
+ import ProductList from './screens/products/productList'
+
  import PageNotFound from './components/pageNotFound/pageNotFound'
 
 class App extends React.Component{
@@ -18,6 +20,7 @@ class App extends React.Component{
       <Router>
         <Switch>
           <GeneralRoute exact path="/" component={Home} />
+          <GeneralRoute exact path="/product-list" component={ProductList} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>
@@ -28,10 +31,6 @@ export default App;
 
 
  
-
-
-
-
 // check general route
 const GeneralRoute = ({ component: Component, ...rest }) => {
   return (
@@ -40,8 +39,8 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
       render={props =>
         <Layout>
          <Component {...props} />
-        </Layout> 
-      }
+        </Layout>
+    }
     />
   )
 }

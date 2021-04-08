@@ -11,10 +11,18 @@ class Home extends React.Component{
         this.state={}
     }
 
+    redirectToProductList = (type) =>{
+        console.log("type", type)
+        this.props.history.push('/product-list',{
+            type:type
+        })
+
+    }
+
  render(){
     return(
         <main>
-            	<div class="main-border">
+            <div className="main-border">
             <div className="main-banner">
             <Carousel showArrows={false} autoPlay={true} showStatus={false} showThumbs={false}>
                 <img src="assets/images/main-ban.jpg" alt=""/>
@@ -26,29 +34,29 @@ class Home extends React.Component{
                 <div className="row">
                     <div className="main-catagory-outer">
                         <div className="main-cata">
-                            <a href="#">
+                             <div onClick={()=>this.redirectToProductList('Mens')}>
                                 <div className="img"><img src="assets/images/main-cata-1.jpg" alt=""/>
                                 </div>
                                 <div className="name">Men</div>
-                            </a>
+                            </div>
                         </div>
                         <div className="main-cata">
-                            <a href="#">
+                            <div onClick={()=>this.redirectToProductList('Womens')}>
                                 <div className="img"><img src="assets/images/main-cata-2.jpg" alt=""/></div>
                                 <div className="name">Women</div>
-                            </a>
+                            </div>
                         </div>
                         <div className="main-cata">
-                            <a href="#">
+                            <div onClick={()=>this.redirectToProductList('Kids')}>
                                 <div className="img"><img src="assets/images/main-cata-3.jpg" alt=""/></div>
                                 <div className="name">Kids</div>
-                            </a>
+                            </div>
                         </div>
                         <div className="main-cata">
-                            <a href="#">
+                        <div onClick={()=>this.redirectToProductList('Home Decor')}>
                                 <div className="img"><img src="assets/images/main-cata-4.jpg" alt=""/></div>
                                 <div className="name">Home Decor</div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                     <div className="home-blog-outer">
@@ -102,14 +110,29 @@ class Home extends React.Component{
                         <span>Reviews</span>
                     </h2>
                 </div>
+
                 <div className="review-cont-slider">
-                    <div className="container">
-                        <div className="img"><img src="assets/images/review-images.png" alt=""/></div>
-                        <div className="name">Name</div>
-                        <div className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                    </div>
-                </div>
+					<div className="container">
+						<div className="review-con-outer">
+							<div className="img-outer">
+								<div className="img"><img src="assets/images/review-images.png" alt=""/></div>
+								<div className="name">Name</div>
+							</div>
+							<div className="cont">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+						</div>
+					
+					</div>
+				</div>
+                
             </div>
+
+            <span className="cut-item top-left"></span>
+			<span className="cut-item left-bottom"></span>
+			<span className="cut-item top-right"></span>
+			<span className="cut-item right-bottom"></span>
+			<span className="cut-item bottom"></span>
+
+
             </div>
         </main>
     )
