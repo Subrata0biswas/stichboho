@@ -12,6 +12,7 @@ import Layout from './layout/layout'
  import Home from './screens/home/home'
  import ProductList from './screens/products/productList'
  import AboutUs from './screens/aboutUs/aboutUs'
+ import ContactUs from './screens/contactUs/contactUs'
 
  import PageNotFound from './components/pageNotFound/pageNotFound'
 
@@ -23,6 +24,7 @@ class App extends React.Component{
           <GeneralRoute exact path="/" component={Home} />
           <GeneralRoute exact path="/product-list/:type/:id" component={ProductList} />
           <GeneralRoute exact path="/about-us" component={AboutUs} />
+          <GeneralRoute exact path="/contact-us" component={ContactUs} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>

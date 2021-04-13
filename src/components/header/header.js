@@ -15,7 +15,6 @@ class Header extends React.Component{
     }
 
 	onClickRedirect = (type) =>{
-// console.log('pops', this.props)
 		this.props.props.history.push(type)	
 	}
 
@@ -53,7 +52,11 @@ class Header extends React.Component{
 						<li><a  href="#">How To Pay</a></li>
 						<li><a  href="#">Services</a></li>
 						<li><a  href="#">Blog</a></li>
-						<li><a  href="#">Contact Us </a></li>
+						<li className={this.props.props.location.pathname==='/contact-us'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/contact-us')}>
+								Contact Us
+							</a>
+						</li>
 						<li><a  href="#">Career</a></li>
 					</ul>
 				 </div>
