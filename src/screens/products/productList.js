@@ -34,84 +34,87 @@ class ProductList extends React.Component{
 				<div className="container">
 					<ul className="pro-grid">
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img">
+								<img src='../../assets/images/list-pro.jpg' alt=""/>
+							</div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img">
+								<img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+						<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>
 							</div>
 						</li>
 						<li>
-							<div className="pro-img"><img src="assets/images/list-pro.jpg" alt=""/></div>
+							<div className="pro-img"><img src='../../assets/images/list-pro.jpg' alt=""/></div>
 							<div className="pro-name-outer">
 								<div className="name">Casual</div>
 								<div className="price">₹ 600</div>

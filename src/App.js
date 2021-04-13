@@ -36,15 +36,11 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props =>{
-        console.log("prpos1", props)
-        return(
+      render={props =>
         <Layout>
          <Component {...props} />
         </Layout>
-        )
-    }
-  }
+        }
     />
   )
 }

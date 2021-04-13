@@ -51,7 +51,7 @@ header .nav {
   color: #ff2391;
 }
 .nav ul li.active a {
-  color: #ff2391;
+  color: #ee7767;
 }
 header .logo img {
   width: 295px;
@@ -98,7 +98,7 @@ header .logo img {
   margin-top: 20px;
 }
 .main-catagory-outer > div.main-cata a:hover img {
-  border-color: #ff9acf;
+  border-color: #ee7767;
 }
 .main-catagory-outer > div.main-cata a:hover .name {
   color: #ff2391;
@@ -125,7 +125,7 @@ header .logo img {
   line-height: 24px;
 }
 .home-blog-outer .btn-outer a {
-  background: #ff5aae;
+  background: #ee7767;
   display: inline-block;
   color: #fff;
   text-decoration: none;
@@ -168,7 +168,7 @@ header .logo img {
   padding: 15px 20px;
 }
 .review-cont-slider {
-  background: #ff5aae;
+  background: #ee7767;
   padding: 50px 0;
   margin-top: 108px;
   color: #fff;
@@ -241,7 +241,7 @@ footer {
   margin: 0 5%;
 }
 .footer-inr .title {
-  border-bottom: 1px solid #ff5aae;
+  border-bottom: 1px solid #ee7767;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
@@ -256,6 +256,9 @@ footer {
 .footer-inr > div ul li a {
   color: #fff;
   text-decoration: none;
+}
+.footer-inr > div ul li a:hover {
+  color: #ee7767;
 }
 .copyright {
   text-align: center;
@@ -410,7 +413,20 @@ header {
 .pro-grid li .name {
   margin: 15px 0;
 }
-
+.cms-con {
+  min-height: 800px;
+  width: 75%;
+  margin: 50px auto;
+  text-align: justify;
+  line-height: 27px;
+  padding: 40px;
+  box-shadow: 0 0 20px #00000078;
+}
+.cms-con .title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -492,7 +508,7 @@ header {
   .nav ul.nav-ul {
     display: none;
   }
-  .nav .nav-active {
+  .nav ul.nav-ul.nav-active {
     display: block;
     position: absolute;
     left: 0;

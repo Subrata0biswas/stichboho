@@ -31,10 +31,10 @@ class Home extends React.Component{
             </Carousel>
             </div>
             <div className="container">
-                <div className="row">
+                <div className="row"> 
                     <div className="main-catagory-outer">
                         <div className="main-cata">
-                             <div onClick={()=>this.redirectToProductList('Mens',1)}>
+        <div onClick={()=>this.redirectToProductList('Mens',1)}>
                                 <div className="img"><img src="assets/images/main-cata-1.jpg" alt=""/>
                                 </div>
                                 <div className="name">Men</div>

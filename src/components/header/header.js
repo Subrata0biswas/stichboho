@@ -1,5 +1,10 @@
 import React from 'react';
 // import connect from 'react-redux'
+import {
+	
+	Link,
+	
+  } from "react-router-dom";
 
 class Header extends React.Component{
     constructor(props){
@@ -28,7 +33,7 @@ class Header extends React.Component{
 					</div>
 					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
 						<li className={selectedTab==='home'?"active":null}>
-							<a  href="#">Home</a>
+						<Link to="/">Home</Link>
 						</li>
 						<li><a  href="#">About US</a></li>
 						<li><a  href="#">How it Works</a></li>
