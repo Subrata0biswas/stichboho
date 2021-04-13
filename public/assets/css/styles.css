@@ -414,7 +414,7 @@ header {
   margin: 15px 0;
 }
 .cms-con {
-  min-height: 800px;
+  min-height: 500px;
   width: 75%;
   margin: 50px auto;
   text-align: justify;
@@ -427,6 +427,77 @@ header {
   margin-bottom: 20px;
   font-size: 25px;
 }
+
+/*---------contact us-------*/
+.contact-frm-outer {
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ccccccb8;
+}
+.contact-frm-outer ul {
+  padding: 0 0;
+  margin: 0 0;
+  list-style: none;
+}
+.contact-frm-outer ul li {
+  margin-bottom: 10px;
+}
+.contact-frm-outer ul li input[type="text"],
+.contact-frm-outer ul li input[type="tel"],
+.contact-frm-outer ul li textarea {
+  height: 35px;
+  padding: 5px 10px;
+  width: 97.3%;
+  border: 0;
+  display: block;
+  resize: none;
+  border-radius: 5px;
+}
+.contact-frm-outer ul li input[type="submit"] {
+  background: #ee7767;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 15px 5px;
+  font-weight: bold;
+  border-radius: 25px;
+  width: 200px;
+  font-size: 16px;
+}
+.contact-frm-outer ul li input[type="submit"]:hover {
+  background: #000;
+  color: #fff;
+}
+.contact-frm-outer ul li.submit-outer {
+  text-align: center;
+  margin-top: 20px;
+}
+.contact-frm-outer ul li > div {
+  float: left;
+  width: 47.7%;
+  margin-right: 3%;
+}
+.contact-frm-outer ul li > div:last-child {
+  margin-right: 0;
+}
+.contact-frm-outer ul li:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.eror-page {
+  background: #ee7767;
+  text-align: center;
+  padding-top: 200px;
+  color: #000;
+}
+.eror-outer h2 {
+  font-size: 100px;
+  margin-bottom: 57px;
+  color: #fff;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -597,6 +668,9 @@ header {
   }
   .list-catagory-item-outer .catagory-name {
     padding-bottom: 0 !important;
+  }
+  .eror-outer h2 {
+    font-size: 80px;
   }
 }
 @media only screen and (max-width: 480px) {
