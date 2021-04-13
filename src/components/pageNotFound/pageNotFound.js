@@ -16,7 +16,7 @@ class PageNotFound extends React.Component {
             <div class="eror-outer">
               <h2>404</h2>
               <p>The link you clicked may be broken or the page may have been removed</p>
-              <p>Visit the <a href="#">Home Page</a> Or <a  href="#">Contact</a> me</p>
+              <p>Visit the <a href="/">Home Page</a> Or <a  href="/contact-us">Contact</a> me</p>
             </div>
         </div>
         </div>	

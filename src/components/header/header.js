@@ -1,27 +1,16 @@
 import React from 'react';
-// import connect from 'react-redux'
-import {
-	
-	Link,
-	
-  } from "react-router-dom";
 
 class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-			selectedTab:"home"
-		}
+        this.state={}
     }
 
 	onClickRedirect = (type) =>{
 		this.props.props.history.push(type)	
 	}
 	
-
  render(){
-	 const {selectedTab} = this.state;
-	 console.log("props", this.props)
     return(
         <header>
 		<div className="container">
