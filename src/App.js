@@ -15,7 +15,10 @@ import Layout from './layout/layout'
  import ContactUs from './screens/contactUs/contactUs'
  import HowItWork from './screens/howItWork/howItWork'
  import HowToPlay from './screens/howToPlay/howToPlay'
-
+ import Service from './screens/service/service'
+ import Blog from './screens/blog/blog'
+ import Career from './screens/career/career'
+ 
  import PageNotFound from './components/pageNotFound/pageNotFound'
 
 class App extends React.Component{
@@ -29,6 +32,9 @@ class App extends React.Component{
           <GeneralRoute exact path="/contact-us" component={ContactUs} />
           <GeneralRoute exact path="/how-it-work" component={HowItWork} />
           <GeneralRoute exact path="/how-to-play" component={HowToPlay} />
+          <GeneralRoute exact path="/service" component={Service} />
+          <GeneralRoute exact path="/blog" component={Blog} />
+          <GeneralRoute exact path="/career" component={Career} />
 
           {/* page not found Start */}
           <Route component={PageNotFound} />

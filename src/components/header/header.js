@@ -37,36 +37,45 @@ class Header extends React.Component{
 						<span></span>
 						<span></span>
 					</div>
+
 					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
 						<li className={this.props.props.location.pathname==='/'?"active":null}>
-						<a  href="#" onClick={()=>this.onClickRedirect('/')}>
-							Home
-						</a>
+							<a  href="#" onClick={()=>this.onClickRedirect('/')}>
+								Home
+							</a>
 						</li>
+
 						<li className={this.props.props.location.pathname==='/about-us'?"active":null}>
 							<a  href="#" onClick={()=>this.onClickRedirect('/about-us')}>
 								About US
 							</a>
 						</li>
+
 						<li className={this.props.props.location.pathname==='/how-it-work'?"active":null}>
 							<a  href="#" onClick={()=>this.onClickRedirect('/how-it-work')}>
 								How it Works
-								</a>
-								</li>
+							</a>
+						</li>
+						
 						<li className={this.props.props.location.pathname==='/how-to-play'?"active":null}>
 							<a  href="#" onClick={()=>this.onClickRedirect('/how-to-play')}>
 								How To Pay
-								</a>
-								</li>
+							</a>
+						</li>
 
-						<li><a  href="#">Services</a></li>
-						<li><a  href="#">Blog</a></li>
+						<li className={this.props.props.location.pathname==='/service'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/service')}>Services</a></li>
+
+						<li className={this.props.props.location.pathname==='/blog'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/blog')}>Blog</a></li>
 						<li className={this.props.props.location.pathname==='/contact-us'?"active":null}>
 							<a  href="#" onClick={()=>this.onClickRedirect('/contact-us')}>
 								Contact Us
-							</a>
+						</a>
 						</li>
-						<li><a  href="#">Career</a></li>
+						<li className={this.props.props.location.pathname==='/career'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/career')}>Career</a>
+						</li>
 					</ul>
 				 </div>
 				 
