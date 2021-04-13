@@ -34,29 +34,29 @@ class Home extends React.Component{
                 <div className="row"> 
                     <div className="main-catagory-outer">
                         <div className="main-cata">
-                            <div onClick={()=>this.redirectToProductList('Mens',1)}>
+                            <span className='span-cursor' onClick={()=>this.redirectToProductList('Mens',1)}>
                                 <div className="img"><img src="assets/images/main-cata-1.jpg" alt=""/>
                                 </div>
                                 <div className="name">Men</div>
-                            </div>
+                            </span>
                         </div>
                         <div className="main-cata">
-                            <div onClick={()=>this.redirectToProductList('Womens',2)}>
+                            <span className='span-cursor' onClick={()=>this.redirectToProductList('Womens',2)}>
                                 <div className="img"><img src="assets/images/main-cata-2.jpg" alt=""/></div>
                                 <div className="name">Women</div>
-                            </div>
+                            </span>
                         </div>
                         <div className="main-cata">
-                            <div onClick={()=>this.redirectToProductList('Kids',3)}>
+                            <span className='span-cursor' onClick={()=>this.redirectToProductList('Kids',3)}>
                                 <div className="img"><img src="assets/images/main-cata-3.jpg" alt=""/></div>
                                 <div className="name">Kids</div>
-                            </div>
+                            </span>
                         </div>
                         <div className="main-cata">
-                        <div onClick={()=>this.redirectToProductList('Home Decor',4)}>
+                        <span className='span-cursor' onClick={()=>this.redirectToProductList('Home Decor',4)}>
                                 <div className="img"><img src="assets/images/main-cata-4.jpg" alt=""/></div>
                                 <div className="name">Home Decor</div>
-                            </div>
+                            </span>
                         </div>
                     </div>
                     <div className="home-blog-outer">
@@ -67,7 +67,8 @@ class Home extends React.Component{
                                 <div className="cnt">
                                     Lorem Ipsum is simply dummy text of the printing andtypesetting industry. Lorem Ipsum has been the  industry's standard 
                                 </div>
-                                <div className="btn-outer"><a href="#">Read More</a></div>
+                                <div className="btn-outer">
+                                    <span className='span-cursor' >Read More</span></div>
                             </div>
                         </div>
                         <div className="home-blog">
@@ -77,7 +78,7 @@ class Home extends React.Component{
                                 <div className="cnt">
                                     Lorem Ipsum is simply dummy text of the printing andtypesetting industry. Lorem Ipsum has been the  industry's standard 
                                 </div>
-                                <div className="btn-outer"><a href="#">Read More</a></div>
+                                <div className="btn-outer"><span className='span-cursor' >Read More</span></div>
                             </div>
                         </div>
                         <div className="home-blog">
@@ -87,7 +88,7 @@ class Home extends React.Component{
                                 <div className="cnt">
                                     Lorem Ipsum is simply dummy text of the printing andtypesetting industry. Lorem Ipsum has been the  industry's standard 
                                 </div>
-                                <div className="btn-outer"><a href="#">Read More</a></div>
+                                <div className="btn-outer"><span className='span-cursor' >Read More</span></div>
                             </div>
                         </div>
                         <div className="home-blog">
@@ -98,7 +99,7 @@ class Home extends React.Component{
                                 <div className="cnt">
                                     Lorem Ipsum is simply dummy text of the printing andtypesetting industry. Lorem Ipsum has been the  industry's standard 
                                 </div>
-                                <div className="btn-outer"><a href="#">Read More</a></div>
+                                <div className="btn-outer"><span className='span-cursor' >Read More</span></div>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@ class Home extends React.Component{
             <div className="reviews-outer">
                 <div className="review-title">
                     <h2 className="title-inr">
-                        <span>Reviews</span>
+                        <span className='span-cursor' >Reviews</span>
                     </h2>
                 </div>
 

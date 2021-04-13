@@ -7,14 +7,14 @@ class ProductList extends React.Component{
     }
 
  render(){
-	 console.log("pro props", this.props.match.params)
+	 console.log("this.props", this.props.history)
     return(
         <main>
 		<div className="main-border">
 			<div className="breadcumb">
 				<div className="container">
 					<ul>
-						<li><a href='#' onClick={()=>this.props.history.replace('/')}>Home</a></li>
+						<li><span className='span-cursor' onClick={()=>this.props.history.goBack()}>Home</span></li>
 						<li>{this.props.match.params.type}</li>
 					</ul>
 				</div>
