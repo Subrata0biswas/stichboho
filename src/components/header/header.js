@@ -14,6 +14,12 @@ class Header extends React.Component{
 		}
     }
 
+	onClickRedirect = (type) =>{
+console.log('pops', this.props)
+ this.props.props.history.push(type)
+
+	}
+
  render(){
 	 const {selectedTab} = this.state;
     return(
@@ -35,7 +41,7 @@ class Header extends React.Component{
 						<li className={selectedTab==='home'?"active":null}>
 						<Link to="/">Home</Link>
 						</li>
-						<li><a  href="#">About US</a></li>
+						<li><div onClick={()=>this.onClickRedirect('/about-us')}>About US</div></li>
 						<li><a  href="#">How it Works</a></li>
 						<li><a  href="#">How To Pay</a></li>
 						<li><a  href="#">Services</a></li>
