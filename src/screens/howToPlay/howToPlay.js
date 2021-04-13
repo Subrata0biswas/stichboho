@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AboutUs extends React.Component{
+class HowToPlay extends React.Component{
     constructor(props){
         super(props);
         this.state={}
@@ -11,7 +11,7 @@ class AboutUs extends React.Component{
         <main>
 		<div class="main-border">	
 			<div class="cms-con">
-				<h2 class="title">About Us</h2>
+				<h2 class="title">How to Play</h2>
 				<p class="con">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                  when an unknown printer took a galley of type and scrambled it to make a type 
@@ -38,4 +38,4 @@ class AboutUs extends React.Component{
  }
 }
 
-export default AboutUs;
+export default HowToPlay;

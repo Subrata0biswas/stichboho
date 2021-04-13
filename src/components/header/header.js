@@ -17,6 +17,7 @@ class Header extends React.Component{
 	onClickRedirect = (type) =>{
 		this.props.props.history.push(type)	
 	}
+	
 
  render(){
 	 const {selectedTab} = this.state;
@@ -29,7 +30,7 @@ class Header extends React.Component{
                      <a  href="#">
                          <img className="desk-top-logo" src="/assets/images/logo.png" alt="logo"/>
                      </a>
-                     </div>
+                 </div>
 				 <div className="nav">
 					<div className="mob-nav" onClick={()=>this.props.onOpenMenu()}>
 						<span></span>
@@ -38,7 +39,6 @@ class Header extends React.Component{
 					</div>
 					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
 						<li className={this.props.props.location.pathname==='/'?"active":null}>
-						{/* <Link to="/">Home</Link> */}
 						<a  href="#" onClick={()=>this.onClickRedirect('/')}>
 							Home
 						</a>
@@ -48,8 +48,17 @@ class Header extends React.Component{
 								About US
 							</a>
 						</li>
-						<li><a  href="#">How it Works</a></li>
-						<li><a  href="#">How To Pay</a></li>
+						<li className={this.props.props.location.pathname==='/how-it-work'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/how-it-work')}>
+								How it Works
+								</a>
+								</li>
+						<li className={this.props.props.location.pathname==='/how-to-play'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/how-to-play')}>
+								How To Pay
+								</a>
+								</li>
+
 						<li><a  href="#">Services</a></li>
 						<li><a  href="#">Blog</a></li>
 						<li className={this.props.props.location.pathname==='/contact-us'?"active":null}>
