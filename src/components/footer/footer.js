@@ -18,14 +18,15 @@ class Footer extends React.Component{
 				<div className="footer-con footer-link">
 					<h2 className="title">Main Links</h2>
 					<ul>
-						<li className="active"><a  href="#">Home</a></li>
-						<li><a  href="#">About US</a></li>
-						<li><a  href="#">How it Works</a></li>
-						<li><a  href="#">How To Pay</a></li>
-						<li><a  href="#">Services</a></li>
-						<li><a  href="#">Blog</a></li>
-						<li><a  href="#">Contact Us </a></li>
-						<li><a  href="#">Career</a></li>
+						<li className="active">
+							<span className='span-cursor' >Home</span></li>
+						<li><span className='span-cursor' >About US</span></li>
+						<li><span className='span-cursor' >How it Works</span></li>
+						<li><span className='span-cursor' >How To Pay</span></li>
+						<li><span className='span-cursor' >Services</span></li>
+						<li><span className='span-cursor' >Blog</span></li>
+						<li><span className='span-cursor' >Contact Us </span></li>
+						<li><span className='span-cursor' >Career</span></li>
 					</ul>
 				</div>
 				<div className="footer-con">

@@ -7,7 +7,6 @@ class ProductList extends React.Component{
     }
 
  render(){
-	 console.log("this.props", this.props.history)
     return(
         <main>
 		<div className="main-border">

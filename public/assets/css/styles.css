@@ -258,11 +258,11 @@ footer {
 .footer-inr > div ul li {
   margin-bottom: 10px;
 }
-.footer-inr > div ul li a {
+.footer-inr > div ul li .span-cursor {
   color: #fff;
   text-decoration: none;
 }
-.footer-inr > div ul li a:hover {
+.footer-inr > div ul li .span-cursor:hover {
   color: #ee7767;
 }
 .copyright {
