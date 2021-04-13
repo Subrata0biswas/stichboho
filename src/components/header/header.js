@@ -15,13 +15,13 @@ class Header extends React.Component{
     }
 
 	onClickRedirect = (type) =>{
-console.log('pops', this.props)
- this.props.props.history.push(type)
-
+// console.log('pops', this.props)
+		this.props.props.history.push(type)	
 	}
 
  render(){
 	 const {selectedTab} = this.state;
+	 console.log("props", this.props)
     return(
         <header>
 		<div className="container">
@@ -38,10 +38,17 @@ console.log('pops', this.props)
 						<span></span>
 					</div>
 					<ul className={this.props.isMenu? 'nav-active': 'nav-ul'}>
-						<li className={selectedTab==='home'?"active":null}>
-						<Link to="/">Home</Link>
+						<li className={this.props.props.location.pathname==='/'?"active":null}>
+						{/* <Link to="/">Home</Link> */}
+						<a  href="#" onClick={()=>this.onClickRedirect('/')}>
+							Home
+						</a>
 						</li>
-						<li><div onClick={()=>this.onClickRedirect('/about-us')}>About US</div></li>
+						<li className={this.props.props.location.pathname==='/about-us'?"active":null}>
+							<a  href="#" onClick={()=>this.onClickRedirect('/about-us')}>
+								About US
+							</a>
+						</li>
 						<li><a  href="#">How it Works</a></li>
 						<li><a  href="#">How To Pay</a></li>
 						<li><a  href="#">Services</a></li>
