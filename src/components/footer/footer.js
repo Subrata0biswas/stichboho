@@ -6,6 +6,10 @@ class Footer extends React.Component{
         this.state={}
     }
 
+	onClickRedirect = (type) =>{
+		this.props.props.history.push(type)	
+	}
+
  render(){
     return(
         <footer>
@@ -18,19 +22,48 @@ class Footer extends React.Component{
 				<div className="footer-con footer-link">
 					<h2 className="title">Main Links</h2>
 					<ul>
-						<li className="active">
-							<span className='span-cursor' >Home</span></li>
-						<li><span className='span-cursor' >About US</span></li>
-						<li><span className='span-cursor' >How it Works</span></li>
-						<li><span className='span-cursor' >How To Pay</span></li>
-						<li><span className='span-cursor' >Services</span></li>
-						<li><span className='span-cursor' >Blog</span></li>
-						<li><span className='span-cursor' >Contact Us </span></li>
-						<li><span className='span-cursor' >Career</span></li>
+					<li className={this.props.props.location.pathname==='/'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/')}>
+								Home
+							</span>
+						</li>
+						
+						<li className={this.props.props.location.pathname==='/about-us'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/about-us')}>
+								About US
+							</span>
+						</li>
+						<li className={this.props.props.location.pathname==='/how-it-work'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/how-it-work')}>
+								How it Works
+							</span>
+						</li>
+						
+						<li className={this.props.props.location.pathname==='/how-to-play'?"active":null}>
+							<span className='span-cursor'  onClick={()=>this.onClickRedirect('/how-to-play')}>
+								How To Pay
+							</span>
+						</li>
+
+						<li className={this.props.props.location.pathname==='/service'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/service')}>
+								Services
+							</span>
+						</li>
+						<li className={this.props.props.location.pathname==='/blog'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/blog')}>Blog</span></li>
+						<li className={this.props.props.location.pathname==='/contact-us'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/contact-us')}>
+								Contact Us
+						</span>
+						</li>
+						<li className={this.props.props.location.pathname==='/career'?"active":null}>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/career')}>Career</span>
+						</li>
 					</ul>
 				</div>
 				<div className="footer-con">
-					<h2 className="title">About Us</h2>
+					<h2 className="title">Contact Us</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing andtypesetting industry. Lorem Ipsum has been the  industry's standard </p>
 				</div>
 			</div>

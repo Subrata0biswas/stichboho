@@ -20,7 +20,7 @@ export default function Layout({children}){
        <div onClick={()=>setMenu(false)}>
         {children}
         </div>
-       <Footer />
+       <Footer  props={children.props}/>
       </>
     )
 }

@@ -53,7 +53,10 @@ class Header extends React.Component{
 						</li>
 
 						<li className={this.props.props.location.pathname==='/service'?"active":null}>
-							<span className='span-cursor' onClick={()=>this.onClickRedirect('/service')}>Services</span></li>
+							<span className='span-cursor' onClick={()=>this.onClickRedirect('/service')}>
+								Services
+							</span>
+						</li>
 
 						<li className={this.props.props.location.pathname==='/blog'?"active":null}>
 							<span className='span-cursor' onClick={()=>this.onClickRedirect('/blog')}>Blog</span></li>
