@@ -1,27 +1,32 @@
-import React from 'react'
+import React from "react";
 // import { images } from "../../helpers/images";
 
 class PageNotFound extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {
-    }
+    super(props);
+    this.state = {};
   }
 
   render() {
     return (
       <main>
-      <div class="main-border">
-        <div class="eror-page cms-con">
+        <div class="main-border">
+          <div class="eror-page cms-con">
             <div class="eror-outer">
               <h2>404</h2>
-              <p>The link you clicked may be broken or the page may have been removed</p>
-              <p>Visit the <a href="/">Home Page</a> Or <a  href="/contact-us">Contact</a> me</p>
+              <p>
+                The link you clicked may be broken or the page may have been
+                removed
+              </p>
+              <p>
+                Visit the <a href="/">Home Page</a> Or{" "}
+                <a href="/contact-us">Contact</a> me
+              </p>
             </div>
+          </div>
         </div>
-        </div>	
-    </main>
-    )
+      </main>
+    );
   }
 }
-export default PageNotFound
+export default PageNotFound;
