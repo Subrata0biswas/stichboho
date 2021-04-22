@@ -4,21 +4,38 @@ import { Carousel } from "react-responsive-carousel";
 // import connect from 'react-redux'
 
 // import component
+import { Service, API } from "../../config/service";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      categories: [],
+    };
+  }
+
+  componentDidMount() {
+    Service("GET", "api/homepage/", "").then((res) => {
+      console.log("res", res);
+      if (res.data.code === 200) {
+        this.setState({
+          categories: res.data.Category,
+        });
+      } else {
+        window.alert(res.data.message);
+      }
+    });
   }
 
   redirectToProductList = (type, id) => {
-    console.log("type", type);
     this.props.history.push(`/product-list/${type}/${id}`, {
       type: type,
     });
   };
 
   render() {
+    const { categories } = this.state;
+    console.log("category", categories);
     return (
       <main>
         <div className="main-border">
@@ -34,54 +51,40 @@ class Home extends React.Component {
               <img src="assets/images/main-ban.jpg" alt="" />
             </Carousel>
           </div>
+
           <div className="container">
             <div className="row">
-              <div className="main-catagory-outer">
-                <div className="main-cata">
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.redirectToProductList("Mens", 1)}
-                  >
-                    <div className="img">
-                      <img src="assets/images/main-cata-1.jpg" alt="" />
-                    </div>
-                    <div className="name">Men</div>
-                  </span>
+              {/* category section start */}
+              {categories.length > 0 ? (
+                <div className="main-catagory-outer">
+                  {categories.map((category, index) => {
+                    return (
+                      <div className="main-cata" key={index}>
+                        <span
+                          className="span-cursor"
+                          onClick={() =>
+                            this.redirectToProductList(
+                              category.name.charAt(0).toUpperCase() +
+                                category.name.slice(1),
+                              category.id
+                            )
+                          }
+                        >
+                          <div className="img">
+                            <img src={API + category.categoryImage} alt="" />
+                          </div>
+                          <div className="name">
+                            {category.name.charAt(0).toUpperCase() +
+                              category.name.slice(1)}
+                          </div>
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
-                <div className="main-cata">
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.redirectToProductList("Womens", 2)}
-                  >
-                    <div className="img">
-                      <img src="assets/images/main-cata-2.jpg" alt="" />
-                    </div>
-                    <div className="name">Women</div>
-                  </span>
-                </div>
-                <div className="main-cata">
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.redirectToProductList("Kids", 3)}
-                  >
-                    <div className="img">
-                      <img src="assets/images/main-cata-3.jpg" alt="" />
-                    </div>
-                    <div className="name">Kids</div>
-                  </span>
-                </div>
-                <div className="main-cata">
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.redirectToProductList("Home Decor", 4)}
-                  >
-                    <div className="img">
-                      <img src="assets/images/main-cata-4.jpg" alt="" />
-                    </div>
-                    <div className="name">Home Decor</div>
-                  </span>
-                </div>
-              </div>
+              ) : null}
+              {/* category section end */}
+
               <div className="home-blog-outer">
                 <div className="home-blog">
                   <div className="blog-img">
