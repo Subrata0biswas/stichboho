@@ -9,10 +9,10 @@ class Service extends React.Component {
   render() {
     return (
       <main>
-        <div class="main-border">
-          <div class="cms-con">
-            <h2 class="title">Service</h2>
-            <p class="con">
+        <div className="main-border">
+          <div className="cms-con">
+            <h2 className="title">Service</h2>
+            <p className="con">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -34,11 +34,11 @@ class Service extends React.Component {
               Lorem Ipsum.
             </p>
           </div>
-          <span class="cut-item top-left"></span>
-          <span class="cut-item left-bottom"></span>
-          <span class="cut-item top-right"></span>
-          <span class="cut-item right-bottom"></span>
-          <span class="cut-item bottom"></span>
+          <span className="cut-item top-left"></span>
+          <span className="cut-item left-bottom"></span>
+          <span className="cut-item top-right"></span>
+          <span className="cut-item right-bottom"></span>
+          <span className="cut-item bottom"></span>
         </div>
       </main>
     );

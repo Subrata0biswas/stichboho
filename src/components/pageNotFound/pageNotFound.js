@@ -10,9 +10,9 @@ class PageNotFound extends React.Component {
   render() {
     return (
       <main>
-        <div class="main-border">
-          <div class="eror-page cms-con">
-            <div class="eror-outer">
+        <div className="main-border">
+          <div className="eror-page cms-con">
+            <div className="eror-outer">
               <h2>404</h2>
               <p>
                 The link you clicked may be broken or the page may have been

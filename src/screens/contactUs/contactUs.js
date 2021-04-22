@@ -9,14 +9,14 @@ class ContactUs extends React.Component {
   render() {
     return (
       <main>
-        <div class="main-border">
-          <div class="contact-container cms-con">
-            <h2 class="title">Contact Us</h2>
-            <div class="contact-frm-outer">
+        <div className="main-border">
+          <div className="contact-container cms-con">
+            <h2 className="title">Contact Us</h2>
+            <div className="contact-frm-outer">
               <form action="#">
                 <ul>
                   <li>
-                    <div class="first-name">
+                    <div className="first-name">
                       <input
                         type="text"
                         id="#"
@@ -24,7 +24,7 @@ class ContactUs extends React.Component {
                         placeholder="Your name.."
                       />
                     </div>
-                    <div class="last-name">
+                    <div className="last-name">
                       <input
                         type="text"
                         id="#"
@@ -49,7 +49,7 @@ class ContactUs extends React.Component {
                       style={{ height: "200px" }}
                     ></textarea>
                   </li>
-                  <li class="submit-outer">
+                  <li className="submit-outer">
                     <input type="submit" value="Submit" />
                   </li>
                 </ul>
