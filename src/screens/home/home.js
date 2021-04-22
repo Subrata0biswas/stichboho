@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 
 // import component
 import { Service, API } from "../../config/service";
+import Toast from "../../components/toastMessage/toast";
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,13 +17,15 @@ class Home extends React.Component {
 
   componentDidMount() {
     Service("GET", "api/homepage/", "").then((res) => {
-      console.log("res", res);
       if (res.data.code === 200) {
         this.setState({
           categories: res.data.Category,
         });
       } else {
-        window.alert(res.data.message);
+        Toast({
+          type: res.data.status,
+          message: res.message || res.data.message,
+        });
       }
     });
   }
@@ -38,6 +41,7 @@ class Home extends React.Component {
     console.log("category", categories);
     return (
       <main>
+        {/* <Toast /> */}
         <div className="main-border">
           <div className="main-banner">
             <Carousel

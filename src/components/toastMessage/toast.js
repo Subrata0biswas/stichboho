@@ -1,9 +1,16 @@
-import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Toast(type, msg) {
-  console.log("type", type);
-  toast.success("nesssssssss");
-  return <ToastContainer />;
+toast.configure();
+function Toast(props) {
+  return toast[props.type](props.message.message, {
+    position: toast.POSITION.TOP_RIGHT,
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 }
+export default Toast;
