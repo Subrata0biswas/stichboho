@@ -38,10 +38,8 @@ class Home extends React.Component {
 
   render() {
     const { categories } = this.state;
-    console.log("category", categories);
     return (
       <main>
-        {/* <Toast /> */}
         <div className="main-border">
           <div className="main-banner">
             <Carousel

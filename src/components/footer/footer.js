@@ -8,6 +8,10 @@ class Footer extends React.Component {
 
   onClickRedirect = (type) => {
     this.props.props.history.push(type);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   render() {

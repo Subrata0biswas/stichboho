@@ -6,6 +6,13 @@ class ProductList extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   render() {
     return (
       <main>
@@ -31,7 +38,7 @@ class ProductList extends React.Component {
               <div className="list-item">
                 <span className="list-items">List Items</span>
                 <span className="items">1 - 12</span>
-                <span className="total-items">of 13</span>
+                <span className="total-items"> of 13</span>
               </div>
               <div className="select-style">Select Style</div>
             </div>
