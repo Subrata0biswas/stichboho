@@ -1,5 +1,5 @@
 import axios from "axios";
-export const API = "http://208.109.15.202:3000/";
+export const API = "http://208.109.15.201:3000/";
 
 export const Service = async (method, apiPath, params) => {
   console.log("ser");
