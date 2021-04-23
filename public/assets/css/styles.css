@@ -87,11 +87,13 @@ header .logo img {
   margin: 0 1%;
 }
 .main-catagory-outer > div.main-cata img {
-  width: 100%;
+  /* width: 100%; */
   border: 2px dashed #a7a7a7;
   border-radius: 100%;
   display: block;
   padding: 2px;
+  width: 250px;
+  height: 250px;
 }
 .main-catagory-outer > div.main-cata .span-cursor {
   text-decoration: none;
@@ -504,6 +506,123 @@ header {
   color: #fff;
 }
 
+/*----------220421-THE WAY WE WORK-----------*/
+.we-work-inr:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.we-work-outer {
+  text-align: center;
+  margin-top: 50px; /* background: #cccccc3b; */
+  padding: 20px 20px 35px;
+  border-radius: 10px;
+}
+.we-work-inr > div {
+  display: inline-block;
+  margin: 0 1%;
+  width: 22%;
+  background: #ee7767;
+  height: 223px;
+  padding: 27px 0 0;
+  font-size: 18px;
+  color: #fff;
+  border: 2px dashed #fff;
+  position: relative;
+  box-shadow: 0 0 20px #0000006e;
+  margin-bottom: 25px;
+  vertical-align: top;
+}
+.we-work-outer .title {
+  font-size: 20px;
+  margin-bottom: 60px;
+  position: relative;
+  line-height: 22px;
+  margin-top: 20px;
+}
+.we-work-outer .title span {
+  display: inline-block;
+  padding: 10px 50px;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+}
+.we-work-outer .title:after {
+  content: "";
+  display: block;
+  clear: both;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  position: absolute;
+  top: 23px;
+}
+.we-work-inr > div:after {
+  content: "";
+  display: block;
+  clear: both;
+  background: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  position: absolute;
+  top: 41px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 4px solid #ff9d90;
+  background-size: 55% !important;
+  background-position: center !important;
+}
+.we-work-inr > div.book-apnt:after {
+  background: #fff url(../images/appointment-icon.png) no-repeat 0 0;
+}
+.we-work-inr > div.pick:after {
+  background: #fff url(../images/pick.png) no-repeat 0 0;
+}
+.we-work-inr > div.represent:after {
+  background: #fff url(../images/represent-icon.png) no-repeat 0 0;
+}
+.we-work-inr > div.trail:after {
+  background: #fff url(../images/delivery-icon.png) no-repeat 0 0;
+}
+.we-work-inr > div.fabaric:after {
+  background: #fff url(../images/fevric-icon.png) no-repeat 0 0;
+}
+.we-work-inr > div.trail-icon:after {
+  background: #fff url(../images/trail-icon.png) no-repeat 0 0;
+}
+.we-work-inr > div.payment:after {
+  background: #fff url(../images/payment-icon.png) no-repeat 0 0;
+}
+.we-work-outer .title span:after {
+  content: "";
+  display: block;
+  clear: both;
+  background: #ee7767;
+  width: 60px;
+  height: 3px;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+header {
+  z-index: 99;
+}
+.we-work-inr > div span {
+  display: inline-block;
+  width: 65%;
+  line-height: 25px;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  vertical-align: middle;
+}
+/*----------220421-THE WAY WE WORK----end-------*/
+
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -520,6 +639,20 @@ header {
   .review-cont-slider .cont {
     font-size: 12px;
   }
+  /*----------220421-THE WAY WE WORK-----------*/
+  .we-work-inr > div {
+    width: 23%;
+    font-size: 14px;
+    height: 175px;
+    line-height: 248px;
+    box-shadow: 0 0 5px #0000006e;
+    margin: 0 5px;
+  }
+  .we-work-inr > div:after {
+    width: 60px;
+    height: 60px;
+  }
+  /*----------220421-THE WAY WE WORK--End---------*/
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
@@ -561,6 +694,12 @@ header {
   .review-cont-slider img {
     width: 80px;
   }
+  /*----------220421-THE WAY WE WORK-----------*/
+  .we-work-inr > div {
+    width: 40.5%;
+    margin-bottom: 30px;
+  }
+  /*----------220421-THE WAY WE WORK--end---------*/
 }
 
 @media only screen and (max-width: 767px) {
@@ -622,7 +761,8 @@ header {
     font-size: 18px;
   }
   .main-catagory-outer > div.main-cata img {
-    width: 80%;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
   }
   .home-blog-outer > div.home-blog {
@@ -678,7 +818,18 @@ header {
   .eror-outer h2 {
     font-size: 80px;
   }
+  /*----------220421-THE WAY WE WORK-----------*/
+  .we-work-inr > div {
+    width: 40.5%;
+    margin-bottom: 30px;
+    font-size: 15px;
+  }
+  /*----------220421-THE WAY WE WORK--end---------*/
+  .main-catagory-outer > div.main-cata .span-cursor {
+    font-size: 18px;
+  }
 }
+
 @media only screen and (max-width: 480px) {
   .review-cont-slider .container {
     width: 76%;
@@ -706,4 +857,26 @@ header {
   .copyright > span {
     margin: 0 11px;
   }
+  /*----------220421-THE WAY WE WORK-----------*/
+  .we-work-inr > div {
+    width: 45%;
+    height: 116px;
+  }
+  .we-work-outer {
+    padding: 20px 0px 35px;
+  }
+  .we-work-outer .title span {
+    padding: 10px 15px;
+  }
+  .we-work-inr > div:after {
+    top: 12px;
+    width: 50px;
+    height: 50px;
+  }
+  .we-work-inr > div span {
+    line-height: 20px;
+    font-size: 11px;
+    bottom: 7px;
+  }
+  /*----------220421-THE WAY WE WORK--end---------*/
 }

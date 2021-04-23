@@ -23,7 +23,7 @@ class Home extends React.Component {
         });
       } else {
         Toast({
-          type: res.data.status,
+          type: res.data.status || "error",
           message: res.message || res.data.message,
         });
       }
@@ -93,12 +93,30 @@ class Home extends React.Component {
                   <span>THE WAY WE WORK</span>
                 </div>
                 <div className="we-work-inr">
-                  <div className="book-apnt">BOOK APPOINTMENT</div>
-                  <div className="pick">PICK & MEASURED</div>
-                  <div className="swath">SWATCH & STITCH</div>
-                  <div className="trail">TRIAL & DELIVERY</div>
+                  <div className="book-apnt">
+                    <span>BOOK APPOINTMENT</span>
+                  </div>
+                  <div className="represent">
+                    <span>Representative visits you</span>
+                  </div>
+                  <div className="fabaric">
+                    <span>Show you fabric option</span>
+                  </div>
+                  <div className="pick">
+                    <span>Measurement</span>
+                  </div>
+                  <div className="trail-icon">
+                    <span>Trial</span>
+                  </div>
+                  <div className="payment">
+                    <span>Payments </span>
+                  </div>
+                  <div className="trail">
+                    <span>Delivery</span>
+                  </div>
                 </div>
               </div>
+
               {/* way work section end */}
 
               {/* <div className="home-blog-outer">

@@ -37,7 +37,7 @@ class SubCategory extends React.Component {
         });
       } else {
         Toast({
-          type: res.data.status,
+          type: res.data.status || "error",
           message: res.message || res.data.message,
         });
       }
