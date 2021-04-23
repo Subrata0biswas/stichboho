@@ -413,10 +413,13 @@ header {
   padding: 10px;
   font-size: 20px;
   font-weight: bold;
+  vertical-align: top;
 }
 .pro-grid li img {
   width: 100%;
   border-radius: 5px 5px 0 0;
+  height: 250px;
+  object-fit: cover;
 }
 .pro-grid li .name {
   margin: 15px 0;
@@ -817,6 +820,9 @@ header {
   }
   .eror-outer h2 {
     font-size: 80px;
+  }
+  .pro-grid li img {
+    height: 100px;
   }
   /*----------220421-THE WAY WE WORK-----------*/
   .we-work-inr > div {
