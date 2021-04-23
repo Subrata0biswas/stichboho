@@ -31,7 +31,7 @@ class Home extends React.Component {
   }
 
   redirectToProductList = (type, id) => {
-    this.props.history.push(`/product-list/${type}/${id}`, {
+    this.props.history.push(`/sub-category-list/${type}/${id}`, {
       type: type,
     });
   };
@@ -87,72 +87,86 @@ class Home extends React.Component {
               ) : null}
               {/* category section end */}
 
-              <div className="home-blog-outer">
-                <div className="home-blog">
-                  <div className="blog-img">
-                    <img src="assets/images/blog-img.jpg" alt="" />
-                  </div>
-                  <div className="cont-outer">
-                    <h2 className="title">Custom Title</h2>
-                    <div className="cnt">
-                      Lorem Ipsum is simply dummy text of the printing
-                      andtypesetting industry. Lorem Ipsum has been the
-                      industry's standard
-                    </div>
-                    <div className="btn-outer">
-                      <span className="span-cursor">Read More</span>
-                    </div>
-                  </div>
+              {/* way work section start */}
+              <div className="we-work-outer">
+                <div className="title">
+                  <span>THE WAY WE WORK</span>
                 </div>
-                <div className="home-blog">
-                  <div className="blog-img">
-                    <img src="assets/images/blog-img.jpg" alt="" />
-                  </div>
-                  <div className="cont-outer">
-                    <h2 className="title">Custom Title</h2>
-                    <div className="cnt">
-                      Lorem Ipsum is simply dummy text of the printing
-                      andtypesetting industry. Lorem Ipsum has been the
-                      industry's standard
-                    </div>
-                    <div className="btn-outer">
-                      <span className="span-cursor">Read More</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="home-blog">
-                  <div className="blog-img">
-                    <img src="assets/images/blog-img.jpg" alt="" />
-                  </div>
-                  <div className="cont-outer">
-                    <h2 className="title">Custom Title</h2>
-                    <div className="cnt">
-                      Lorem Ipsum is simply dummy text of the printing
-                      andtypesetting industry. Lorem Ipsum has been the
-                      industry's standard
-                    </div>
-                    <div className="btn-outer">
-                      <span className="span-cursor">Read More</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="home-blog">
-                  <div className="blog-img">
-                    <img src="assets/images/blog-img.jpg" alt="" />
-                  </div>
-                  <div className="cont-outer">
-                    <h2 className="title">Custom Title</h2>
-                    <div className="cnt">
-                      Lorem Ipsum is simply dummy text of the printing
-                      andtypesetting industry. Lorem Ipsum has been the
-                      industry's standard
-                    </div>
-                    <div className="btn-outer">
-                      <span className="span-cursor">Read More</span>
-                    </div>
-                  </div>
+                <div className="we-work-inr">
+                  <div className="book-apnt">BOOK APPOINTMENT</div>
+                  <div className="pick">PICK & MEASURED</div>
+                  <div className="swath">SWATCH & STITCH</div>
+                  <div className="trail">TRIAL & DELIVERY</div>
                 </div>
               </div>
+              {/* way work section end */}
+
+              {/* <div className="home-blog-outer">
+                <div className="home-blog">
+                  <div className="blog-img">
+                    <img src="assets/images/blog-img.jpg" alt="" />
+                  </div>
+                  <div className="cont-outer">
+                    <h2 className="title">Custom Title</h2>
+                    <div className="cnt">
+                      Lorem Ipsum is simply dummy text of the printing
+                      andtypesetting industry. Lorem Ipsum has been the
+                      industry's standard
+                    </div>
+                    <div className="btn-outer">
+                      <span className="span-cursor">Read More</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="home-blog">
+                  <div className="blog-img">
+                    <img src="assets/images/blog-img.jpg" alt="" />
+                  </div>
+                  <div className="cont-outer">
+                    <h2 className="title">Custom Title</h2>
+                    <div className="cnt">
+                      Lorem Ipsum is simply dummy text of the printing
+                      andtypesetting industry. Lorem Ipsum has been the
+                      industry's standard
+                    </div>
+                    <div className="btn-outer">
+                      <span className="span-cursor">Read More</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="home-blog">
+                  <div className="blog-img">
+                    <img src="assets/images/blog-img.jpg" alt="" />
+                  </div>
+                  <div className="cont-outer">
+                    <h2 className="title">Custom Title</h2>
+                    <div className="cnt">
+                      Lorem Ipsum is simply dummy text of the printing
+                      andtypesetting industry. Lorem Ipsum has been the
+                      industry's standard
+                    </div>
+                    <div className="btn-outer">
+                      <span className="span-cursor">Read More</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="home-blog">
+                  <div className="blog-img">
+                    <img src="assets/images/blog-img.jpg" alt="" />
+                  </div>
+                  <div className="cont-outer">
+                    <h2 className="title">Custom Title</h2>
+                    <div className="cnt">
+                      Lorem Ipsum is simply dummy text of the printing
+                      andtypesetting industry. Lorem Ipsum has been the
+                      industry's standard
+                    </div>
+                    <div className="btn-outer">
+                      <span className="span-cursor">Read More</span>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
           <div className="reviews-outer">
