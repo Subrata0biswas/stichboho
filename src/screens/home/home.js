@@ -12,6 +12,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       categories: [],
+      count: 0,
     };
   }
 
@@ -27,17 +28,27 @@ class Home extends React.Component {
           message: res.message || res.data.message,
         });
       }
+      this.setState({
+        count: this.state.count + 1,
+      });
+      this.setState({
+        count: this.state.count + 1,
+      });
+      this.setState({
+        count: this.state.count + 1,
+      });
     });
   }
 
   redirectToProductList = (type, id) => {
-    this.props.history.push(`/sub-category-list/${type}/${id}`, {
+    this.props.history.push(`/sub-category-list/id/${id}`, {
       type: type,
     });
   };
 
   render() {
     const { categories } = this.state;
+    console.log("coutn", this.state.count);
     return (
       <main>
         <div className="main-border">

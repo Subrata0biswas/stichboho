@@ -6,7 +6,7 @@ import Layout from "./layout/layout";
 
 // // import component
 import Home from "./screens/home/home";
-import SubCategory from "./screens/subCategory/subCategory";
+import SubCategory from "./screens/category/subCategory";
 import ProductList from "./screens/products/productList";
 import AboutUs from "./screens/aboutUs/aboutUs";
 import ContactUs from "./screens/contactUs/contactUs";
@@ -26,7 +26,7 @@ class App extends React.Component {
           <GeneralRoute exact path="/" component={Home} />
           <GeneralRoute
             exact
-            path="/sub-category-list/:type/:id"
+            path="/sub-category-list/id/:id"
             component={SubCategory}
           />
           <GeneralRoute
