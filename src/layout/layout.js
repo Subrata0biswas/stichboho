@@ -11,13 +11,6 @@ export default function Layout({ children }) {
     setMenu(!isMenu);
   }
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, []);
-
   return (
     <>
       <Header isMenu={isMenu} onOpenMenu={onOpenMenu} props={children.props} />

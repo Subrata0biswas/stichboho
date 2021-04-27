@@ -16,16 +16,8 @@ class SubCategory extends React.Component {
 
   componentDidMount() {
     console.log("sub params", this.props);
-    this.goToPageTop();
     this.getSubCategoryByCategory();
   }
-
-  goToPageTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   getSubCategoryByCategory = () => {
     axios

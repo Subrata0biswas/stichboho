@@ -6,12 +6,12 @@ class ProductList extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+  // componentDidMount() {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // }
 
   render() {
     return (
