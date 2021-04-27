@@ -79,7 +79,7 @@ class SubCategory extends React.Component {
               </ul>
             </div>
           </div>
-          <div className="list-catagory-item-outer">
+          {/* <div className="list-catagory-item-outer">
             <div className="container">
               <div className="catagory-name">Men - Trouser</div>
               <div className="list-item">
@@ -89,7 +89,7 @@ class SubCategory extends React.Component {
               </div>
               <div className="select-style">Select Style</div>
             </div>
-          </div>
+          </div> */}
 
           {/* start sub category section */}
           {subCategories.length > 0 ? (
@@ -98,7 +98,14 @@ class SubCategory extends React.Component {
                 <ul className="pro-grid">
                   {subCategories.map((subCate) => {
                     return (
-                      <li key={subCate.id}>
+                      <li
+                        key={subCate.id}
+                        onClick={() =>
+                          this.props.history.push(
+                            `/product-list/id/${subCate.id}`
+                          )
+                        }
+                      >
                         <div className="pro-img">
                           <img src={API + subCate.categoryImage} alt="" />
                         </div>

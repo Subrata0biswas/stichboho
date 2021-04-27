@@ -31,7 +31,7 @@ class App extends React.Component {
           />
           <GeneralRoute
             exact
-            path="/product-list/:type/:id"
+            path="/product-list/id/:id"
             component={ProductList}
           />
           <GeneralRoute exact path="/about-us" component={AboutUs} />
