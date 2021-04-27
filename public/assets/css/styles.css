@@ -625,6 +625,113 @@ header {
   vertical-align: middle;
 }
 /*----------220421-THE WAY WE WORK----end-------*/
+/*-------------About us------------*/
+.about-title {
+  background: url(../images/about-title.jpg) no-repeat 0 0;
+  padding: 120px 0;
+  background-size: 100%;
+  text-align: center;
+  background-position: 0 -13px;
+}
+.about-us-outer {
+  margin: 0 -21px;
+}
+.about-title .title {
+  display: inline-block;
+  color: #fff;
+  font-size: 40px;
+  text-transform: uppercase;
+  position: relative;
+}
+.about-title .title:after {
+  content: "";
+  display: block;
+  clear: both;
+  width: 30%;
+  height: 5px;
+  background: #ee7767;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.about-inr-con {
+  margin: 50px auto;
+  width: 75%;
+  padding: 30px;
+  box-shadow: 0 0 15px #00000073;
+}
+.about-inr-con:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.about-inr-con > div {
+  float: left;
+  width: 48%;
+  margin: 0 10px;
+}
+.about-inr-con > div.left-img img {
+  width: 100%;
+}
+.about-inr-con > div.con {
+  float: right;
+  width: 45%;
+  color: #888888;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: justify;
+  margin-top: 100px;
+}
+.why-title.about-title {
+  background: transparent;
+  padding: 30px 0;
+  margin-bottom: 45px;
+}
+.why-stitch-buhu {
+  background: url(../images/why-stitchbuhu-img.jpg) no-repeat 0 0;
+  background-size: 100%;
+  background-position: 0 0;
+  margin: 0 -15px;
+  padding: 30px 0 45px;
+}
+.why-option:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.why-option {
+  text-align: center;
+}
+.why-option > div {
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 37px;
+}
+.why-option > div:before {
+  content: "";
+  display: block;
+  clear: both;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: 8px solid #ee7767;
+  margin: 0 auto 30px;
+  background-size: 100% !important;
+  background-position: center !important;
+}
+.why-option > div.ontime:before {
+  background: #fff url(../images/on-time-icon.png) no-repeat 0 0;
+}
+.why-option > div.quality:before {
+  background: #fff url(../images/quality-icon.png) no-repeat 0 0;
+}
+.why-option > div.trust:before {
+  background: #fff url(../images/trust-icon.png) no-repeat 0 0;
+}
+.why-option > div.hpy-clint:before {
+  background: #fff url(../images/help-icon.png) no-repeat 0 0;
+}
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
@@ -656,6 +763,13 @@ header {
     height: 60px;
   }
   /*----------220421-THE WAY WE WORK--End---------*/
+  /*------------about-us---------*/
+  .about-inr-con > div.con {
+    margin-top: 30px;
+  }
+  .why-stitch-buhu {
+    background-size: cover;
+  }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
@@ -703,6 +817,30 @@ header {
     margin-bottom: 30px;
   }
   /*----------220421-THE WAY WE WORK--end---------*/
+  /*------------about-us---------*/
+  .about-title {
+    padding: 120px 0 30px;
+  }
+  .about-inr-con {
+    width: 90%;
+  }
+  .about-inr-con > div.con {
+    margin-top: 0;
+    font-size: 14px;
+  }
+  .why-option > div {
+    margin: 0 20px;
+  }
+  .why-stitch-buhu {
+    background-size: cover;
+  }
+  .why-option > div:before {
+    width: 80px;
+    height: 80px;
+  }
+  .about-title .title {
+    font-size: 30px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -833,6 +971,41 @@ header {
   /*----------220421-THE WAY WE WORK--end---------*/
   .main-catagory-outer > div.main-cata .span-cursor {
     font-size: 18px;
+  }
+  .about-title {
+    padding: 50px 0;
+    background-size: cover;
+  }
+  .about-title .title {
+    font-size: 25px;
+  }
+  .about-inr-con {
+    width: 85%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+  .about-inr-con > div {
+    float: none;
+    width: 100%;
+    margin: 0 0;
+  }
+  .about-inr-con > div.con {
+    float: none;
+    width: 100%;
+    color: #888888;
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 15px;
+  }
+  .why-stitch-buhu {
+    background-size: cover;
+  }
+  .why-option > div {
+    margin: 0 20px 35px;
+  }
+  .why-option > div:before {
+    width: 80px;
+    height: 80px;
   }
 }
 

@@ -8,39 +8,39 @@ class AboutUs extends React.Component {
 
   render() {
     return (
-      <main>
-        <div className="main-border">
-          <div className="cms-con">
+      <div className="cms about">
+        <div className="about-us-outer">
+          <div className="about-title">
             <h2 className="title">About Us</h2>
-            <p className="con">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
           </div>
-          <span className="cut-item top-left"></span>
-          <span className="cut-item left-bottom"></span>
-          <span className="cut-item top-right"></span>
-          <span className="cut-item right-bottom"></span>
-          <span className="cut-item bottom"></span>
+          <div className="container">
+            <div className="about-inr-con">
+              <div className="left-img img">
+                <img src="../../assets/images/about-left-img.jpeg" alt="" />
+              </div>
+              <div className="con">
+                Raho Ban Than Ke is an online stitching service providing
+                platform helping customersto avail tailoring services at the
+                comfort of their home. Our goal is to make sure you are always
+                Ban Than Ke. Aiming to be India’s Largest E-Tailoring platform,
+                we provide our customers with a hassle free way to select
+                fabrics and get stitched in the manner they desire.
+              </div>
+            </div>
+            <div className="why-stitch-buhu">
+              <div className="why-title about-title">
+                <h2 className="title">WHY STITCHBOHO </h2>
+              </div>
+              <div className="why-option">
+                <div className="why-items ontime">On Time</div>
+                <div className="why-items quality">Quality</div>
+                <div className="why-items trust">Trust</div>
+                <div className="why-items hpy-clint">Happy Clients</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     );
   }
 }
