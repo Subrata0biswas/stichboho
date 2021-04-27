@@ -10,33 +10,26 @@ class SubCategory extends React.Component {
     super(props);
     this.state = {
       subCategories: [],
+      cateType: "",
+      loader: true,
     };
   }
 
   componentDidMount() {
-    console.log("sub params", this.props);
-    this.goToPageTop();
     this.getSubCategoryByCategory();
   }
-
-  goToPageTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   getSubCategoryByCategory = () => {
     axios
       .post("http://208.109.15.202:3000/api/subcategory/", {
         categoryId: this.props.match.params.id,
-        categoryName: this.props.match.params.type,
       })
       .then((res) => {
-        console.log("res", res);
+        this.setState({ loader: false });
         if (res.data.code === 200) {
           this.setState({
             subCategories: res.data.subCategory,
+            cateType: res.data.categoryType,
           });
         } else {
           this.callToastMessage();
@@ -52,7 +45,7 @@ class SubCategory extends React.Component {
   };
 
   render() {
-    const { subCategories } = this.state;
+    const { subCategories, cateType, loader } = this.state;
     return (
       <main>
         <div className="main-border">
@@ -62,16 +55,16 @@ class SubCategory extends React.Component {
                 <li>
                   <span
                     className="span-cursor"
-                    onClick={() => this.props.history.goBack()}
+                    onClick={() => this.props.history.replace("/")}
                   >
                     Home
                   </span>
                 </li>
-                <li>{this.props.match.params.type}</li>
+                <li>{cateType}</li>
               </ul>
             </div>
           </div>
-          <div className="list-catagory-item-outer">
+          {/* <div className="list-catagory-item-outer">
             <div className="container">
               <div className="catagory-name">Men - Trouser</div>
               <div className="list-item">
@@ -81,16 +74,23 @@ class SubCategory extends React.Component {
               </div>
               <div className="select-style">Select Style</div>
             </div>
-          </div>
+          </div> */}
 
           {/* start sub category section */}
-          {subCategories.length > 0 ? (
+          {loader === false && subCategories.length > 0 ? (
             <div className="list-product-outer">
               <div className="container">
                 <ul className="pro-grid">
                   {subCategories.map((subCate) => {
                     return (
-                      <li key={subCate.id}>
+                      <li
+                        key={subCate.id}
+                        onClick={() =>
+                          this.props.history.push(
+                            `/product-list/id/${subCate.id}`
+                          )
+                        }
+                      >
                         <div className="pro-img">
                           <img src={API + subCate.categoryImage} alt="" />
                         </div>
@@ -103,7 +103,9 @@ class SubCategory extends React.Component {
                 </ul>
               </div>
             </div>
-          ) : null}
+          ) : (
+            <div>no data found</div>
+          )}
           {/* end sub category section */}
 
           <span className="cut-item top-left"></span>

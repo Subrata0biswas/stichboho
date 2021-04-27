@@ -6,7 +6,7 @@ import Layout from "./layout/layout";
 
 // // import component
 import Home from "./screens/home/home";
-import SubCategory from "./screens/category/subCategory";
+import SubCategory from "./screens/subCategory/subCategory";
 import ProductList from "./screens/products/productList";
 import AboutUs from "./screens/aboutUs/aboutUs";
 import ContactUs from "./screens/contactUs/contactUs";
