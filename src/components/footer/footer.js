@@ -22,8 +22,12 @@ class Footer extends React.Component {
             <div className="footer-con">
               <h2 className="title">About Us</h2>
               <p>
-                Lorem Ipsum is simply dummy text of the printing andtypesetting
-                industry. Lorem Ipsum has been the industry's standard{" "}
+                Raho Ban Than Ke is an online stitching service providing
+                platform helping customersto avail tailoring services at the
+                comfort of their home. Our goal is to make sure you are always
+                Ban Than Ke. Aiming to be India’s Largest E-Tailoring platform,
+                we provide our customers with a hassle free way to select
+                fabrics and get stitched in the manner they desire.
               </p>
             </div>
             <div className="footer-con footer-link">
