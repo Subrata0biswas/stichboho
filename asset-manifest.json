@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/stichboho/static/js/main.b2d18b82.chunk.js",
+    "main.js.map": "/stichboho/static/js/main.b2d18b82.chunk.js.map",
+    "runtime-main.js": "/stichboho/static/js/runtime-main.7461c601.js",
+    "runtime-main.js.map": "/stichboho/static/js/runtime-main.7461c601.js.map",
+    "static/css/2.5db02f2f.chunk.css": "/stichboho/static/css/2.5db02f2f.chunk.css",
+    "static/js/2.1237db2a.chunk.js": "/stichboho/static/js/2.1237db2a.chunk.js",
+    "static/js/2.1237db2a.chunk.js.map": "/stichboho/static/js/2.1237db2a.chunk.js.map",
+    "static/js/3.75679609.chunk.js": "/stichboho/static/js/3.75679609.chunk.js",
+    "static/js/3.75679609.chunk.js.map": "/stichboho/static/js/3.75679609.chunk.js.map",
+    "index.html": "/stichboho/index.html",
+    "static/css/2.5db02f2f.chunk.css.map": "/stichboho/static/css/2.5db02f2f.chunk.css.map",
+    "static/js/2.1237db2a.chunk.js.LICENSE.txt": "/stichboho/static/js/2.1237db2a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7461c601.js",
+    "static/css/2.5db02f2f.chunk.css",
+    "static/js/2.1237db2a.chunk.js",
+    "static/js/main.b2d18b82.chunk.js"
+  ]
+}
