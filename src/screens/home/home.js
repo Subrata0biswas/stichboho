@@ -67,7 +67,7 @@ class Home extends React.Component {
                           onClick={() =>
                             this.redirectToProductList(
                               category.name.charAt(0).toUpperCase() +
-                                category.name.slice(1),
+                              category.name.slice(1),
                               category.id
                             )
                           }
@@ -97,10 +97,10 @@ class Home extends React.Component {
                     <span>BOOK APPOINTMENT</span>
                   </div>
                   <div className="represent">
-                    <span>Representative visits you</span>
+                    <span>Executive Visits you</span>
                   </div>
                   <div className="fabaric">
-                    <span>Show you fabric option</span>
+                    <span>Choose Fabric</span>
                   </div>
                   <div className="pick">
                     <span>Measurement</span>

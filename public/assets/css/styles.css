@@ -34,7 +34,8 @@ header .nav {
   display: inline-block;
   margin: 0 0;
   padding: 0 17px;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #fff;
+  color:#fff;
 }
 .nav ul li span {
   display: block;
@@ -59,7 +60,7 @@ header .nav {
   display: block;
 }
 header .logo img {
-  width: 295px;
+ 
 }
 .main-banner {
   border: 0;
@@ -303,7 +304,7 @@ footer {
 }
 main {
   padding: 21px;
-  margin-top: 100px;
+  margin-top: 125px;
 }
 .main-border {
   border: 2px dashed #a7a7a7;
@@ -611,6 +612,8 @@ header {
 }
 header {
   z-index: 99;
+  background: #000;
+  padding: 8px 0 4px;
 }
 .we-work-inr > div span {
   display: inline-block;
@@ -1059,3 +1062,4 @@ header {
   }
   /*----------220421-THE WAY WE WORK--end---------*/
 }
+
