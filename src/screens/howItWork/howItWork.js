@@ -8,39 +8,55 @@ class HowItWork extends React.Component {
 
   render() {
     return (
-      <main>
-        <div className="main-border">
-          <div className="cms-con">
-            <h2 className="title">How it Work</h2>
-            <p className="con">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+      <div class="cms about">
+        <div class="about-us-outer">
+          <div class="about-title">
+            <h2 class="title">HOW IT WORKS</h2>
           </div>
-          <span className="cut-item top-left"></span>
-          <span className="cut-item left-bottom"></span>
-          <span className="cut-item top-right"></span>
-          <span className="cut-item right-bottom"></span>
-          <span className="cut-item bottom"></span>
+          <div class="container">
+            <div class="about-inr-con how-it-work-con">
+              <div class="left-img img">
+                <img src="assets/images/how-we-work-left-img.jpg" alt="" />
+              </div>
+              <div class="con">
+                <p>
+                  Select the product youre willing to get stitched and book an
+                  appointment at your convenient time through the site.{" "}
+                </p>
+                <p>Our representative will visit you at the booked time. </p>
+                <p>
+                  He will show you a bunch of fabrics to choose from, Further
+                  taking your measurements. In Case you’re willing to use your
+                  own fabric, they will collect your fabric from you.{" "}
+                </p>
+                <p>
+                  The fabric then will be stitched by our experienced Master
+                  Ji’s according to the design provided by you.{" "}
+                </p>
+                <p>
+                  Once your Product is ready, you will be visited by the
+                  representative for a trail ( Not Applicable for Shirts )
+                </p>
+                <p>
+                  In case of any changes, they will be delivered to you after
+                  the same has been duly made.{" "}
+                </p>
+              </div>
+            </div>
+            <div class="why-stitch-buhu">
+              <div class="why-title about-title">
+                <h2 class="title">WHY STITCH BOHO </h2>
+              </div>
+              <div class="why-option">
+                <div class="why-items ontime">On Time</div>
+                <div class="why-items quality">Quality</div>
+                <div class="why-items trust">Trust</div>
+                <div class="why-items hpy-clint">Happy Clients</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     );
   }
 }

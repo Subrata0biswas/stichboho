@@ -8,39 +8,42 @@ class HowToPlay extends React.Component {
 
   render() {
     return (
-      <main>
-        <div className="main-border">
-          <div className="cms-con">
-            <h2 className="title">How to Play</h2>
-            <p className="con">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+      <div class="cms about">
+        <div class="about-us-outer">
+          <div class="about-title">
+            <h2 class="title">HOW TO PAY</h2>
           </div>
-          <span className="cut-item top-left"></span>
-          <span className="cut-item left-bottom"></span>
-          <span className="cut-item top-right"></span>
-          <span className="cut-item right-bottom"></span>
-          <span className="cut-item bottom"></span>
+          <div class="container">
+            <div class="about-inr-con how-to-pay-con">
+              <div class="left-img img">
+                <img src="assets/images/how-to-pay-left-img.jpg" alt="" />
+              </div>
+              <div class="con">
+                <p>
+                  You would be required to pay only for the fabric at our
+                  representative’s visit to you
+                </p>
+                <p>
+                  Final payment needs to be made after the trial has been
+                  provided to you.{" "}
+                </p>
+                <p>All online modes of payments will be accepted. </p>
+              </div>
+            </div>
+            <div class="why-stitch-buhu">
+              <div class="why-title about-title">
+                <h2 class="title">WHY STITCH BOHO </h2>
+              </div>
+              <div class="why-option">
+                <div class="why-items ontime">On Time</div>
+                <div class="why-items quality">Quality</div>
+                <div class="why-items trust">Trust</div>
+                <div class="why-items hpy-clint">Happy Clients</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     );
   }
 }
