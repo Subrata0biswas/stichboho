@@ -31,7 +31,6 @@ class ProductList extends React.Component {
         productId: this.props.match.params.id,
       })
       .then((res) => {
-        console.log("res", res);
         this.setState({ loader: false });
         if (res.data.code === 200) {
           this.setState({

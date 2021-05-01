@@ -8,6 +8,7 @@ import Layout from "./layout/layout";
 import Home from "./screens/home/home";
 import SubCategory from "./screens/subCategory/subCategory";
 import ProductList from "./screens/products/productList";
+import ProductDetails from "./screens/products/productDetails";
 import AboutUs from "./screens/aboutUs/aboutUs";
 import ContactUs from "./screens/contactUs/contactUs";
 import HowItWork from "./screens/howItWork/howItWork";
@@ -23,6 +24,18 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
+          {/* header menu start */}
+
+          <GeneralRoute exact path="/about-us" component={AboutUs} />
+          <GeneralRoute exact path="/contact-us" component={ContactUs} />
+          <GeneralRoute exact path="/how-it-work" component={HowItWork} />
+          <GeneralRoute exact path="/how-to-play" component={HowToPlay} />
+          <GeneralRoute exact path="/service" component={Service} />
+          <GeneralRoute exact path="/blog" component={Blog} />
+          <GeneralRoute exact path="/career" component={Career} />
+
+          {/* header menu end */}
+
           <GeneralRoute exact path="/" component={Home} />
           <GeneralRoute
             exact
@@ -34,13 +47,12 @@ class App extends React.Component {
             path="/product-list/id/:id"
             component={ProductList}
           />
-          <GeneralRoute exact path="/about-us" component={AboutUs} />
-          <GeneralRoute exact path="/contact-us" component={ContactUs} />
-          <GeneralRoute exact path="/how-it-work" component={HowItWork} />
-          <GeneralRoute exact path="/how-to-play" component={HowToPlay} />
-          <GeneralRoute exact path="/service" component={Service} />
-          <GeneralRoute exact path="/blog" component={Blog} />
-          <GeneralRoute exact path="/career" component={Career} />
+
+          <GeneralRoute
+            exact
+            path="/product-details/id/:id"
+            component={ProductDetails}
+          />
 
           {/* page not found Start */}
           <Route component={PageNotFound} />
