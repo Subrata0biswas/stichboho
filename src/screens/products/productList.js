@@ -98,7 +98,14 @@ class ProductList extends React.Component {
                   <ul className="pro-grid">
                     {products.map((product) => {
                       return (
-                        <li key={product.id}>
+                        <li
+                          key={product.id}
+                          onClick={() =>
+                            this.props.history.push(
+                              `/product-details/id/${product.id}`
+                            )
+                          }
+                        >
                           <div className="pro-img">
                             <img src={API + product.productImage} alt="" />
                           </div>
