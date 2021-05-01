@@ -8,17 +8,17 @@ class HowToPlay extends React.Component {
 
   render() {
     return (
-      <div class="cms about">
-        <div class="about-us-outer">
-          <div class="about-title">
-            <h2 class="title">HOW TO PAY</h2>
+      <div className="cms about">
+        <div className="about-us-outer">
+          <div className="about-title">
+            <h2 className="title">HOW TO PAY</h2>
           </div>
-          <div class="container">
-            <div class="about-inr-con how-to-pay-con">
-              <div class="left-img img">
+          <div className="container">
+            <div className="about-inr-con how-to-pay-con">
+              <div className="left-img img">
                 <img src="assets/images/how-to-pay-left-img.jpg" alt="" />
               </div>
-              <div class="con">
+              <div className="con">
                 <p>
                   You would be required to pay only for the fabric at our
                   representative’s visit to you
@@ -30,15 +30,15 @@ class HowToPlay extends React.Component {
                 <p>All online modes of payments will be accepted. </p>
               </div>
             </div>
-            <div class="why-stitch-buhu">
-              <div class="why-title about-title">
-                <h2 class="title">WHY STITCH BOHO </h2>
+            <div className="why-stitch-buhu">
+              <div className="why-title about-title">
+                <h2 className="title">WHY STITCH BOHO </h2>
               </div>
-              <div class="why-option">
-                <div class="why-items ontime">On Time</div>
-                <div class="why-items quality">Quality</div>
-                <div class="why-items trust">Trust</div>
-                <div class="why-items hpy-clint">Happy Clients</div>
+              <div className="why-option">
+                <div className="why-items ontime">On Time</div>
+                <div className="why-items quality">Quality</div>
+                <div className="why-items trust">Trust</div>
+                <div className="why-items hpy-clint">Happy Clients</div>
               </div>
             </div>
           </div>

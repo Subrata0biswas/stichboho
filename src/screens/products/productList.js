@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 
 // import component
-import { Service, API } from "../../config/service";
+import { API } from "../../config/service";
+import NoDataFound from "../../components/noDataFound/noDataFound";
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -49,35 +50,38 @@ class ProductList extends React.Component {
 
   render() {
     const { loader, products, cateType, subCateType } = this.state;
-    return loader === false ? (
+    return (
       <main>
-        <div className="main-border">
-          <div className="breadcumb">
-            <div className="container">
-              <ul>
-                <li>
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.props.history.replace("/")}
-                  >
-                    Home
-                  </span>
-                </li>
-                {cateType ? (
+        {loader ? (
+          <div>loading...</div>
+        ) : (
+          <div className="main-border">
+            <div className="breadcumb">
+              <div className="container">
+                <ul>
                   <li>
                     <span
                       className="span-cursor"
-                      onClick={() => this.props.history.goBack()}
+                      onClick={() => this.props.history.replace("/")}
                     >
-                      {cateType}
+                      Home
                     </span>
                   </li>
-                ) : null}
-                <li>{subCateType}</li>
-              </ul>
+                  {cateType ? (
+                    <li>
+                      <span
+                        className="span-cursor"
+                        onClick={() => this.props.history.goBack()}
+                      >
+                        {cateType}
+                      </span>
+                    </li>
+                  ) : null}
+                  <li>{subCateType}</li>
+                </ul>
+              </div>
             </div>
-          </div>
-          {/* <div className="list-catagory-item-outer">
+            {/* <div className="list-catagory-item-outer">
             <div className="container">
               <div className="catagory-name">Men - Trouser</div>
               <div className="list-item">
@@ -89,38 +93,39 @@ class ProductList extends React.Component {
             </div>
           </div> */}
 
-          {products.length > 0 ? (
-            <div className="list-product-outer">
-              <div className="container">
-                <ul className="pro-grid">
-                  {products.map((product) => {
-                    return (
-                      <li key={product.id}>
-                        <div className="pro-img">
-                          <img src={API + product.productImage} alt="" />
-                        </div>
-                        <div className="pro-name-outer">
-                          <div className="name">{product.name}</div>
-                          <div className="price">₹ {product.price}</div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
+            {products.length > 0 ? (
+              <div className="list-product-outer">
+                <div className="container">
+                  <ul className="pro-grid">
+                    {products.map((product) => {
+                      return (
+                        <li key={product.id}>
+                          <div className="pro-img">
+                            <img src={API + product.productImage} alt="" />
+                          </div>
+                          <div className="pro-name-outer">
+                            <div className="name">{product.name}</div>
+                            <div className="price">₹ {product.price}</div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="list-product-outer">no data found</div>
-          )}
+            ) : (
+              <NoDataFound />
+            )}
 
-          <span className="cut-item top-left"></span>
-          <span className="cut-item left-bottom"></span>
-          <span className="cut-item top-right"></span>
-          <span className="cut-item right-bottom"></span>
-          <span className="cut-item bottom"></span>
-        </div>
+            <span className="cut-item top-left"></span>
+            <span className="cut-item left-bottom"></span>
+            <span className="cut-item top-right"></span>
+            <span className="cut-item right-bottom"></span>
+            <span className="cut-item bottom"></span>
+          </div>
+        )}
       </main>
-    ) : null;
+    );
   }
 }
 

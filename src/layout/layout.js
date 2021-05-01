@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import Component
 import Header from "../components/header/header";
@@ -10,6 +10,13 @@ export default function Layout({ children }) {
   function onOpenMenu() {
     setMenu(!isMenu);
   }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 
   return (
     <>

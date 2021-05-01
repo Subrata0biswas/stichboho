@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 
 // import component
-import { Service, API } from "../../config/service";
-import Toast from "../../components/toastMessage/toast";
+import { API } from "../../config/service";
+import NoDataFound from "../../components/noDataFound/noDataFound";
 
 class SubCategory extends React.Component {
   constructor(props) {
@@ -48,23 +48,26 @@ class SubCategory extends React.Component {
     const { subCategories, cateType, loader } = this.state;
     return (
       <main>
-        <div className="main-border">
-          <div className="breadcumb">
-            <div className="container">
-              <ul>
-                <li>
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.props.history.replace("/")}
-                  >
-                    Home
-                  </span>
-                </li>
-                <li>{cateType}</li>
-              </ul>
+        {loader ? (
+          <div>loading...</div>
+        ) : (
+          <div className="main-border">
+            <div className="breadcumb">
+              <div className="container">
+                <ul>
+                  <li>
+                    <span
+                      className="span-cursor"
+                      onClick={() => this.props.history.replace("/")}
+                    >
+                      Home
+                    </span>
+                  </li>
+                  <li>{cateType}</li>
+                </ul>
+              </div>
             </div>
-          </div>
-          {/* <div className="list-catagory-item-outer">
+            {/* <div className="list-catagory-item-outer">
             <div className="container">
               <div className="catagory-name">Men - Trouser</div>
               <div className="list-item">
@@ -76,44 +79,45 @@ class SubCategory extends React.Component {
             </div>
           </div> */}
 
-          {/* start sub category section */}
-          {loader === false && subCategories.length > 0 ? (
-            <div className="list-product-outer">
-              <div className="container">
-                <ul className="pro-grid">
-                  {subCategories.map((subCate) => {
-                    return (
-                      <li
-                        key={subCate.id}
-                        onClick={() =>
-                          this.props.history.push(
-                            `/product-list/id/${subCate.id}`
-                          )
-                        }
-                      >
-                        <div className="pro-img">
-                          <img src={API + subCate.categoryImage} alt="" />
-                        </div>
-                        <div className="pro-name-outer">
-                          <div className="name">{subCate.name}</div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
+            {/* start sub category section */}
+            {subCategories.length > 0 ? (
+              <div className="list-product-outer">
+                <div className="container">
+                  <ul className="pro-grid">
+                    {subCategories.map((subCate) => {
+                      return (
+                        <li
+                          key={subCate.id}
+                          onClick={() =>
+                            this.props.history.push(
+                              `/product-list/id/${subCate.id}`
+                            )
+                          }
+                        >
+                          <div className="pro-img">
+                            <img src={API + subCate.categoryImage} alt="" />
+                          </div>
+                          <div className="pro-name-outer">
+                            <div className="name">{subCate.name}</div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div>no data found</div>
-          )}
-          {/* end sub category section */}
+            ) : (
+              <NoDataFound />
+            )}
+            {/* end sub category section */}
 
-          <span className="cut-item top-left"></span>
-          <span className="cut-item left-bottom"></span>
-          <span className="cut-item top-right"></span>
-          <span className="cut-item right-bottom"></span>
-          <span className="cut-item bottom"></span>
-        </div>
+            <span className="cut-item top-left"></span>
+            <span className="cut-item left-bottom"></span>
+            <span className="cut-item top-right"></span>
+            <span className="cut-item right-bottom"></span>
+            <span className="cut-item bottom"></span>
+          </div>
+        )}
       </main>
     );
   }

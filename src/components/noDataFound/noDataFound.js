@@ -3,9 +3,9 @@ import React from "react";
 function NoDataFound(props) {
   return (
     <main>
-      <div class="main-border">
-        <div class="eror-page cms-con">
-          <div class="eror-outer no-data">
+      <div className="main-border">
+        <div className="eror-page cms-con">
+          <div className="eror-outer no-data">
             <h2>
               Oops! <br />
               <span>NO DATA FOUND</span>

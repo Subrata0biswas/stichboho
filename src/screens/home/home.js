@@ -63,36 +63,40 @@ class Home extends React.Component {
             <div className="container">
               <div className="row">
                 {/* category section start */}
-                {categories.length > 0 ? (
-                  <div className="main-catagory-outer">
-                    {categories.map((category, index) => {
-                      return (
-                        <div className="main-cata" key={index}>
-                          <span
-                            className="span-cursor"
-                            onClick={() =>
-                              this.redirectToProductList(
-                                category.name.charAt(0).toUpperCase() +
-                                  category.name.slice(1),
-                                category.id
-                              )
-                            }
-                          >
-                            <div className="img">
-                              <img src={API + category.categoryImage} alt="" />
-                            </div>
-                            <div className="name">
-                              {category.name.charAt(0).toUpperCase() +
-                                category.name.slice(1)}
-                            </div>
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <NoDataFound />
-                )}
+                {
+                  categories.length > 0 ? (
+                    <div className="main-catagory-outer">
+                      {categories.map((category, index) => {
+                        return (
+                          <div className="main-cata" key={index}>
+                            <span
+                              className="span-cursor"
+                              onClick={() =>
+                                this.redirectToProductList(
+                                  category.name.charAt(0).toUpperCase() +
+                                    category.name.slice(1),
+                                  category.id
+                                )
+                              }
+                            >
+                              <div className="img">
+                                <img
+                                  src={API + category.categoryImage}
+                                  alt=""
+                                />
+                              </div>
+                              <div className="name">
+                                {category.name.charAt(0).toUpperCase() +
+                                  category.name.slice(1)}
+                              </div>
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null
+                  // <NoDataFound />
+                }
                 {/* category section end */}
 
                 {/* way work section start */}
