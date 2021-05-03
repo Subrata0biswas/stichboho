@@ -15,7 +15,18 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    http: axios
+    if (this.props.location.state && this.props.location.state.details) {
+      this.setState({
+        loader: false,
+        productDetails: this.props.location.state.details,
+      });
+    } else {
+      this.getProductDetails();
+    }
+  }
+
+  getProductDetails = () => {
+    axios
       .post(`${API}api/product_details/`, {
         productId: this.props.match.params.id,
       })
@@ -34,12 +45,12 @@ class ProductDetails extends React.Component {
       .catch((err) => {
         // this.callToastMessage();
       });
-  }
-  componentWillUnmount() {}
+  };
 
   render() {
     const { loader, productDetails } = this.state;
     console.log("producr details", productDetails);
+    console.log("producr props", this.props);
     return (
       <main>
         {loader ? (

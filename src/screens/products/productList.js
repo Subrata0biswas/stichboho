@@ -102,7 +102,10 @@ class ProductList extends React.Component {
                           key={product.id}
                           onClick={() =>
                             this.props.history.push(
-                              `/product-details/id/${product.id}`
+                              `/product-details/id/${product.id}`,
+                              {
+                                details: product,
+                              }
                             )
                           }
                         >
