@@ -17,12 +17,10 @@ class ProductList extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-
+    console.log("sdsdf", this.props.history.action);
+    // if (this.props.history.action === "PUSH") {
     this.getProductListBySubCategory();
+    // }
   }
 
   getProductListBySubCategory = () => {
@@ -105,6 +103,8 @@ class ProductList extends React.Component {
                               `/product-details/id/${product.id}`,
                               {
                                 details: product,
+                                cateType: cateType,
+                                subCateType: subCateType,
                               }
                             )
                           }
