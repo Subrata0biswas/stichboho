@@ -303,7 +303,7 @@ footer {
 }
 main {
   padding: 21px;
-  margin-top: 125px;
+  margin-top: 135px;
 }
 .main-border {
   border: 2px dashed #a7a7a7;
@@ -498,7 +498,7 @@ header {
   clear: both;
 }
 .eror-page {
-  background: #ee7767;
+  background: #ee7767 url(../images/eror-page.jpg) no-repeat 0 0;
   text-align: center;
   padding-top: 200px;
   color: #000;
@@ -507,6 +507,28 @@ header {
   font-size: 100px;
   margin-bottom: 57px;
   color: #fff;
+}
+.eror-outer.no-data h2 {
+  font-size: 60px;
+  line-height: 50px;
+  display: inline-block;
+  margin-top: -75px;
+  margin-bottom: 10px;
+}
+.eror-outer.no-data h2 span {
+  font-size: 25px;
+}
+.eror-outer.no-data h2:before {
+  content: "";
+  display: block;
+  clear: both;
+  background: #fff url(../images/not-found-icon.png) no-repeat 0 0;
+  width: 100px;
+  height: 100px;
+  background-size: 75%;
+  border-radius: 100%;
+  background-position: center;
+  margin: 0 auto 30px;
 }
 
 /*----------220421-THE WAY WE WORK-----------*/
@@ -525,16 +547,22 @@ header {
   display: inline-block;
   margin: 0 1%;
   width: 22%;
-  background: #ee7767;
+  background: url(../images/we-work-bg.png) no-repeat 0 0;
   height: 223px;
   padding: 27px 0 0;
   font-size: 18px;
   color: #fff;
-  border: 2px dashed #fff;
+  border: 0;
   position: relative;
-  box-shadow: 0 0 20px #0000006e;
-  margin-bottom: 25px;
+  box-shadow: 0 0 20px #000000cf;
+  margin-bottom: 30px;
   vertical-align: top;
+  background-size: cover;
+  border-top: 8px solid #fff;
+  border-bottom: 8px solid #fff;
+  border-radius: 30px 0 30px 0;
+  border-left: 5px solid #fff;
+  border-right: 5px solid #fff;
 }
 .we-work-outer .title {
   font-size: 20px;
@@ -612,11 +640,11 @@ header {
 header {
   z-index: 99;
   background: #000;
-  padding: 8px 0 4px;
+  padding: 10px 0 6px;
 }
 .we-work-inr > div span {
   display: inline-block;
-  width: 65%;
+  width: 67%;
   line-height: 25px;
   text-transform: uppercase;
   font-size: 15px;
@@ -630,11 +658,10 @@ header {
 /*-------------About us------------*/
 .about-title {
   background: url(../images/about-title.jpg) no-repeat 0 0;
-  padding: 50px 0;
+  padding: 120px 0;
   background-size: 100%;
   text-align: center;
   background-position: 0 -13px;
-  margin-top: 100px;
 }
 .about-us-outer {
   margin: 0 -21px;
@@ -693,7 +720,7 @@ header {
   background: url(../images/why-stitchbuhu-img.jpg) no-repeat 0 0;
   background-size: 100%;
   background-position: 0 0;
-  margin: 0 -15px;
+  margin: 0 -15px 30px;
   padding: 30px 0 45px;
 }
 .why-option:after {
@@ -735,7 +762,159 @@ header {
 .why-option > div.hpy-clint:before {
   background: #fff url(../images/help-icon.png) no-repeat 0 0;
 }
+.cms {
+  margin-top: 123px;
+}
+.how-it-work-con > div.con {
+  margin-top: 5px;
+}
+.how-it-work-con p,
+.how-to-pay-con p {
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+.how-it-work-con > div.con > p:last-child {
+  margin-bottom: 0;
+}
 
+/*----------details-------*/
+.details-outer .container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.details-outer .container > div {
+  float: left;
+}
+.details-outer .container .detail-left {
+  width: 45%;
+}
+.details-outer .container .detail-left img {
+  display: block;
+  width: 100%;
+  border: 4px solid #d1cfd0;
+}
+.details-outer .container .detail-right {
+  width: 50%;
+  float: right;
+}
+.details-outer .title {
+  color: #555555;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+.details-outer .price {
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: bold;
+}
+.choose-time-date:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.choose-time-date ul {
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+}
+.choose-time-date ul li {
+  float: left;
+  margin-right: 10px;
+  width: 30%;
+}
+.choose-time-date ul li input {
+  width: 88%;
+  height: 40px;
+  background: #ef7767;
+  color: #fff;
+  border: 0;
+  padding: 0 10px;
+  border-radius: 14px;
+  font-size: 16px;
+  outline: 0;
+  font-weight: bold;
+}
+.choose-time-date {
+  margin-bottom: 20px;
+}
+.booking-details-outer h2 {
+  color: #555555;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+.booking-lable ul {
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+}
+.booking-lable ul li {
+  float: left;
+  width: 49%;
+  margin-right: 10px;
+}
+.booking-lable ul li:last-child {
+  margin-right: 0;
+}
+.booking-frm form > div {
+  margin-bottom: 10px;
+}
+.booking-frm form > div:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.booking-frm form > div input[type="text"],
+.booking-frm form > div input[type="tel"],
+.booking-frm form > div input[type="email"] {
+  height: 40px;
+  width: 90%;
+  padding: 0 10px;
+  outline: 0;
+  background: #ebebeb;
+  border: 1px solid #ccc;
+}
+.booking-frm form > div textarea {
+  height: 125px;
+  width: 95.5%;
+  padding: 10px;
+  outline: 0;
+  background: #ebebeb;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: none;
+}
+.booking-frm form > div.book-msg textarea {
+  height: 200px;
+}
+.booking-frm form > div.submit input[type="submit"] {
+  background: #ef7767;
+  border: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 14px 50px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.booking-frm form > div.submit input[type="submit"]:hover {
+  background: #000;
+}
+.description h2 {
+  color: #555555;
+  margin: 21px 0 16px;
+  text-align: center;
+}
+.description .con {
+  text-align: justify;
+  font-size: 13px;
+  line-height: 24px;
+}
+.booking-frm form > div.submit {
+  text-align: center;
+  margin-top: 25px;
+}
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -772,6 +951,14 @@ header {
   }
   .why-stitch-buhu {
     background-size: cover;
+  }
+
+  /*------details--------*/
+  .booking-lable ul li {
+    width: 48%;
+  }
+  .booking-frm form > div.book-msg textarea {
+    height: 150px;
   }
 }
 
@@ -844,6 +1031,13 @@ header {
   .about-title .title {
     font-size: 30px;
   }
+  /*------details--------*/
+  .booking-lable ul li {
+    width: 48%;
+  }
+  .booking-frm form > div.book-msg textarea {
+    height: 150px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -863,7 +1057,7 @@ header {
     height: 85px;
   }
   header .logo img {
-    width: 200px;
+    width: 100px;
   }
   .nav ul.nav-ul {
     display: none;
@@ -1009,6 +1203,43 @@ header {
   .why-option > div:before {
     width: 80px;
     height: 80px;
+  }
+  .details-outer .container > div {
+    float: none;
+  }
+  .details-outer .container .detail-left {
+    width: 100%;
+  }
+  .details-outer .container .detail-right {
+    width: 100%;
+    float: none;
+    margin-top: 25px;
+  }
+  .booking-frm form > div {
+    margin-bottom: 0;
+  }
+  .booking-lable ul li {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5px;
+    float: none;
+  }
+  .booking-frm form > div input[type="text"],
+  .booking-frm form > div input[type="tel"],
+  .booking-frm form > div input[type="email"] {
+    width: 92%;
+  }
+  .booking-frm form > div textarea {
+    width: 92%;
+  }
+  .choose-time-date ul li {
+    width: 46%;
+  }
+  .choose-time-date ul li input {
+    font-size: 12px;
+  }
+  .details-outer .title {
+    font-size: 20px;
   }
 }
 

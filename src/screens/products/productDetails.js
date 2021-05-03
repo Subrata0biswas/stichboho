@@ -10,14 +10,36 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       loader: true,
+      productDetails: "",
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    http: axios
+      .post(`${API}api/product_details/`, {
+        productId: this.props.match.params.id,
+      })
+      .then((res) => {
+        this.setState({ loader: false });
+        if (res.data.code === 200) {
+          this.setState({
+            productDetails: res.data.productLists[0],
+            // cateType: res.data.productMainTypes,
+            // subCateType: res.data.productSubTypes,
+          });
+        } else {
+          // this.callToastMessage();
+        }
+      })
+      .catch((err) => {
+        // this.callToastMessage();
+      });
+  }
   componentWillUnmount() {}
 
   render() {
-    const { loader, products, cateType, subCateType } = this.state;
+    const { loader, productDetails } = this.state;
+    console.log("producr details", productDetails);
     return (
       <main>
         {loader ? (
@@ -28,27 +50,120 @@ class ProductDetails extends React.Component {
               <div className="container">
                 <ul>
                   <li>
-                    <span
-                      className="span-cursor"
-                      onClick={() => this.props.history.replace("/")}
-                    >
-                      Home
-                    </span>
+                    <a href="#">Home</a>
                   </li>
-                  {cateType ? (
-                    <li>
-                      <span
-                        className="span-cursor"
-                        onClick={() => this.props.history.goBack()}
-                      >
-                        {cateType}
-                      </span>
-                    </li>
-                  ) : null}
-                  <li>{subCateType}</li>
+                  <li>Mens</li>
                 </ul>
               </div>
             </div>
+
+            {/* product details section start */}
+            {productDetails ? (
+              <div className="details-outer">
+                <div className="container">
+                  <div className="detail-left">
+                    <div className="image">
+                      <img
+                        src={API + productDetails.productImage}
+                        alt="Product Image"
+                      />
+                    </div>
+                    <div className="description">
+                      <h2>DESVRIPTIONS</h2>
+                      <p className="con">{productDetails.description}</p>
+                    </div>
+                  </div>
+                  <div className="detail-right">
+                    <h2 className="title">
+                      PRODUCT NAME : {productDetails.name}
+                    </h2>
+                    <div className="price">
+                      {" "}
+                      Price: ₹ {productDetails.price}
+                    </div>
+                    <div className="choose-time-date">
+                      <form action="#">
+                        <ul>
+                          <li className="date">
+                            <input type="date" id="" name="date" />
+                          </li>
+                          <li className="time">
+                            <input type="time" id="" name="time" />
+                          </li>
+                        </ul>
+                      </form>
+                    </div>
+                    <div className="booking-details-outer">
+                      <h2>Enter Booking Details</h2>
+                      <div className="booking-frm">
+                        <form action="#">
+                          <div className="booking-lable">
+                            <ul>
+                              <li>
+                                <input
+                                  type="text"
+                                  id=""
+                                  name="name"
+                                  placeholder="Name"
+                                />
+                              </li>
+                              <li>
+                                <input
+                                  type="email"
+                                  id=""
+                                  name="email"
+                                  placeholder="Email"
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="booking-lable">
+                            <ul>
+                              <li>
+                                <input
+                                  type="tel"
+                                  id=""
+                                  name="tel"
+                                  placeholder="Contact"
+                                />
+                              </li>
+                              <li>
+                                <input
+                                  type="text"
+                                  id=""
+                                  name="landmark"
+                                  placeholder="Land Mark"
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="booking-lable address">
+                            <textarea
+                              id=""
+                              name=""
+                              placeholder="Address"
+                            ></textarea>
+                          </div>
+                          <div className="booking-lable book-msg">
+                            <textarea
+                              id=""
+                              name=""
+                              placeholder="Booking Message"
+                            ></textarea>
+                          </div>
+                          <div className="booking-lable submit">
+                            <input type="submit" value="BOOK NOW" />
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <NoDataFound />
+            )}
+            {/* product details section end */}
 
             <span className="cut-item top-left"></span>
             <span className="cut-item left-bottom"></span>
