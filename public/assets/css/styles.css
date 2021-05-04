@@ -456,6 +456,8 @@ header {
 }
 .contact-frm-outer ul li input[type="text"],
 .contact-frm-outer ul li input[type="tel"],
+.contact-frm-outer ul li input[type="email"],
+.contact-frm-outer ul li input[type="password"],
 .contact-frm-outer ul li textarea {
   height: 35px;
   padding: 5px 10px;
@@ -464,6 +466,19 @@ header {
   display: block;
   resize: none;
   border-radius: 5px;
+}
+.contact-frm-outer.login-outer {
+  width: 50%;
+}
+.contact-frm-outer ul li.submit-outer .forgot-password {
+  font-weight: bold;
+  margin-left: 8px;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+.contact-frm-outer ul li.submit-outer .forgot-password:hover {
+  color: #ee7767;
 }
 .contact-frm-outer ul li input[type="submit"] {
   background: #ee7767;
@@ -915,6 +930,21 @@ header {
   text-align: center;
   margin-top: 25px;
 }
+.febric-outer {
+  margin-bottom: 20px;
+  margin-left: -15px;
+}
+.febric-outer input[type="radio"] {
+  display: inline-block;
+  vertical-align: top;
+  margin: 4px 10px 0 15px;
+}
+.cms-con .msg {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #1f9a1d;
+}
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -1240,6 +1270,22 @@ header {
   }
   .details-outer .title {
     font-size: 20px;
+  }
+  .cms-con {
+    width: 100%;
+    padding: 20px 0 6px 0;
+    min-height: auto;
+  }
+  .cms-con .msg {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .contact-frm-outer.login-outer {
+    width: 75%;
+  }
+  .contact-frm-outer ul li.submit-outer .forgot-password {
+    margin-top: 15px;
+    display: block;
   }
 }
 

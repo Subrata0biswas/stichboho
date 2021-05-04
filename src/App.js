@@ -16,6 +16,7 @@ import HowToPlay from "./screens/howToPlay/howToPlay";
 import Service from "./screens/service/service";
 import Blog from "./screens/blog/blog";
 import Career from "./screens/career/career";
+import Login from "./screens/login/login";
 
 import PageNotFound from "./components/pageNotFound/pageNotFound";
 
@@ -25,7 +26,6 @@ class App extends React.Component {
       <Router>
         <Switch>
           {/* header menu start */}
-
           <GeneralRoute exact path="/about-us" component={AboutUs} />
           <GeneralRoute exact path="/contact-us" component={ContactUs} />
           <GeneralRoute exact path="/how-it-work" component={HowItWork} />
@@ -33,7 +33,7 @@ class App extends React.Component {
           <GeneralRoute exact path="/service" component={Service} />
           <GeneralRoute exact path="/blog" component={Blog} />
           <GeneralRoute exact path="/career" component={Career} />
-
+          <GeneralRoute exact path="/login" component={Login} />
           {/* header menu end */}
 
           <GeneralRoute exact path="/" component={Home} />
