@@ -48,7 +48,7 @@ class LoginComponent extends React.Component {
                   placeholder="Email"
                   value={email}
                   onChange={(evt) => this.onHandelChange(evt)}
-                  style={{ zIndex: 1 }}
+                  // style={{ zIndex: 1 }}
                 />
               </li>
               <li>

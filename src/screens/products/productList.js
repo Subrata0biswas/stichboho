@@ -25,7 +25,7 @@ class ProductList extends React.Component {
 
   getProductListBySubCategory = () => {
     axios
-      .post("http://208.109.15.202:3000/api/productList/", {
+      .post(`${API}api/productList/`, {
         productId: this.props.match.params.id,
       })
       .then((res) => {
