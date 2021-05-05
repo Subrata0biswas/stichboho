@@ -146,6 +146,20 @@ class Header extends React.Component {
                     Career
                   </span>
                 </li>
+                <li
+                  className={
+                    this.props.props.location.pathname === "/career"
+                      ? "active"
+                      : null
+                  }
+                >
+                  <span
+                    className="span-cursor"
+                    onClick={() => this.onClickRedirect("/login")}
+                  >
+                    Login
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
