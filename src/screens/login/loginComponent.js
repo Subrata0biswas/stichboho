@@ -1,9 +1,9 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 // import component
 import Toast from "../../components/toastMessage/toast";
+import { API } from "../../config/service";
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -22,19 +22,49 @@ class LoginComponent extends React.Component {
   };
 
   onLogin = () => {
-    console.log("asdf");
-    Toast({
-      type: "error",
-      message: "res.message || res.data.message",
-    });
-    // const { email, password } = this.state;
-    // const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    // if (email.trim().length <= 0 || emailValidator.test(email) !== true) {
-    //   alert("enter your valid email address.");
-    // } else if (password.trim().length <= 0) {
-    //   alert("enter password");
-    // } else {
-    // }
+    const { email, password } = this.state;
+    const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (email.trim().length <= 0 || emailValidator.test(email) !== true) {
+      this.emailInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your valid email address.",
+      });
+    } else if (password.trim().length <= 0) {
+      this.pwdInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your password.",
+      });
+    } else {
+      axios
+        .post(`${API}api/userlogin/`, {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          console.log("login res", res);
+          if (res.data.code === 200) {
+            Toast({
+              type: "success",
+              message: "Successfully logged in.",
+            });
+          } else {
+            Toast({
+              type: "warning",
+              message: res.data.message,
+            });
+          }
+        })
+        .catch((err) => {
+          let errMsg = JSON.parse(JSON.stringify(err));
+          Toast({
+            type: "error",
+            message: errMsg.message,
+          });
+        });
+    }
   };
 
   render() {
@@ -51,6 +81,9 @@ class LoginComponent extends React.Component {
           <ul>
             <li>
               <input
+                ref={(input) => {
+                  this.emailInput = input;
+                }}
                 type="email"
                 id="#"
                 name="email"
@@ -62,6 +95,9 @@ class LoginComponent extends React.Component {
             </li>
             <li>
               <input
+                ref={(input) => {
+                  this.pwdInput = input;
+                }}
                 type="password"
                 id="#"
                 name="password"

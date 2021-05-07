@@ -82,7 +82,6 @@ class ContactUs extends React.Component {
 
   render() {
     const { fName, lName, phoneNo, message } = this.state;
-
     return (
       <main>
         <div className="main-border">
