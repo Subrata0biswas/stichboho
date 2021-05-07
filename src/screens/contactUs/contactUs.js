@@ -3,6 +3,7 @@ import axios from "axios";
 
 // import component
 import { API } from "../../config/service";
+import Toast from "../../components/toastMessage/toast";
 
 class ContactUs extends React.Component {
   constructor(props) {
@@ -32,10 +33,16 @@ class ContactUs extends React.Component {
 
     if (fName.trim().length <= 0) {
       this.fInput.focus();
-      alert("Enter your first name.");
+      Toast({
+        type: "info",
+        message: "Enter your first name.",
+      });
     } else if (num.test(phoneNo) !== true || phoneNo.trim().length !== 10) {
       this.phInput.focus();
-      alert("Enter your valid contact number.");
+      Toast({
+        type: "info",
+        message: "Enter your valid contact number.",
+      });
     } else {
       axios
         .post(`${API}api/contact-us`, {
@@ -45,9 +52,11 @@ class ContactUs extends React.Component {
           message: message,
         })
         .then((res) => {
-          console.log("res contact", res);
-          if (res.data === 200) {
-            alert("Create contact success.");
+          if (res.data.code === 200) {
+            Toast({
+              type: "success",
+              message: "Contact created successfully.",
+            });
             this.setState({
               fName: "",
               lName: "",
@@ -55,12 +64,18 @@ class ContactUs extends React.Component {
               message: "",
             });
           } else {
-            alert("Create contact failed.");
+            Toast({
+              type: "error",
+              message: res.data.message,
+            });
           }
         })
         .catch((err) => {
-          console.log("contact err ", err);
-          alert("Create contact failed.");
+          let errMsg = JSON.parse(JSON.stringify(err));
+          Toast({
+            type: "error",
+            message: errMsg.message,
+          });
         });
     }
   };
