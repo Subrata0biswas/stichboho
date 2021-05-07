@@ -69,53 +69,45 @@ class LoginComponent extends React.Component {
 
   render() {
     const { email, password } = this.state;
-
     return (
-      <div className="contact-container cms-con">
-        <h2 className="title">Log in</h2>
-
-        <div className="msg">
-          If you have an account, sign in with your email address.
-        </div>
-        <div className="contact-frm-outer login-outer">
-          <ul>
-            <li>
-              <input
-                ref={(input) => {
-                  this.emailInput = input;
-                }}
-                type="email"
-                id="#"
-                name="email"
-                placeholder="Email"
-                value={email}
-                onChange={(evt) => this.onHandelChange(evt)}
-                // style={{ zIndex: 1 }}
-              />
-            </li>
-            <li>
-              <input
-                ref={(input) => {
-                  this.pwdInput = input;
-                }}
-                type="password"
-                id="#"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={(evt) => this.onHandelChange(evt)}
-              />
-            </li>
-            <li className="submit-outer">
-              <input
-                type="submit"
-                value="Sign in"
-                onClick={() => this.onLogin()}
-              />
-              <span className="forgot-password">Forgot Password ?</span>
-            </li>
-          </ul>
-        </div>
+      <div className="contact-frm-outer login-outer">
+        <ul>
+          <li>
+            <input
+              ref={(input) => {
+                this.emailInput = input;
+              }}
+              type="email"
+              id="#"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(evt) => this.onHandelChange(evt)}
+              // style={{ zIndex: 1 }}
+            />
+          </li>
+          <li>
+            <input
+              ref={(input) => {
+                this.pwdInput = input;
+              }}
+              type="password"
+              id="#"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(evt) => this.onHandelChange(evt)}
+            />
+          </li>
+          <li className="submit-outer">
+            <input
+              type="submit"
+              value="Sign in"
+              onClick={() => this.onLogin()}
+            />
+            <span className="forgot-password">Forgot Password ?</span>
+          </li>
+        </ul>
       </div>
     );
   }

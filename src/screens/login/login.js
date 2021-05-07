@@ -13,7 +13,14 @@ class Login extends React.Component {
     return (
       <main>
         <div className="main-border">
-          <LoginComponent />
+          <div className="contact-container cms-con">
+            <h2 className="title">Log in</h2>
+
+            <div className="msg">
+              If you have an account, sign in with your email address.
+            </div>
+            <LoginComponent />
+          </div>
         </div>
       </main>
     );

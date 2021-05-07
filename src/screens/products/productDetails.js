@@ -10,13 +10,13 @@ import LoginComponent from "../login/loginComponent";
 
 const customStyles = {
   content: {
-    top: "60%",
+    top: "55%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "red",
+    // backgroundColor: "red",
   },
 };
 
@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
         this.props.location.state && this.props.location.state.subCateType
           ? this.props.location.state.subCateType
           : "",
-      isLoginModal: false,
+      isLoginModal: true,
       date: "",
       time: "",
       name: "",
@@ -167,16 +167,22 @@ class ProductDetails extends React.Component {
     console.log("det", this.props.location.state);
     return (
       <main>
-        <div style={{ backgroundColor: "red" }}>
-          <Modal
-            isOpen={isLoginModal}
-            // onAfterOpen={afterOpenModal}
-            //onRequestClose={closeModal}
-            style={customStyles}
-          >
+        <Modal
+          isOpen={isLoginModal}
+          // onAfterOpen={afterOpenModal}
+          //onRequestClose={closeModal}
+          style={customStyles}
+        >
+          <div>
+            <h2>Log in</h2>
+
+            <div className="msg">
+              If you have an account, sign in with your email address.
+            </div>
             <LoginComponent />
-          </Modal>
-        </div>
+          </div>
+        </Modal>
+
         {loader ? (
           <div>loading...</div>
         ) : (
