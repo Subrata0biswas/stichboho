@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
         this.props.location.state && this.props.location.state.subCateType
           ? this.props.location.state.subCateType
           : "",
-      isLoginModal: true,
+      isLoginModal: false,
       date: "",
       time: "",
       name: "",
@@ -43,6 +43,7 @@ class ProductDetails extends React.Component {
       landMark: "",
       address: "",
       bookingMsg: "",
+      isFabric: 0,
     };
   }
 
@@ -97,10 +98,14 @@ class ProductDetails extends React.Component {
       landMark,
       address,
       bookingMsg,
+      isFabric,
+      productDetails,
     } = this.state;
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
     let user = localStorage.getItem("user");
+    console.log("user", user);
+    console.log("user1", user.hasOwnProperty(user.id));
 
     if (name.trim().length <= 0) {
       this.nameInput.focus();
@@ -130,11 +135,34 @@ class ProductDetails extends React.Component {
         message: "Enter your address.",
       });
     } else {
-      if (user) {
-        Toast({
-          type: "success",
-          message: "book waiting for api",
-        });
+      if (user.hasOwnProperty(user.id) === true) {
+        axios
+          .post(`${API}api/order/`, {
+            productId: productDetails.id,
+            name: name,
+            email: email,
+            phone: contact,
+            message: bookingMsg,
+            address: address,
+            landmark: landMark,
+            orderDate: date + " " + time,
+            userid: user.id,
+            fabric: isFabric, //I have fabric==1
+          })
+          .then((res) => {
+            console.log("order res", res);
+            Toast({
+              type: "success",
+              message: "book waiting for api",
+            });
+          })
+          .catch((err) => {
+            let errMsg = JSON.parse(JSON.stringify(err));
+            Toast({
+              type: "error",
+              message: errMsg.message,
+            });
+          });
       } else {
         this.setState({ isLoginModal: true });
       }
@@ -142,9 +170,14 @@ class ProductDetails extends React.Component {
   };
 
   onHandelChange = (evt) => {
-    console.log("evt", evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value,
+    });
+  };
+
+  closeLoginModal = () => {
+    this.setState({
+      isLoginModal: false,
     });
   };
 
@@ -164,7 +197,6 @@ class ProductDetails extends React.Component {
       address,
       bookingMsg,
     } = this.state;
-    console.log("det", this.props.location.state);
     return (
       <main>
         <Modal
@@ -179,7 +211,7 @@ class ProductDetails extends React.Component {
             <div className="msg">
               If you have an account, sign in with your email address.
             </div>
-            <LoginComponent />
+            <LoginComponent closeLoginModal={this.closeLoginModal} />
           </div>
         </Modal>
 

@@ -46,6 +46,19 @@ class LoginComponent extends React.Component {
         .then((res) => {
           console.log("login res", res);
           if (res.data.code === 200) {
+            localStorage.setItem(
+              "user",
+              JSON.stringify({
+                id: res.data.id,
+                firstName: res.data.firstname,
+                lastName: res.data.lastname,
+                email: res.data.email,
+                mobile: res.data.mobile,
+              })
+            );
+            if (this.props.closeLoginModal) {
+              this.props.closeLoginModal();
+            }
             Toast({
               type: "success",
               message: "Successfully logged in.",
