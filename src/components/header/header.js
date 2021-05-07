@@ -1,16 +1,32 @@
 import React from "react";
+import base64 from "react-native-base64";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: "",
+    };
   }
 
   onClickRedirect = (type) => {
     this.props.props.history.push(type);
   };
+  componentDidMount() {
+    let user = localStorage.getItem("user");
+    this.setState({
+      user,
+    });
+  }
+
+  onPressLogout = () => {
+    localStorage.removeItem("user");
+    this.props.props.history.replace("/");
+  };
 
   render() {
+    const { user } = this.state;
+    console.log("user123", user);
     return (
       <header>
         <div className="container">
@@ -146,20 +162,7 @@ class Header extends React.Component {
                     Career
                   </span>
                 </li>
-                <li
-                  className={
-                    this.props.props.location.pathname === "/registration"
-                      ? "active"
-                      : null
-                  }
-                >
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.onClickRedirect("/registration")}
-                  >
-                    Registration
-                  </span>
-                </li>
+
                 <li
                   className={
                     this.props.props.location.pathname === "/login"
@@ -172,6 +175,24 @@ class Header extends React.Component {
                     onClick={() => this.onClickRedirect("/login")}
                   >
                     Login
+                  </span>
+                </li>
+                <li
+                  className={
+                    this.props.props.location.pathname === "/registration"
+                      ? "active"
+                      : null
+                  }
+                >
+                  <span
+                    className="span-cursor"
+                    onClick={() =>
+                      user
+                        ? this.onPressLogout()
+                        : this.onClickRedirect("/registration")
+                    }
+                  >
+                    {user ? "Logout" : " Registration"}
                   </span>
                 </li>
               </ul>

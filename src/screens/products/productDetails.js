@@ -261,7 +261,7 @@ class ProductDetails extends React.Component {
                     <div className="image">
                       <img
                         src={API + productDetails.productImage}
-                        alt="Product Image"
+                        alt="Product"
                       />
                     </div>
                     <div className="description">
