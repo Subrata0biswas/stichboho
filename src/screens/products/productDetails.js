@@ -1,9 +1,24 @@
 import React from "react";
 import axios from "axios";
+import Modal from "react-modal";
 
 // import component
 import { API } from "../../config/service";
 import NoDataFound from "../../components/noDataFound/noDataFound";
+import Toast from "../../components/toastMessage/toast";
+import LoginComponent from "../login/loginComponent";
+
+const customStyles = {
+  content: {
+    top: "60%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "red",
+  },
+};
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -12,13 +27,22 @@ class ProductDetails extends React.Component {
       loader: true,
       productDetails: "",
       cateType:
-        this.props.location.state && this.props.location.state.cateType
+        this.props.location.state && this.props.location.state.cateType //got props from product list
           ? this.props.location.state.cateType
           : "",
       subCateType:
         this.props.location.state && this.props.location.state.subCateType
           ? this.props.location.state.subCateType
           : "",
+      isLoginModal: false,
+      date: "",
+      time: "",
+      name: "",
+      email: "",
+      contact: "",
+      landMark: "",
+      address: "",
+      bookingMsg: "",
     };
   }
 
@@ -47,19 +71,112 @@ class ProductDetails extends React.Component {
             subCateType: res.data.productSubTypes,
           });
         } else {
-          // this.callToastMessage();
+          Toast({
+            type: "warning",
+            message: res.data.message,
+          });
         }
       })
       .catch((err) => {
-        // this.callToastMessage();
+        let errMsg = JSON.parse(JSON.stringify(err));
+        Toast({
+          type: "error",
+          message: errMsg.message,
+        });
       });
   };
 
+  onClickBookNow = (evt) => {
+    evt.preventDefault();
+    const {
+      date,
+      time,
+      name,
+      email,
+      contact,
+      landMark,
+      address,
+      bookingMsg,
+    } = this.state;
+    const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const num = /^[0-9\b]+$/;
+    let user = localStorage.getItem("user");
+
+    if (name.trim().length <= 0) {
+      this.nameInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your name.",
+      });
+    } else if (
+      email.trim().length <= 0 ||
+      emailValidator.test(email) !== true
+    ) {
+      this.emailInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your valid email address.",
+      });
+    } else if (num.test(contact) !== true || contact.trim().length !== 10) {
+      this.contactInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your valid contact number.",
+      });
+    } else if (address.trim().length <= 0) {
+      this.addressInput.focus();
+      Toast({
+        type: "info",
+        message: "Enter your address.",
+      });
+    } else {
+      if (user) {
+        Toast({
+          type: "success",
+          message: "book waiting for api",
+        });
+      } else {
+        this.setState({ isLoginModal: true });
+      }
+    }
+  };
+
+  onHandelChange = (evt) => {
+    console.log("evt", evt.target.value);
+    this.setState({
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
   render() {
-    const { loader, productDetails, cateType, subCateType } = this.state;
+    const {
+      loader,
+      productDetails,
+      cateType,
+      subCateType,
+      isLoginModal,
+      date,
+      time,
+      name,
+      email,
+      contact,
+      landMark,
+      address,
+      bookingMsg,
+    } = this.state;
     console.log("det", this.props.location.state);
     return (
       <main>
+        <div style={{ backgroundColor: "red" }}>
+          <Modal
+            isOpen={isLoginModal}
+            // onAfterOpen={afterOpenModal}
+            //onRequestClose={closeModal}
+            style={customStyles}
+          >
+            <LoginComponent />
+          </Modal>
+        </div>
         {loader ? (
           <div>loading...</div>
         ) : (
@@ -116,13 +233,25 @@ class ProductDetails extends React.Component {
                       Price: ₹ {productDetails.price}
                     </div>
                     <div className="choose-time-date">
-                      <form action="#">
+                      <form>
                         <ul>
                           <li className="date">
-                            <input type="date" id="" name="date" />
+                            <input
+                              type="date"
+                              id=""
+                              name="date"
+                              value={date}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            />
                           </li>
                           <li className="time">
-                            <input type="time" id="" name="time" />
+                            <input
+                              type="time"
+                              id=""
+                              name="time"
+                              value={time}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            />
                           </li>
                         </ul>
                       </form>
@@ -135,18 +264,28 @@ class ProductDetails extends React.Component {
                             <ul>
                               <li>
                                 <input
+                                  ref={(input) => {
+                                    this.nameInput = input;
+                                  }}
                                   type="text"
                                   id=""
                                   name="name"
                                   placeholder="Name"
+                                  value={name}
+                                  onChange={(evt) => this.onHandelChange(evt)}
                                 />
                               </li>
                               <li>
                                 <input
+                                  ref={(input) => {
+                                    this.emailInput = input;
+                                  }}
                                   type="email"
                                   id=""
                                   name="email"
                                   placeholder="Email"
+                                  value={email}
+                                  onChange={(evt) => this.onHandelChange(evt)}
                                 />
                               </li>
                             </ul>
@@ -155,38 +294,61 @@ class ProductDetails extends React.Component {
                             <ul>
                               <li>
                                 <input
+                                  ref={(input) => {
+                                    this.contactInput = input;
+                                  }}
                                   type="tel"
                                   id=""
-                                  name="tel"
+                                  name="contact"
                                   placeholder="Contact"
+                                  minLength="10"
+                                  maxLength="10"
+                                  value={contact}
+                                  onChange={(evt) => this.onHandelChange(evt)}
                                 />
                               </li>
                               <li>
                                 <input
+                                  ref={(input) => {
+                                    this.landMrkInput = input;
+                                  }}
                                   type="text"
                                   id=""
-                                  name="landmark"
+                                  name="landMark"
                                   placeholder="Land Mark"
+                                  value={landMark}
+                                  onChange={(evt) => this.onHandelChange(evt)}
                                 />
                               </li>
                             </ul>
                           </div>
                           <div className="booking-lable address">
                             <textarea
+                              ref={(input) => {
+                                this.addressInput = input;
+                              }}
                               id=""
-                              name=""
+                              name="address"
                               placeholder="Address"
+                              value={address}
+                              onChange={(evt) => this.onHandelChange(evt)}
                             ></textarea>
                           </div>
                           <div className="booking-lable book-msg">
                             <textarea
                               id=""
-                              name=""
+                              name="bookingMsg"
                               placeholder="Booking Message"
+                              value={bookingMsg}
+                              onChange={(evt) => this.onHandelChange(evt)}
                             ></textarea>
                           </div>
                           <div className="booking-lable submit">
-                            <input type="submit" value="BOOK NOW" />
+                            <input
+                              type="submit"
+                              value="BOOK NOW"
+                              onClick={(evt) => this.onClickBookNow(evt)}
+                            />
                           </div>
                         </form>
                       </div>

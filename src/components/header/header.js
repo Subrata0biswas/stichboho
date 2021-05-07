@@ -89,7 +89,7 @@ class Header extends React.Component {
                   </span>
                 </li>
 
-                <li
+                {/* <li
                   className={
                     this.props.props.location.pathname === "/service"
                       ? "active"
@@ -102,9 +102,9 @@ class Header extends React.Component {
                   >
                     Services
                   </span>
-                </li>
+                </li> */}
 
-                <li
+                {/* <li
                   className={
                     this.props.props.location.pathname === "/blog"
                       ? "active"
@@ -117,7 +117,7 @@ class Header extends React.Component {
                   >
                     Blog
                   </span>
-                </li>
+                </li> */}
                 <li
                   className={
                     this.props.props.location.pathname === "/contact-us"
@@ -148,7 +148,21 @@ class Header extends React.Component {
                 </li>
                 <li
                   className={
-                    this.props.props.location.pathname === "/career"
+                    this.props.props.location.pathname === "/registration"
+                      ? "active"
+                      : null
+                  }
+                >
+                  <span
+                    className="span-cursor"
+                    onClick={() => this.onClickRedirect("/registration")}
+                  >
+                    Registration
+                  </span>
+                </li>
+                <li
+                  className={
+                    this.props.props.location.pathname === "/login"
                       ? "active"
                       : null
                   }

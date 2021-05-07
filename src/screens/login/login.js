@@ -12,7 +12,7 @@ class Login extends React.Component {
   render() {
     return (
       <main>
-        <div class="main-border">
+        <div className="main-border">
           <LoginComponent />
         </div>
       </main>
