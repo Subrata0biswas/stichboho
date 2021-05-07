@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Modal from "react-modal";
+import base64 from "react-native-base64";
 
 // import component
 import { API } from "../../config/service";
@@ -103,9 +104,8 @@ class ProductDetails extends React.Component {
     } = this.state;
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
-    let user = localStorage.getItem("user");
-    console.log("user", user);
-    console.log("user1", user.hasOwnProperty(user.id));
+    let getUser = localStorage.getItem("user");
+    let user = JSON.parse(base64.decode(getUser));
 
     if (name.trim().length <= 0) {
       this.nameInput.focus();
@@ -151,10 +151,17 @@ class ProductDetails extends React.Component {
           })
           .then((res) => {
             console.log("order res", res);
-            Toast({
-              type: "success",
-              message: "book waiting for api",
-            });
+            if (res.data.code === 200) {
+              Toast({
+                type: "success",
+                message: "book order success.",
+              });
+            } else {
+              Toast({
+                type: "warning",
+                message: "book failed",
+              });
+            }
           })
           .catch((err) => {
             let errMsg = JSON.parse(JSON.stringify(err));

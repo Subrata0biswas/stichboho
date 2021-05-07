@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import base64 from "react-native-base64";
 
 // import component
 import Toast from "../../components/toastMessage/toast";
@@ -46,16 +47,16 @@ class LoginComponent extends React.Component {
         .then((res) => {
           console.log("login res", res);
           if (res.data.code === 200) {
-            localStorage.setItem(
-              "user",
+            let user = base64.encode(
               JSON.stringify({
-                id: res.data.id,
+                id: res.data.data.id,
                 firstName: res.data.data.firstname,
                 lastName: res.data.data.lastname,
                 email: res.data.data.email,
                 mobile: res.data.data.mobile,
               })
             );
+            localStorage.setItem("user", user);
             if (this.props.closeLoginModal) {
               this.props.closeLoginModal();
             }
