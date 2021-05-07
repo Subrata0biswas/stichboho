@@ -50,10 +50,10 @@ class LoginComponent extends React.Component {
               "user",
               JSON.stringify({
                 id: res.data.id,
-                firstName: res.data.firstname,
-                lastName: res.data.lastname,
-                email: res.data.email,
-                mobile: res.data.mobile,
+                firstName: res.data.data.firstname,
+                lastName: res.data.data.lastname,
+                email: res.data.data.email,
+                mobile: res.data.data.mobile,
               })
             );
             if (this.props.closeLoginModal) {
@@ -82,6 +82,7 @@ class LoginComponent extends React.Component {
 
   render() {
     const { email, password } = this.state;
+    // console.log("props", this.props.closeLoginModal());
     return (
       <div className="contact-frm-outer login-outer">
         <ul>
