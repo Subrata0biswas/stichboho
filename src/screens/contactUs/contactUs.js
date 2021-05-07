@@ -65,7 +65,7 @@ class ContactUs extends React.Component {
             });
           } else {
             Toast({
-              type: "error",
+              type: "warning",
               message: res.data.message,
             });
           }
