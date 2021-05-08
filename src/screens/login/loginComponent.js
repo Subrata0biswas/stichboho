@@ -83,7 +83,6 @@ class LoginComponent extends React.Component {
 
   render() {
     const { email, password } = this.state;
-    // console.log("props", this.props.closeLoginModal());
     return (
       <div className="contact-frm-outer login-outer">
         <ul>

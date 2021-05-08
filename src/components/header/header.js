@@ -162,39 +162,48 @@ class Header extends React.Component {
                     Career
                   </span>
                 </li>
-
-                <li
-                  className={
-                    this.props.props.location.pathname === "/login"
-                      ? "active"
-                      : null
-                  }
-                >
-                  <span
-                    className="span-cursor"
-                    onClick={() => this.onClickRedirect("/login")}
-                  >
-                    Login
-                  </span>
-                </li>
-                <li
-                  className={
-                    this.props.props.location.pathname === "/registration"
-                      ? "active"
-                      : null
-                  }
-                >
-                  <span
-                    className="span-cursor"
-                    onClick={() =>
-                      user
-                        ? this.onPressLogout()
-                        : this.onClickRedirect("/registration")
+                {user ? null : (
+                  <li
+                    className={
+                      this.props.props.location.pathname === "/login"
+                        ? "active"
+                        : null
                     }
                   >
-                    {user ? "Logout" : " Registration"}
-                  </span>
-                </li>
+                    <span
+                      className="span-cursor"
+                      onClick={() => this.onClickRedirect("/login")}
+                    >
+                      Login
+                    </span>
+                  </li>
+                )}
+                {user ? null : (
+                  <li
+                    className={
+                      this.props.props.location.pathname === "/registration"
+                        ? "active"
+                        : null
+                    }
+                  >
+                    <span
+                      className="span-cursor"
+                      onClick={() => this.onClickRedirect("/registration")}
+                    >
+                      Registration
+                    </span>
+                  </li>
+                )}
+                {user ? (
+                  <li>
+                    <span
+                      className="span-cursor"
+                      onClick={() => this.onPressLogout()}
+                    >
+                      Logout
+                    </span>
+                  </li>
+                ) : null}
               </ul>
             </div>
           </div>

@@ -38,11 +38,11 @@ class ProductDetails extends React.Component {
       isLoginModal: false,
       date: "",
       time: "",
-      name: "",
-      email: "",
-      contact: "",
+      name: "a",
+      email: "a@a.in",
+      contact: "1234567890",
       landMark: "",
-      address: "",
+      address: "a",
       bookingMsg: "",
       isFabric: 0,
     };
@@ -105,7 +105,6 @@ class ProductDetails extends React.Component {
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
     let getUser = localStorage.getItem("user");
-    let user = JSON.parse(base64.decode(getUser));
 
     if (name.trim().length <= 0) {
       this.nameInput.focus();
@@ -135,41 +134,47 @@ class ProductDetails extends React.Component {
         message: "Enter your address.",
       });
     } else {
-      if (user.hasOwnProperty(user.id) === true) {
-        axios
-          .post(`${API}api/order/`, {
-            productId: productDetails.id,
-            name: name,
-            email: email,
-            phone: contact,
-            message: bookingMsg,
-            address: address,
-            landmark: landMark,
-            orderDate: date + " " + time,
-            userid: user.id,
-            fabric: isFabric, //I have fabric==1
-          })
-          .then((res) => {
-            console.log("order res", res);
-            if (res.data.code === 200) {
+      if (getUser) {
+        let user = JSON.parse(base64.decode(getUser));
+        console.log("user", user.id);
+        if (user.hasOwnProperty(user.id) === true) {
+          axios
+            .post(`${API}api/order/`, {
+              productId: productDetails.id,
+              name: name,
+              email: email,
+              phone: contact,
+              message: bookingMsg,
+              address: address,
+              landmark: landMark,
+              orderDate: date + " " + time,
+              userid: user.id,
+              fabric: isFabric, //I have fabric==1
+            })
+            .then((res) => {
+              console.log("order res", res);
+              if (res.data.code === 200) {
+                Toast({
+                  type: "success",
+                  message: "book order success.",
+                });
+              } else {
+                Toast({
+                  type: "warning",
+                  message: "book failed",
+                });
+              }
+            })
+            .catch((err) => {
+              let errMsg = JSON.parse(JSON.stringify(err));
               Toast({
-                type: "success",
-                message: "book order success.",
+                type: "error",
+                message: errMsg.message,
               });
-            } else {
-              Toast({
-                type: "warning",
-                message: "book failed",
-              });
-            }
-          })
-          .catch((err) => {
-            let errMsg = JSON.parse(JSON.stringify(err));
-            Toast({
-              type: "error",
-              message: errMsg.message,
             });
-          });
+        } else {
+          this.setState({ isLoginModal: true });
+        }
       } else {
         this.setState({ isLoginModal: true });
       }
@@ -210,6 +215,8 @@ class ProductDetails extends React.Component {
           isOpen={isLoginModal}
           // onAfterOpen={afterOpenModal}
           //onRequestClose={closeModal}
+          ariaHideApp={false}
+          contentLabel="Login modal"
           style={customStyles}
         >
           <div>
