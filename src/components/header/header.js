@@ -12,15 +12,19 @@ class Header extends React.Component {
   onClickRedirect = (type) => {
     this.props.props.history.push(type);
   };
+
   componentDidMount() {
-    let user = localStorage.getItem("user");
-    this.setState({
-      user,
-    });
+    setInterval(() => {
+      let user = localStorage.getItem("user");
+      this.setState({
+        user,
+      });
+    }, 1000);
   }
 
   onPressLogout = () => {
     localStorage.removeItem("user");
+    this.setState({ user: "" });
     this.props.props.history.replace("/");
   };
 
