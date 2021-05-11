@@ -1,56 +1,38 @@
 import React from "react";
-import base64 from "react-native-base64";
 
-class Header extends React.Component {
+class Footer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: "",
-    };
+    this.state = {};
   }
 
   onClickRedirect = (type) => {
     this.props.props.history.push(type);
-  };
-
-  componentDidMount() {
-    setInterval(() => {
-      let user = localStorage.getItem("user");
-      this.setState({
-        user,
-      });
-    }, 1000);
-  }
-
-  onPressLogout = () => {
-    localStorage.removeItem("user");
-    this.setState({ user: "" });
-    this.props.props.history.replace("/");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   render() {
-    const { user } = this.state;
     return (
-      <header>
+      <footer>
         <div className="container">
-          <div className="row">
-            <div className="logo">
-              <span className="span-cursor">
-                <img
-                  className="desk-top-logo"
-                  src="/assets/images/logo.png"
-                  alt="logo"
-                />
-              </span>
+          <div className="footer-inr">
+            <div className="footer-con">
+              <h2 className="title">About Us</h2>
+              <p>
+                Raho Ban Than Ke is an online stitching service providing
+                platform helping customersto avail tailoring services at the
+                comfort of their home. Our goal is to make sure you are always
+                Ban Than Ke. Aiming to be India’s Largest E-Tailoring platform,
+                we provide our customers with a hassle free way to select
+                fabrics and get stitched in the manner they desire.
+              </p>
             </div>
-            <div className="nav">
-              <div className="mob-nav" onClick={() => this.props.onOpenMenu()}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <ul className={this.props.isMenu ? "nav-active" : "nav-ul"}>
+            <div className="footer-con footer-link">
+              <h2 className="title">Main Links</h2>
+              <ul>
                 <li
                   className={
                     this.props.props.location.pathname === "/" ? "active" : null
@@ -78,7 +60,6 @@ class Header extends React.Component {
                     About US
                   </span>
                 </li>
-
                 <li
                   className={
                     this.props.props.location.pathname === "/how-it-work"
@@ -93,6 +74,7 @@ class Header extends React.Component {
                     How it Works
                   </span>
                 </li>
+
                 <li
                   className={
                     this.props.props.location.pathname === "/how-to-play"
@@ -108,7 +90,7 @@ class Header extends React.Component {
                   </span>
                 </li>
 
-                {/* <li
+                <li
                   className={
                     this.props.props.location.pathname === "/service"
                       ? "active"
@@ -121,9 +103,8 @@ class Header extends React.Component {
                   >
                     Services
                   </span>
-                </li> */}
-
-                {/* <li
+                </li>
+                <li
                   className={
                     this.props.props.location.pathname === "/blog"
                       ? "active"
@@ -136,7 +117,7 @@ class Header extends React.Component {
                   >
                     Blog
                   </span>
-                </li> */}
+                </li>
                 <li
                   className={
                     this.props.props.location.pathname === "/contact-us"
@@ -165,55 +146,26 @@ class Header extends React.Component {
                     Career
                   </span>
                 </li>
-                {user ? null : (
-                  <li
-                    className={
-                      this.props.props.location.pathname === "/login"
-                        ? "active"
-                        : null
-                    }
-                  >
-                    <span
-                      className="span-cursor"
-                      onClick={() => this.onClickRedirect("/login")}
-                    >
-                      Login
-                    </span>
-                  </li>
-                )}
-                {user ? null : (
-                  <li
-                    className={
-                      this.props.props.location.pathname === "/registration"
-                        ? "active"
-                        : null
-                    }
-                  >
-                    <span
-                      className="span-cursor"
-                      onClick={() => this.onClickRedirect("/registration")}
-                    >
-                      Registration
-                    </span>
-                  </li>
-                )}
-                {user ? (
-                  <li>
-                    <span
-                      className="span-cursor"
-                      onClick={() => this.onPressLogout()}
-                    >
-                      Logout
-                    </span>
-                  </li>
-                ) : null}
               </ul>
+            </div>
+            <div className="footer-con">
+              <h2 className="title">Contact Us</h2>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing andtypesetting
+                industry. Lorem Ipsum has been the industry's standard{" "}
+              </p>
             </div>
           </div>
         </div>
-      </header>
+        <div className="copyright">
+          <span className="copyright-con">
+            &copy; Copyright 2021 by ..........
+          </span>
+          <span className="recived">All rights reserved</span>
+        </div>
+      </footer>
     );
   }
 }
 
-export default Header;
+export default Footer;

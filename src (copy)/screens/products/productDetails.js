@@ -8,6 +8,8 @@ import { API } from "../../config/service";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 import Toast from "../../components/toastMessage/toast";
 import LoginComponent from "../login/loginComponent";
+import swal from 'sweetalert';
+
 
 const customStyles = {
   content: {
@@ -23,6 +25,7 @@ const customStyles = {
 
 class ProductDetails extends React.Component {
   constructor(props) {
+    console.log("props", props);
     super(props);
     this.state = {
       loader: true,
@@ -38,13 +41,15 @@ class ProductDetails extends React.Component {
       isLoginModal: false,
       date: "",
       time: "",
-      name: "a",
-      email: "a@a.in",
-      contact: "1234567890",
+      name: "",
+      email: "",
+      contact: "",
       landMark: "",
-      address: "a",
+      address: "",
       bookingMsg: "",
       isFabric: 0,
+      productprops: this.props.location.state.productpropsId && this.props.location.state.productpropsId
+        ? this.props.location.state.productpropsId : ""
     };
   }
 
@@ -53,6 +58,7 @@ class ProductDetails extends React.Component {
       this.setState({
         loader: false,
         productDetails: this.props.location.state.details,
+        productprops: this.props.location.state.productpropsId
       });
     } else {
       this.getProductDetails();
@@ -105,6 +111,10 @@ class ProductDetails extends React.Component {
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
     let getUser = localStorage.getItem("user");
+    let user
+    if (getUser) {
+      user = JSON.parse(base64.decode(getUser));
+    }
 
     if (name.trim().length <= 0) {
       this.nameInput.focus();
@@ -134,46 +144,54 @@ class ProductDetails extends React.Component {
         message: "Enter your address.",
       });
     } else {
-      if (getUser) {
-        let user = JSON.parse(base64.decode(getUser))
-        if (user.id) {
-          axios
-            .post(`${API}api/order/`, {
-              productId: productDetails.id,
-              name: name,
-              email: email,
-              phone: contact,
-              message: bookingMsg,
-              address: address,
-              landmark: landMark,
-              orderDate: date + " " + time,
-              userid: user.id,
-              fabric: isFabric, //I have fabric==1
-            })
-            .then((res) => {
-              console.log("order res", res);
-              if (res.data.code === 200) {
-                Toast({
-                  type: "success",
-                  message: "book order success.",
-                });
-              } else {
-                Toast({
-                  type: "warning",
-                  message: res.data.message
-                });
-              }
-            })
-            .catch((err) => {
-              let errMsg = JSON.parse(JSON.stringify(err));
+      if (localStorage.getItem("user")) {
+        axios
+          .post(`${API}api/order/`, {
+            productId: productDetails.id,
+            name: name,
+            email: email,
+            phone: contact,
+            message: bookingMsg,
+            address: address,
+            landmark: landMark,
+            orderDate: date + " " + time,
+            userid: user.id,
+            fabric: isFabric, //I have fabric==1
+          })
+          .then((res) => {
+            console.log("order res", res);
+            if (res.data.code === 200) {
+              console.log("state", this.state.productprops);
               Toast({
-                type: "error",
-                message: errMsg.message,
+                type: "success",
+                message: "book order success.",
               });
+
+              swal({
+                title: "Success",
+                text: "You Product is booked",
+                icon: "success",
+                button: "Okay",
+              }).then(() => {
+                console.log("state", this.state.productprops);
+                this.props.history.push(`/product-list/id/${this.state.productprops}`)
+                //  window.location = `/product-details/id/` + this.state.productprops;
+
+              })
+            } else {
+              Toast({
+                type: "warning",
+                message: "book failed",
+              });
+            }
+          })
+          .catch((err) => {
+            let errMsg = JSON.parse(JSON.stringify(err));
+            Toast({
+              type: "error",
+              message: errMsg.message,
             });
-        } else {
-          this.setState({ isLoginModal: true });
-        }
+          });
       } else {
         this.setState({ isLoginModal: true });
       }
@@ -214,12 +232,10 @@ class ProductDetails extends React.Component {
           isOpen={isLoginModal}
           // onAfterOpen={afterOpenModal}
           //onRequestClose={closeModal}
-          ariaHideApp={false}
-          contentLabel="Login modal"
           style={customStyles}
         >
-          <div>
-            <button className="closeContain" onClick={this.closeLoginModal}> X </button>
+          <div >
+            <button onClick={this.closeLoginModal} className="closeContain" >X</button>
             <h2>Log in</h2>
 
             <div className="msg">
@@ -308,6 +324,12 @@ class ProductDetails extends React.Component {
                           </ul>
                         </form>
                       </div>
+                      <div className="febric-outer">
+                        <form action="">
+                          <input type="radio" name="febric" value="0" onChange={(evt) => this.onHandelChange(evt)} />  I Have Fabric
+								  <input type="radio" name="febric" value="1" onChange={(evt) => this.onHandelChange(evt)} /> I Donot Have Fabric
+							</form>
+                      </div>
                       <div className="booking-details-outer">
                         <h2>Enter Booking Details</h2>
                         <div className="booking-frm">
@@ -341,12 +363,6 @@ class ProductDetails extends React.Component {
                                   />
                                 </li>
                               </ul>
-                            </div>
-                            <div className="febric-outer">
-                              <form action="">
-                                <input type="radio" name="febric" value="have" />  I Have Fabric
-								                <input type="radio" name="febric" value="dnthave" /> I Donot Have Fabric
-						                	</form>
                             </div>
                             <div className="booking-lable">
                               <ul>
