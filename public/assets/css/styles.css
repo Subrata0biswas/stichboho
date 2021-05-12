@@ -432,6 +432,7 @@ header {
   line-height: 27px;
   padding: 40px;
   box-shadow: 0 0 20px #00000078;
+  position: relative;
 }
 .cms-con .title {
   text-align: center;
@@ -466,6 +467,22 @@ header {
   display: block;
   resize: none;
   border-radius: 5px;
+}
+.mesurement-outer ul li select {
+  height: 44px;
+  padding: 5px 10px;
+  width: 100%;
+  border: 0;
+  display: block;
+  resize: none;
+  border-radius: 5px;
+  color: #4c4c4cc4;
+}
+.contact-frm-outer ul li label {
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  color: #4c4c4cd1;
 }
 .contact-frm-outer.login-outer {
   width: 50%;
@@ -945,6 +962,75 @@ header {
   font-size: 16px;
   color: #1f9a1d;
 }
+
+/*--------mesurement------*/
+
+.mesurement:before {
+  content: "";
+  display: block;
+  clear: both;
+  background: url(../images/meser-bg.png) repeat-y;
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mesurement:after {
+  content: "";
+  display: block;
+  clear: both;
+  background: url(../images/meser-bg-right.png) repeat-y;
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+
+/*---------dashbord--------*/
+.dash-list .pro-grid li .border {
+  padding: 80px 40px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+}
+.dash-list .pro-grid li p {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: arial;
+  margin-bottom: 30px;
+}
+.dash-list .pro-grid li .border h2 {
+  font-size: 50px;
+}
+.dash-list .pro-grid li.active {
+  background: #f13a95;
+  color: #fff;
+}
+.dash-list .pro-grid li.active .border {
+  border-color: #fff;
+}
+.dashbord-ban img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+.dashbord-ban {
+  margin-bottom: 50px;
+}
+.dash-title {
+  margin: 20px 0;
+  text-align: center;
+  color: #333333;
+}
+.dash-title h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.dash-title p {
+  font-size: 18px;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
     width: 200px;
@@ -1275,6 +1361,7 @@ header {
     width: 100%;
     padding: 20px 0 6px 0;
     min-height: auto;
+    margin-top: 0;
   }
   .cms-con .msg {
     font-size: 14px;
@@ -1286,6 +1373,45 @@ header {
   .contact-frm-outer ul li.submit-outer .forgot-password {
     margin-top: 15px;
     display: block;
+  }
+  .cms-con .title {
+    font-size: 20px;
+  }
+  .contact-frm-outer {
+    width: 75%;
+    margin: 0 auto;
+    padding: 10px;
+    background: #ccccccb8;
+  }
+  .contact-frm-outer ul li input[type="text"],
+  .contact-frm-outer ul li input[type="tel"],
+  .contact-frm-outer ul li input[type="email"],
+  .contact-frm-outer ul li input[type="password"],
+  .contact-frm-outer ul li textarea {
+    width: 91.3%;
+    font-size: 11px;
+  }
+  .mesurement:before {
+    width: 22px;
+  }
+  .mesurement:after {
+    right: 0;
+    width: 25px;
+  }
+  .dash-title h2 {
+    font-size: 22px;
+  }
+  .dash-title p {
+    font-size: 16px;
+  }
+  .dash-list .pro-grid li .border {
+    padding: 13px 10px;
+  }
+  .dash-list .pro-grid li .border h2 {
+    font-size: 35px;
+  }
+  .cut-item {
+    display: none;
   }
 }
 
@@ -1339,6 +1465,7 @@ header {
   }
   /*----------220421-THE WAY WE WORK--end---------*/
 }
+
 .febric-outer {
   margin-bottom: 20px;
   margin-left: -15px;
