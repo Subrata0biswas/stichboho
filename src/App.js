@@ -43,8 +43,12 @@ class App extends React.Component {
           <GeneralRoute exact path="/service" component={Service} />
           <GeneralRoute exact path="/blog" component={Blog} />
           <GeneralRoute exact path="/career" component={Career} />
-          <GeneralRoute exact path="/login" component={Login} />
-          <GeneralRoute exact path="/registration" component={Registration} />
+
+          {/* before login route start */}
+          <LoginRoute exact path="/login" component={Login} />
+          <LoginRoute exact path="/registration" component={Registration} />
+          {/* before login route end */}
+
           {/* header menu end */}
 
           <GeneralRoute exact path="/" component={Home} />
@@ -113,6 +117,24 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
   );
 };
 
+// check executive route
+const LoginRoute = ({ component: Component, ...rest }) => {
+  const { userType, isLogin } = checkAuth();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        !isLogin ? (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        ) : (
+          <Redirect to={{ pathname: "/" }} />
+        )
+      }
+    />
+  );
+};
 // check executive route
 const ExecutiveRoute = ({ component: Component, ...rest }) => {
   const { userType, isLogin } = checkAuth();

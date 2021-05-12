@@ -7,7 +7,11 @@ class ExecutiveDashboard extends React.Component {
   }
 
   render() {
-    return <div>ExecutiveDashboard</div>;
+    return (
+      <div style={{ backgroundColor: "gray", height: 500 }}>
+        ExecutiveDashboard
+      </div>
+    );
   }
 }
 

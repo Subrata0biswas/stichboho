@@ -19,7 +19,7 @@ class Login extends React.Component {
             <div className="msg">
               If you have an account, sign in with your email address.
             </div>
-            <LoginComponent />
+            <LoginComponent history={this.props.history} />
           </div>
         </div>
       </main>

@@ -18,7 +18,6 @@ class LoginComponent extends React.Component {
 
   //   onChange input update state
   onHandelChange = (evt) => {
-    console.log("evt", evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value,
     });
@@ -42,14 +41,13 @@ class LoginComponent extends React.Component {
       });
     } else {
       let apiType =
-        loginType === "userLogin" ? "api/userlogin/" : "/api/executive-login/";
+        loginType === "userLogin" ? "api/userlogin/" : "api/executive-login/";
       axios
         .post(API + apiType, {
           email: email,
           password: password,
         })
         .then((res) => {
-          console.log("login res", res);
           if (res.data.code === 200) {
             let user = base64.encode(
               JSON.stringify({
@@ -64,6 +62,9 @@ class LoginComponent extends React.Component {
             localStorage.setItem("user", user);
             if (this.props.closeLoginModal) {
               this.props.closeLoginModal();
+            }
+            if (res.data.type === "executive") {
+              this.props.history.replace("/executive/dashboard");
             }
             Toast({
               type: "success",
