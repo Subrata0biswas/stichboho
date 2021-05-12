@@ -155,12 +155,12 @@ class ProductDetails extends React.Component {
               fabric: isFabric, //I have fabric==1
             })
             .then((res) => {
-              console.log("order res", res);
               if (res.data.code === 200) {
                 Toast({
                   type: "success",
                   message: "book order success.",
                 });
+                this.props.history.goBack();
               } else {
                 Toast({
                   type: "warning",
@@ -214,7 +214,6 @@ class ProductDetails extends React.Component {
       bookingMsg,
       isFabric,
     } = this.state;
-    console.log("isFabric", isFabric);
     return (
       <main>
         <Modal
