@@ -41,7 +41,8 @@ class LoginComponent extends React.Component {
         message: "Enter your password.",
       });
     } else {
-      let apiType = loginType === "userLogin" ? "api/userlogin/" : "";
+      let apiType =
+        loginType === "userLogin" ? "api/userlogin/" : "/api/executive-login/";
       axios
         .post(API + apiType, {
           email: email,
@@ -57,6 +58,7 @@ class LoginComponent extends React.Component {
                 lastName: res.data.data.lastname,
                 email: res.data.data.email,
                 mobile: res.data.data.mobile,
+                type: res.data.type,
               })
             );
             localStorage.setItem("user", user);

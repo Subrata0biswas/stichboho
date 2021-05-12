@@ -120,7 +120,7 @@ const ExecutiveRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isLogin && userType ? (
+        isLogin && userType === "executive" ? (
           <Layout>
             <Component {...props} />
           </Layout>
