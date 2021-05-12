@@ -12,18 +12,20 @@ class LoginComponent extends React.Component {
     this.state = {
       email: "",
       password: "",
+      loginType: "userLogin",
     };
   }
 
   //   onChange input update state
   onHandelChange = (evt) => {
+    console.log("evt", evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value,
     });
   };
 
   onLogin = () => {
-    const { email, password } = this.state;
+    const { email, password, loginType } = this.state;
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
     if (email.trim().length <= 0 || emailValidator.test(email) !== true) {
@@ -39,8 +41,9 @@ class LoginComponent extends React.Component {
         message: "Enter your password.",
       });
     } else {
+      let apiType = loginType === "userLogin" ? "api/userlogin/" : "";
       axios
-        .post(`${API}api/userlogin/`, {
+        .post(API + apiType, {
           email: email,
           password: password,
         })
@@ -82,7 +85,7 @@ class LoginComponent extends React.Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, loginType } = this.state;
     return (
       <div className="contact-frm-outer login-outer">
         <ul>
@@ -122,6 +125,29 @@ class LoginComponent extends React.Component {
             <span className="forgot-password">Forgot Password ?</span>
           </li>
         </ul>
+        {this.props.closeLoginModal ? null : (
+          <div onChange={(evt) => this.onHandelChange(evt)}>
+            <input
+              type="radio"
+              name="loginType"
+              value="userLogin"
+              defaultChecked={true}
+            />
+            <div
+              style={{
+                display: "inline-block",
+                marginLeft: 5,
+                marginRight: 15,
+              }}
+            >
+              Users Login
+            </div>
+            <input type="radio" name="loginType" value="executiveLogin" />
+            <div style={{ display: "inline-block", marginLeft: 5 }}>
+              Executive Login
+            </div>
+          </div>
+        )}
       </div>
     );
   }

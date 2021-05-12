@@ -79,3 +79,17 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
+
+// check executive route
+const ExecutiveRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  );
+};
