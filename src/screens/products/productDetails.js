@@ -44,7 +44,7 @@ class ProductDetails extends React.Component {
       landMark: "",
       address: "a",
       bookingMsg: "",
-      isFabric: 0,
+      isFabric: null,
     };
   }
 
@@ -105,8 +105,12 @@ class ProductDetails extends React.Component {
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
     let getUser = localStorage.getItem("user");
-
-    if (name.trim().length <= 0) {
+    if (isFabric === null) {
+      Toast({
+        type: "info",
+        message: "Select any fabric option",
+      });
+    } else if (name.trim().length <= 0) {
       this.nameInput.focus();
       Toast({
         type: "info",
@@ -135,7 +139,7 @@ class ProductDetails extends React.Component {
       });
     } else {
       if (getUser) {
-        let user = JSON.parse(base64.decode(getUser))
+        let user = JSON.parse(base64.decode(getUser));
         if (user.id) {
           axios
             .post(`${API}api/order/`, {
@@ -160,7 +164,7 @@ class ProductDetails extends React.Component {
               } else {
                 Toast({
                   type: "warning",
-                  message: res.data.message
+                  message: res.data.message,
                 });
               }
             })
@@ -181,6 +185,7 @@ class ProductDetails extends React.Component {
   };
 
   onHandelChange = (evt) => {
+    console.log("isFabric", evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value,
     });
@@ -207,7 +212,9 @@ class ProductDetails extends React.Component {
       landMark,
       address,
       bookingMsg,
+      isFabric,
     } = this.state;
+    console.log("isFabric", isFabric);
     return (
       <main>
         <Modal
@@ -219,7 +226,10 @@ class ProductDetails extends React.Component {
           style={customStyles}
         >
           <div>
-            <button className="closeContain" onClick={this.closeLoginModal}> X </button>
+            <button className="closeContain" onClick={this.closeLoginModal}>
+              {" "}
+              X{" "}
+            </button>
             <h2>Log in</h2>
 
             <div className="msg">
@@ -232,200 +242,204 @@ class ProductDetails extends React.Component {
         {loader ? (
           <div>loading...</div>
         ) : (
-            <div className="main-border">
-              <div className="breadcumb">
-                <div className="container">
-                  <ul>
+          <div className="main-border">
+            <div className="breadcumb">
+              <div className="container">
+                <ul>
+                  <li>
+                    <span
+                      className="span-cursor"
+                      onClick={() => this.props.history.replace("/")}
+                    >
+                      Home
+                    </span>
+                  </li>
+                  {cateType ? (
                     <li>
                       <span
                         className="span-cursor"
-                        onClick={() => this.props.history.replace("/")}
+                        onClick={() => this.props.history.goBack()}
                       >
-                        Home
-                    </span>
+                        {cateType}
+                      </span>
                     </li>
-                    {cateType ? (
-                      <li>
-                        <span
-                          className="span-cursor"
-                          onClick={() => this.props.history.goBack()}
-                        >
-                          {cateType}
-                        </span>
-                      </li>
-                    ) : null}
+                  ) : null}
 
-                    {subCateType ? <li>{subCateType}</li> : null}
-                  </ul>
-                </div>
+                  {subCateType ? <li>{subCateType}</li> : null}
+                </ul>
               </div>
+            </div>
 
-              {/* product details section start */}
-              {productDetails ? (
-                <div className="details-outer">
-                  <div className="container">
-                    <div className="detail-left">
-                      <div className="image">
-                        <img
-                          src={API + productDetails.productImage}
-                          alt="Product"
-                        />
-                      </div>
-                      <div className="description">
-                        <h2>DESVRIPTIONS</h2>
-                        <p className="con">{productDetails.description}</p>
-                      </div>
+            {/* product details section start */}
+            {productDetails ? (
+              <div className="details-outer">
+                <div className="container">
+                  <div className="detail-left">
+                    <div className="image">
+                      <img
+                        src={API + productDetails.productImage}
+                        alt="Product"
+                      />
                     </div>
-                    <div className="detail-right">
-                      <h2 className="title">
-                        PRODUCT NAME : {productDetails.name}
-                      </h2>
-                      <div className="price">
-                        {" "}
+                    <div className="description">
+                      <h2>DESVRIPTIONS</h2>
+                      <p className="con">{productDetails.description}</p>
+                    </div>
+                  </div>
+                  <div className="detail-right">
+                    <h2 className="title">
+                      PRODUCT NAME : {productDetails.name}
+                    </h2>
+                    <div className="price">
+                      {" "}
                       Price: ₹ {productDetails.price}
+                    </div>
+                    <div className="choose-time-date">
+                      <form>
+                        <ul>
+                          <li className="date">
+                            <input
+                              type="date"
+                              id=""
+                              name="date"
+                              value={date}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            />
+                          </li>
+                          <li className="time">
+                            <input
+                              type="time"
+                              id=""
+                              name="time"
+                              value={time}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            />
+                          </li>
+                        </ul>
+                      </form>
+                    </div>
+                    <div className="booking-details-outer">
+                      <div
+                        className="febric-outer"
+                        onChange={(evt) => this.onHandelChange(evt)}
+                      >
+                        <input type="radio" name="isFabric" value={1} /> I Have
+                        Fabric
+                        <input type="radio" name="isFabric" value={0} /> I Donot
+                        Have Fabric
                       </div>
-                      <div className="choose-time-date">
+                      <h2>Enter Booking Details</h2>
+                      <div className="booking-frm">
                         <form>
-                          <ul>
-                            <li className="date">
-                              <input
-                                type="date"
-                                id=""
-                                name="date"
-                                value={date}
-                                onChange={(evt) => this.onHandelChange(evt)}
-                              />
-                            </li>
-                            <li className="time">
-                              <input
-                                type="time"
-                                id=""
-                                name="time"
-                                value={time}
-                                onChange={(evt) => this.onHandelChange(evt)}
-                              />
-                            </li>
-                          </ul>
+                          <div className="booking-lable">
+                            <ul>
+                              <li>
+                                <input
+                                  ref={(input) => {
+                                    this.nameInput = input;
+                                  }}
+                                  type="text"
+                                  id=""
+                                  name="name"
+                                  placeholder="Name"
+                                  value={name}
+                                  onChange={(evt) => this.onHandelChange(evt)}
+                                />
+                              </li>
+                              <li>
+                                <input
+                                  ref={(input) => {
+                                    this.emailInput = input;
+                                  }}
+                                  type="email"
+                                  id=""
+                                  name="email"
+                                  placeholder="Email"
+                                  value={email}
+                                  onChange={(evt) => this.onHandelChange(evt)}
+                                />
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div className="booking-lable">
+                            <ul>
+                              <li>
+                                <input
+                                  ref={(input) => {
+                                    this.contactInput = input;
+                                  }}
+                                  type="tel"
+                                  id=""
+                                  name="contact"
+                                  placeholder="Contact"
+                                  minLength="10"
+                                  maxLength="10"
+                                  value={contact}
+                                  onChange={(evt) => this.onHandelChange(evt)}
+                                />
+                              </li>
+                              <li>
+                                <input
+                                  ref={(input) => {
+                                    this.landMrkInput = input;
+                                  }}
+                                  type="text"
+                                  id=""
+                                  name="landMark"
+                                  placeholder="Land Mark"
+                                  value={landMark}
+                                  onChange={(evt) => this.onHandelChange(evt)}
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="booking-lable address">
+                            <textarea
+                              ref={(input) => {
+                                this.addressInput = input;
+                              }}
+                              id=""
+                              name="address"
+                              placeholder="Address"
+                              value={address}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            ></textarea>
+                          </div>
+                          <div className="booking-lable book-msg">
+                            <textarea
+                              id=""
+                              name="bookingMsg"
+                              placeholder="Booking Message"
+                              value={bookingMsg}
+                              onChange={(evt) => this.onHandelChange(evt)}
+                            ></textarea>
+                          </div>
+                          <div className="booking-lable submit">
+                            <input
+                              type="submit"
+                              value="BOOK NOW"
+                              onClick={(evt) => this.onClickBookNow(evt)}
+                            />
+                          </div>
                         </form>
-                      </div>
-                      <div className="booking-details-outer">
-                        <h2>Enter Booking Details</h2>
-                        <div className="booking-frm">
-                          <form>
-                            <div className="booking-lable">
-                              <ul>
-                                <li>
-                                  <input
-                                    ref={(input) => {
-                                      this.nameInput = input;
-                                    }}
-                                    type="text"
-                                    id=""
-                                    name="name"
-                                    placeholder="Name"
-                                    value={name}
-                                    onChange={(evt) => this.onHandelChange(evt)}
-                                  />
-                                </li>
-                                <li>
-                                  <input
-                                    ref={(input) => {
-                                      this.emailInput = input;
-                                    }}
-                                    type="email"
-                                    id=""
-                                    name="email"
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={(evt) => this.onHandelChange(evt)}
-                                  />
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="febric-outer">
-                              <form action="">
-                                <input type="radio" name="febric" value="have" />  I Have Fabric
-								                <input type="radio" name="febric" value="dnthave" /> I Donot Have Fabric
-						                	</form>
-                            </div>
-                            <div className="booking-lable">
-                              <ul>
-                                <li>
-                                  <input
-                                    ref={(input) => {
-                                      this.contactInput = input;
-                                    }}
-                                    type="tel"
-                                    id=""
-                                    name="contact"
-                                    placeholder="Contact"
-                                    minLength="10"
-                                    maxLength="10"
-                                    value={contact}
-                                    onChange={(evt) => this.onHandelChange(evt)}
-                                  />
-                                </li>
-                                <li>
-                                  <input
-                                    ref={(input) => {
-                                      this.landMrkInput = input;
-                                    }}
-                                    type="text"
-                                    id=""
-                                    name="landMark"
-                                    placeholder="Land Mark"
-                                    value={landMark}
-                                    onChange={(evt) => this.onHandelChange(evt)}
-                                  />
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="booking-lable address">
-                              <textarea
-                                ref={(input) => {
-                                  this.addressInput = input;
-                                }}
-                                id=""
-                                name="address"
-                                placeholder="Address"
-                                value={address}
-                                onChange={(evt) => this.onHandelChange(evt)}
-                              ></textarea>
-                            </div>
-                            <div className="booking-lable book-msg">
-                              <textarea
-                                id=""
-                                name="bookingMsg"
-                                placeholder="Booking Message"
-                                value={bookingMsg}
-                                onChange={(evt) => this.onHandelChange(evt)}
-                              ></textarea>
-                            </div>
-                            <div className="booking-lable submit">
-                              <input
-                                type="submit"
-                                value="BOOK NOW"
-                                onClick={(evt) => this.onClickBookNow(evt)}
-                              />
-                            </div>
-                          </form>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              ) : (
-                  <NoDataFound />
-                )}
-              {/* product details section end */}
+              </div>
+            ) : (
+              <NoDataFound />
+            )}
+            {/* product details section end */}
 
-              <span className="cut-item top-left"></span>
-              <span className="cut-item left-bottom"></span>
-              <span className="cut-item top-right"></span>
-              <span className="cut-item right-bottom"></span>
-              <span className="cut-item bottom"></span>
-            </div>
-          )}
+            <span className="cut-item top-left"></span>
+            <span className="cut-item left-bottom"></span>
+            <span className="cut-item top-right"></span>
+            <span className="cut-item right-bottom"></span>
+            <span className="cut-item bottom"></span>
+          </div>
+        )}
       </main>
     );
   }
