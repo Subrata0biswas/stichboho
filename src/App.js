@@ -1,10 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import base64 from "react-native-base64";
 
 // import layout for comment component
 import Layout from "./layout/layout";
 
-// // import component
+// // import user component
 import Home from "./screens/home/home";
 import SubCategory from "./screens/subCategory/subCategory";
 import ProductList from "./screens/products/productList";
@@ -20,6 +26,9 @@ import Login from "./screens/login/login";
 import Registration from "./screens/registration/registration";
 
 import PageNotFound from "./components/pageNotFound/pageNotFound";
+
+// import executive component
+import ExecutiveDashboard from "./executiveScreens/executiveDashboard/executiveDashboard";
 
 class App extends React.Component {
   render() {
@@ -56,6 +65,15 @@ class App extends React.Component {
             component={ProductDetails}
           />
 
+          {/* executive route start */}
+          <ExecutiveRoute
+            exact
+            path="/executive/dashboard"
+            component={ExecutiveDashboard}
+          />
+
+          {/* executive route end */}
+
           {/* page not found Start */}
           <Route component={PageNotFound} />
           {/* page not found end */}
@@ -65,6 +83,21 @@ class App extends React.Component {
   }
 }
 export default App;
+
+const checkAuth = () => {
+  const getUser = window.localStorage.getItem("user");
+  if (getUser) {
+    let user = JSON.parse(base64.decode(getUser));
+    return {
+      userType: user.type,
+      isLogin: true,
+    };
+  } else {
+    return {
+      isLogin: false,
+    };
+  }
+};
 
 // check general route
 const GeneralRoute = ({ component: Component, ...rest }) => {
@@ -82,14 +115,19 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
 
 // check executive route
 const ExecutiveRoute = ({ component: Component, ...rest }) => {
+  const { userType, isLogin } = checkAuth();
   return (
     <Route
       {...rest}
-      render={(props) => (
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      )}
+      render={(props) =>
+        isLogin && userType ? (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        ) : (
+          <Redirect to={{ pathname: "/" }} />
+        )
+      }
     />
   );
 };
