@@ -102,7 +102,7 @@ class LoginComponent extends React.Component {
                 this.emailInput = input;
               }}
               type="email"
-              id="#"
+              id="email"
               name="email"
               placeholder="Email"
               value={email}
@@ -116,7 +116,7 @@ class LoginComponent extends React.Component {
                 this.pwdInput = input;
               }}
               type="password"
-              id="#"
+              id="pwd"
               name="password"
               placeholder="Password"
               value={password}

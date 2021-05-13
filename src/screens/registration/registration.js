@@ -126,17 +126,17 @@ class Registration extends React.Component {
     } = this.state;
     return (
       <main>
-        <div class="main-border">
-          <div class="contact-container cms-con">
-            <h2 class="title">Registration</h2>
-            <div class="contact-frm-outer">
+        <div className="main-border">
+          <div className="contact-container cms-con">
+            <h2 className="title">Registration</h2>
+            <div className="contact-frm-outer">
               <form>
                 <ul>
                   <li>
-                    <div class="first-name">
+                    <div className="first-name">
                       <input
                         type="text"
-                        id="#"
+                        id="name"
                         name="fName"
                         placeholder="Your first name"
                         ref={(input) => {
@@ -146,10 +146,10 @@ class Registration extends React.Component {
                         onChange={(evt) => this.onHandelChange(evt)}
                       />
                     </div>
-                    <div class="last-name">
+                    <div className="last-name">
                       <input
                         type="text"
-                        id="#"
+                        id="lname"
                         name="lName"
                         placeholder="Your last name.."
                         ref={(input) => {
@@ -163,7 +163,7 @@ class Registration extends React.Component {
                   <li>
                     <input
                       type="tel"
-                      id="#"
+                      id="ph"
                       name="phoneNo"
                       placeholder="Phone number"
                       minLength="10"
@@ -176,10 +176,10 @@ class Registration extends React.Component {
                     />
                   </li>
                   <li>
-                    <div class="first-name">
+                    <div className="first-name">
                       <input
                         type="email"
-                        id="#"
+                        id="email"
                         name="email"
                         placeholder="Email"
                         ref={(input) => {
@@ -189,10 +189,10 @@ class Registration extends React.Component {
                         onChange={(evt) => this.onHandelChange(evt)}
                       />
                     </div>
-                    <div class="last-name">
+                    <div className="last-name">
                       <input
                         type="email"
-                        id="#"
+                        id="cEmail"
                         name="confirmEmail"
                         placeholder="Confirm Email"
                         ref={(input) => {
@@ -204,10 +204,10 @@ class Registration extends React.Component {
                     </div>
                   </li>
                   <li>
-                    <div class="first-name">
+                    <div className="first-name">
                       <input
                         type={isShowPwd ? "text" : "password"}
-                        id="#"
+                        id="pwd"
                         name="password"
                         placeholder="Password"
                         ref={(input) => {
@@ -217,10 +217,10 @@ class Registration extends React.Component {
                         onChange={(evt) => this.onHandelChange(evt)}
                       />
                     </div>
-                    <div class="last-name">
+                    <div className="last-name">
                       <input
                         type={isShowPwd ? "text" : "password"}
-                        id="#"
+                        id="cPwd"
                         name="confirmPwd"
                         placeholder="Confirm Password"
                         ref={(input) => {
@@ -231,7 +231,7 @@ class Registration extends React.Component {
                       />
                     </div>
                   </li>
-                  <li class="chk">
+                  <li className="chk">
                     <input
                       type="checkbox"
                       id="show-pass"
@@ -243,7 +243,7 @@ class Registration extends React.Component {
                     />
                     <label for="show-pass">Show Password</label>
                   </li>
-                  <li class="submit-outer">
+                  <li className="submit-outer">
                     <input
                       type="submit"
                       value="Creat An Account"

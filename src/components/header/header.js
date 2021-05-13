@@ -18,9 +18,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { isLogin, userType } = this.props;
-    console.log("isLogin", isLogin);
-    console.log("userType", userType);
+    const { isLogin, userType } = this.props; //props getting form layout hoc component =>app.js
     return (
       <header>
         <div className="container">
