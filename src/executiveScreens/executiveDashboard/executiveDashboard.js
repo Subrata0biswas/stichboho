@@ -58,6 +58,12 @@ class ExecutiveDashboard extends React.Component {
       });
     }
   };
+
+  toRedirect = () => {
+    console.log("this.", this.props);
+    this.props.props.history.push("/executive/measurement");
+  };
+
   render() {
     const { loader, data, user } = this.state;
     return (
@@ -79,7 +85,7 @@ class ExecutiveDashboard extends React.Component {
               <div className="container">
                 <ul className="pro-grid">
                   <li className="active">
-                    <div className="border">
+                    <div className="border" onClick={() => this.toRedirect()}>
                       <p>
                         New <br /> Order
                       </p>

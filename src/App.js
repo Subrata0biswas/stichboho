@@ -80,11 +80,13 @@ class App extends React.Component {
           <ExecutiveRoute
             exact
             path="/executive/dashboard"
-            component={() => <ExecutiveDashboard user={user} />}
+            component={(props) => (
+              <ExecutiveDashboard user={user} props={props} />
+            )}
           />
           <ExecutiveRoute
             path="/executive/measurement"
-            component={() => <Measurement user={user} />}
+            component={(props) => <Measurement user={user} props={props} />}
           />
 
           {/* executive route end */}
