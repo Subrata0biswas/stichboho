@@ -185,7 +185,6 @@ class ProductDetails extends React.Component {
   };
 
   onHandelChange = (evt) => {
-    console.log("isFabric", evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value,
     });

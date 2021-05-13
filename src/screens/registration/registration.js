@@ -28,15 +28,8 @@ class Registration extends React.Component {
   };
 
   createAccount = (evt) => {
-    const {
-      fName,
-      lName,
-      phoneNo,
-      email,
-      confirmEmail,
-      password,
-      confirmPwd,
-    } = this.state;
+    const { fName, lName, phoneNo, email, confirmEmail, password, confirmPwd } =
+      this.state;
     const emailValidator = /^\w+([\D.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const num = /^[0-9\b]+$/;
 
@@ -88,7 +81,6 @@ class Registration extends React.Component {
           password: password,
         })
         .then((res) => {
-          console.log("reg res", res);
           if (res.data.code === 200) {
             this.setState({
               fName: "",

@@ -3,6 +3,7 @@ import axios from "axios";
 
 // import component
 import { API } from "../../config/service";
+import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 
 class ProductList extends React.Component {
@@ -17,10 +18,7 @@ class ProductList extends React.Component {
   }
 
   componentDidMount() {
-    console.log("sdsdf", this.props.history.action);
-    // if (this.props.history.action === "PUSH") {
     this.getProductListBySubCategory();
-    // }
   }
 
   getProductListBySubCategory = () => {
@@ -37,11 +35,18 @@ class ProductList extends React.Component {
             subCateType: res.data.productSubTypes,
           });
         } else {
-          // this.callToastMessage();
+          Toast({
+            type: "warning",
+            message: res.data.message,
+          });
         }
       })
       .catch((err) => {
-        // this.callToastMessage();
+        let errMsg = JSON.parse(JSON.stringify(err));
+        Toast({
+          type: "error",
+          message: errMsg.message,
+        });
       });
   };
 
