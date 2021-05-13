@@ -24,6 +24,7 @@ import Blog from "./screens/blog/blog";
 import Career from "./screens/career/career";
 import Login from "./screens/login/login";
 import Registration from "./screens/registration/registration";
+import UserDashboard from "./screens/dashboard/userDashboard";
 
 import PageNotFound from "./components/pageNotFound/pageNotFound";
 
@@ -69,13 +70,16 @@ class App extends React.Component {
             component={ProductDetails}
           />
 
+          {/* user login route start */}
+          <UserRoute exact path="/user/dashboard" component={UserDashboard} />
+          {/* user login route end */}
+
           {/* executive route start */}
           <ExecutiveRoute
             exact
             path="/executive/dashboard"
             component={ExecutiveDashboard}
           />
-
           {/* executive route end */}
 
           {/* page not found Start */}
@@ -105,12 +109,13 @@ const checkAuth = () => {
 
 // check general route
 const GeneralRoute = ({ component: Component, ...rest }) => {
+  const { userType, isLogin } = checkAuth();
   return (
     <Route
       {...rest}
       render={(props) => (
         <Layout>
-          <Component {...props} />
+          <Component {...props} isLogin={isLogin} userType={userType} />
         </Layout>
       )}
     />
@@ -135,6 +140,7 @@ const LoginRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
+
 // check executive route
 const ExecutiveRoute = ({ component: Component, ...rest }) => {
   const { userType, isLogin } = checkAuth();
@@ -144,7 +150,26 @@ const ExecutiveRoute = ({ component: Component, ...rest }) => {
       render={(props) =>
         isLogin && userType === "executive" ? (
           <Layout>
-            <Component {...props} />
+            <Component {...props} isLogin={isLogin} userType={userType} />
+          </Layout>
+        ) : (
+          <Redirect to={{ pathname: "/" }} />
+        )
+      }
+    />
+  );
+};
+
+// check executive route
+const UserRoute = ({ component: Component, ...rest }) => {
+  const { userType, isLogin } = checkAuth();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isLogin && userType === "user" ? (
+          <Layout>
+            <Component {...props} isLogin={isLogin} userType={userType} />
           </Layout>
         ) : (
           <Redirect to={{ pathname: "/" }} />

@@ -60,12 +60,16 @@ class LoginComponent extends React.Component {
               })
             );
             localStorage.setItem("user", user);
+
+            // redirect to dashboard or colose modal
             if (this.props.closeLoginModal) {
               this.props.closeLoginModal();
-            }
-            if (res.data.type === "executive") {
+            } else if (res.data.type === "executive") {
               this.props.history.replace("/executive/dashboard");
+            } else if (res.data.type === "user") {
+              this.props.history.replace("/user/dashboard");
             }
+
             Toast({
               type: "success",
               message: "Successfully logged in.",

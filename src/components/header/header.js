@@ -4,32 +4,23 @@ import base64 from "react-native-base64";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: "",
-    };
+    this.state = {};
   }
 
-  onClickRedirect = (type) => {
+  onClickRedirect = (type, evt) => {
+    evt.preventDefault();
     this.props.props.history.push(type);
   };
 
-  componentDidMount() {
-    setInterval(() => {
-      let user = localStorage.getItem("user");
-      this.setState({
-        user,
-      });
-    }, 1000);
-  }
-
   onPressLogout = () => {
     localStorage.removeItem("user");
-    this.setState({ user: "" });
     this.props.props.history.replace("/");
   };
 
   render() {
-    const { user } = this.state;
+    const { isLogin, userType } = this.props;
+    console.log("isLogin", isLogin);
+    console.log("userType", userType);
     return (
       <header>
         <div className="container">
@@ -58,11 +49,37 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/")}
+                    onClick={(evt) => this.onClickRedirect("/", evt)}
                   >
                     Home
                   </span>
                 </li>
+
+                {isLogin ? (
+                  <li
+                    className={
+                      this.props.props.location.pathname ===
+                        "/executive/dashboard" ||
+                      this.props.props.location.pathname === "/user/dashboard"
+                        ? "active"
+                        : null
+                    }
+                  >
+                    <span
+                      className="span-cursor"
+                      onClick={(evt) =>
+                        this.onClickRedirect(
+                          userType === "user"
+                            ? "/user/dashboard"
+                            : "/executive/dashboard",
+                          evt
+                        )
+                      }
+                    >
+                      Dashboard
+                    </span>
+                  </li>
+                ) : null}
 
                 <li
                   className={
@@ -73,7 +90,7 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/about-us")}
+                    onClick={(evt) => this.onClickRedirect("/about-us", evt)}
                   >
                     About US
                   </span>
@@ -88,7 +105,7 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/how-it-work")}
+                    onClick={(evt) => this.onClickRedirect("/how-it-work", evt)}
                   >
                     How it Works
                   </span>
@@ -102,7 +119,7 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/how-to-play")}
+                    onClick={(evt) => this.onClickRedirect("/how-to-play", evt)}
                   >
                     How To Pay
                   </span>
@@ -146,7 +163,7 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/contact-us")}
+                    onClick={(evt) => this.onClickRedirect("/contact-us", evt)}
                   >
                     Contact Us
                   </span>
@@ -160,12 +177,12 @@ class Header extends React.Component {
                 >
                   <span
                     className="span-cursor"
-                    onClick={() => this.onClickRedirect("/career")}
+                    onClick={(evt) => this.onClickRedirect("/career", evt)}
                   >
                     Career
                   </span>
                 </li>
-                {user ? null : (
+                {isLogin ? null : (
                   <li
                     className={
                       this.props.props.location.pathname === "/login"
@@ -175,13 +192,13 @@ class Header extends React.Component {
                   >
                     <span
                       className="span-cursor"
-                      onClick={() => this.onClickRedirect("/login")}
+                      onClick={(evt) => this.onClickRedirect("/login", evt)}
                     >
                       Login
                     </span>
                   </li>
                 )}
-                {user ? null : (
+                {isLogin ? null : (
                   <li
                     className={
                       this.props.props.location.pathname === "/registration"
@@ -191,13 +208,15 @@ class Header extends React.Component {
                   >
                     <span
                       className="span-cursor"
-                      onClick={() => this.onClickRedirect("/registration")}
+                      onClick={(evt) =>
+                        this.onClickRedirect("/registration", evt)
+                      }
                     >
                       Registration
                     </span>
                   </li>
                 )}
-                {user ? (
+                {isLogin ? (
                   <li>
                     <span
                       className="span-cursor"

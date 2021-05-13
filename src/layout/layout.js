@@ -6,6 +6,7 @@ import Footer from "../components/footer/footer";
 
 export default function Layout({ children }) {
   const [isMenu, setMenu] = useState(false);
+
   function onOpenMenu() {
     setMenu(!isMenu);
   }
@@ -19,7 +20,13 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Header isMenu={isMenu} onOpenMenu={onOpenMenu} props={children.props} />
+      <Header
+        isMenu={isMenu}
+        onOpenMenu={onOpenMenu}
+        props={children.props}
+        isLogin={children.props.isLogin}
+        userType={children.props.userType}
+      />
       <div onClick={() => setMenu(false)}>{children}</div>
       <Footer props={children.props} />
     </>
