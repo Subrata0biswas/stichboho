@@ -30,9 +30,11 @@ import PageNotFound from "./components/pageNotFound/pageNotFound";
 
 // import executive component
 import ExecutiveDashboard from "./executiveScreens/executiveDashboard/executiveDashboard";
+import Measurement from "./executiveScreens/measurement/measurement";
 
 class App extends React.Component {
   render() {
+    const { userType, isLogin, user } = checkAuth();
     return (
       <Router>
         <Switch>
@@ -78,8 +80,13 @@ class App extends React.Component {
           <ExecutiveRoute
             exact
             path="/executive/dashboard"
-            component={ExecutiveDashboard}
+            component={() => <ExecutiveDashboard user={user} />}
           />
+          <ExecutiveRoute
+            path="/executive/measurement"
+            component={() => <Measurement user={user} />}
+          />
+
           {/* executive route end */}
 
           {/* page not found Start */}
@@ -99,6 +106,7 @@ const checkAuth = () => {
     return {
       userType: user.type,
       isLogin: true,
+      user: user,
     };
   } else {
     return {
