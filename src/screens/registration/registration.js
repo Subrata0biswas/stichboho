@@ -206,7 +206,7 @@ class Registration extends React.Component {
                   <li>
                     <div class="first-name">
                       <input
-                        type="password"
+                        type={isShowPwd ? "text" : "password"}
                         id="#"
                         name="password"
                         placeholder="Password"
@@ -219,7 +219,7 @@ class Registration extends React.Component {
                     </div>
                     <div class="last-name">
                       <input
-                        type="password"
+                        type={isShowPwd ? "text" : "password"}
                         id="#"
                         name="confirmPwd"
                         placeholder="Confirm Password"
@@ -237,7 +237,9 @@ class Registration extends React.Component {
                       id="show-pass"
                       name="vehicle1"
                       value={isShowPwd}
-                      onChange={(evt) => console.log("evttt", evt)}
+                      onChange={(evt) =>
+                        this.setState({ isShowPwd: !this.state.isShowPwd })
+                      }
                     />
                     <label for="show-pass">Show Password</label>
                   </li>
