@@ -6,6 +6,7 @@ import Footer from "../components/footer/footer";
 
 export default function Layout({ children }) {
   const [isMenu, setMenu] = useState(false);
+  console.log("childres", children);
 
   function onOpenMenu() {
     setMenu(!isMenu);

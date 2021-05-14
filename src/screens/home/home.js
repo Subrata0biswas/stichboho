@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-// import connect from 'react-redux'
+import Skeleton from "react-loading-skeleton";
 
 // import component
 import { Service, API } from "../../config/service";
@@ -44,7 +44,7 @@ class Home extends React.Component {
     return (
       <main>
         {loader ? (
-          <div>loading...</div>
+          <Skeleton count={10} />
         ) : (
           <div className="main-border">
             <div className="main-banner">
