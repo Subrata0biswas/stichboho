@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import base64 from "react-native-base64";
+import Skeleton from "react-loading-skeleton";
 
 // import component
 import { Service, API } from "../../config/service";
@@ -69,7 +69,7 @@ class ExecutiveDashboard extends React.Component {
     return (
       <main>
         {loader ? (
-          <div>loading...</div>
+          <Skeleton count={10} />
         ) : data ? (
           <div className="main-border">
             <div className="dash-title">
