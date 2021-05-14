@@ -31,6 +31,7 @@ import PageNotFound from "./components/pageNotFound/pageNotFound";
 // import executive component
 import ExecutiveDashboard from "./executiveScreens/executiveDashboard/executiveDashboard";
 import Measurement from "./executiveScreens/measurement/measurement";
+import ExecutiveTaskList from "./executiveScreens/executiveTaskList/executiveTaskList";
 
 class App extends React.Component {
   render() {
@@ -85,10 +86,15 @@ class App extends React.Component {
             )}
           />
           <ExecutiveRoute
+            path="/executive/task-list/:type"
+            component={(props) => (
+              <ExecutiveTaskList user={user} props={props} />
+            )}
+          />
+          <ExecutiveRoute
             path="/executive/measurement"
             component={(props) => <Measurement user={user} props={props} />}
           />
-
           {/* executive route end */}
 
           {/* page not found Start */}

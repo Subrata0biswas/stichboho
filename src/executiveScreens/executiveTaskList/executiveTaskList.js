@@ -7,33 +7,35 @@ import { Service, API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 
-class ExecutiveDashboard extends React.Component {
+class ExecutiveTaskList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loader: true,
-      data: "",
       user: "",
+      loader: true,
+      taskList: [],
     };
   }
 
   componentDidMount() {
     this.getExesutiveDashboardData();
+    console.log("kalsdfldasf", this.props.props.match.params.type);
   }
 
   getExesutiveDashboardData = () => {
     const { user } = this.props; //getting form app.js
     if (user) {
       axios
-        .post(`${API}api/executive-dashboard/`, {
+        .post(`${API}api/executive-task/`, {
           executiveId: user.id,
+          status: this.props.props.match.params.type,
         })
         .then((res) => {
-          console.log("res", res);
+          console.log("list res", res);
           this.setState({ loader: false, user: user });
           if (res.data.code === 200) {
             this.setState({
-              data: res.data.data,
+              taskList: res.data.data.tasklist,
             });
           } else {
             Toast({
@@ -60,20 +62,22 @@ class ExecutiveDashboard extends React.Component {
     }
   };
 
-  toRedirect = (status) => {
-    this.props.props.history.push(`/executive/task-list/${status}`);
+  toRedirect = (list) => {
+    this.props.props.history.push("/executive/measurement", {
+      client: list,
+    });
   };
 
   render() {
-    const { loader, data, user } = this.state;
+    const { loader, taskList, user } = this.state;
     return (
       <main>
         {loader ? (
           <Skeleton count={10} />
-        ) : data ? (
+        ) : taskList.length > 0 ? (
           <div className="main-border">
             <div className="dash-title">
-              <h2>Field Executive Dashboard</h2>
+              <h2>Field Executive Task List</h2>
               <p>
                 Welcome Mr. {user.firstName} {user.lastName}
               </p>
@@ -81,49 +85,29 @@ class ExecutiveDashboard extends React.Component {
             <div className=" dashbord-ban">
               <img src="images/dashbord-img.jpg" alt="" />
             </div>
-            <div className="list-product-outer dash-list">
-              <div className="container">
-                <ul className="pro-grid">
-                  <li className="active">
-                    <div
-                      className="border"
-                      onClick={() => this.toRedirect("new")}
-                    >
-                      <p>
-                        New <br /> Order
-                      </p>
-                      <h2>{data.newOrder}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Work In <br />
-                        Process
-                      </p>
-                      <h2>{data.workinProgress}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Completed <br /> Orders
-                      </p>
-                      <h2>{data.completedOrders}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Total <br />
-                        Order
-                      </p>
-                      <h2>{data.totalOrder}</h2>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {taskList.map((list) => {
+              return (
+                <div
+                  key={list.id}
+                  style={{
+                    // flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                  onClick={() => this.toRedirect(list)}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "gray",
+                      padding: 5,
+                      marginBottom: 8,
+                    }}
+                  >
+                    {list.name}
+                  </div>
+                </div>
+              );
+            })}
+
             <span className="cut-item top-left"></span>
             <span className="cut-item left-bottom"></span>
             <span className="cut-item top-right"></span>
@@ -138,4 +122,4 @@ class ExecutiveDashboard extends React.Component {
   }
 }
 
-export default ExecutiveDashboard;
+export default ExecutiveTaskList;

@@ -10,12 +10,17 @@ import NoDataFound from "../../components/noDataFound/noDataFound";
 class Measurement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      client: this.props.props.location.state
+        ? this.props.props.location.state.client
+        : "",
+    };
   }
 
   render() {
-    console.log("/executive/measurement", this.props);
     const { firstName, lastName } = this.props.user; //getting props from app .js in route
+    const { client } = this.state;
+    console.log("measurement", client);
     return (
       <main>
         <div className="main-border">
@@ -27,19 +32,19 @@ class Measurement extends React.Component {
           </div>
         </div>
 
-        <div class="main-border">
-          <div class="contact-container cms-con mesurement">
-            <h2 class="title">Measurement</h2>
-            <div class="contact-frm-outer mesurement-outer">
+        <div className="main-border">
+          <div className="contact-container cms-con mesurement">
+            <h2 className="title">Measurement</h2>
+            <div className="contact-frm-outer mesurement-outer">
               <form action="#">
                 <ul>
-                  <li class="men-drop">
+                  <li className="men-drop">
                     <select>
                       <option>Men</option>
                       <option>Women</option>
                     </select>
                   </li>
-                  <li class="category-drop">
+                  <li className="category-drop">
                     <label>Category</label>
                     <select>
                       <option>Pant</option>
@@ -47,7 +52,7 @@ class Measurement extends React.Component {
                       <option>Pant 2</option>
                     </select>
                   </li>
-                  <li class="sub-category-drop">
+                  <li className="sub-category-drop">
                     <label>Sub Category</label>
                     <select>
                       <option>Pant</option>
@@ -128,7 +133,7 @@ class Measurement extends React.Component {
                       style={{ height: 200 }}
                     ></textarea>
                   </li>
-                  <li class="submit-outer">
+                  <li className="submit-outer">
                     <input type="submit" value="Finish" />
                   </li>
                 </ul>
