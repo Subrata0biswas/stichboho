@@ -19,6 +19,8 @@ class Measurement extends React.Component {
       category: [],
       // selectedCate: "",
       subCategory: [],
+      subSubCategory: [],
+      subSubType: "",
       measurementField: [],
     };
   }
@@ -44,15 +46,22 @@ class Measurement extends React.Component {
   };
 
   onChangeGetCategory = (evt, field) => {
+    let varientApi =
+      field === "measurementField" ? "api/get-messurement" : "api/subcategory";
     axios
-      .post(API + "api/subcategory", {
+      .post(API + varientApi, {
         categoryId: evt.target.value,
       })
       .then((res) => {
         this.setState({ loader: false });
         if (res.data.code === 200) {
           this.setState({
-            [field]: res.data.subCategory,
+            [field]:
+              field === "measurementField"
+                ? res.data.data.messurement
+                : res.data.subCategory,
+            subSubCategory:
+              field === "measurementField" ? res.data.data.categoryTypes : [],
           });
         } else {
           Toast({
@@ -73,8 +82,14 @@ class Measurement extends React.Component {
 
   render() {
     //const { firstName, lastName } = this.props.user; //getting props from app .js in route
-    const { loader, types, category, subCategory, measurementField } =
-      this.state;
+    const {
+      loader,
+      types,
+      category,
+      subCategory,
+      subSubCategory,
+      measurementField,
+    } = this.state;
     return (
       <main>
         {loader ? (
@@ -108,6 +123,7 @@ class Measurement extends React.Component {
                       </li>
                     ) : null}
                     {/* TYPE SECTION END */}
+
                     {/* CATEGORY SECTION END */}
                     {category.length > 0 ? (
                       <li className="category-drop">
@@ -130,6 +146,7 @@ class Measurement extends React.Component {
                       </li>
                     ) : null}
                     {/* CATEGORY SECTION END */}
+
                     {/* SUB CATEGORY SECTION START */}
                     {subCategory.length > 0 ? (
                       <li className="sub-category-drop">
@@ -153,12 +170,35 @@ class Measurement extends React.Component {
                     ) : null}
                     {/* SUB CATEGORY SECTION END */}
 
+                    {/* SUB SUB CATEGORY SECTION START */}
+                    {subSubCategory.length > 0 ? (
+                      <li className="sub-category-drop">
+                        <label>Sub Category</label>
+                        <select
+                          onChange={(evt) =>
+                            this.setState({ subSubType: evt.target.value })
+                          }
+                        >
+                          <option value="">Select type</option>
+                          {subSubCategory.map((subSubCat) => {
+                            return (
+                              <option key={subSubCat.id} value={subSubCat.id}>
+                                {subSubCat.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </li>
+                    ) : null}
+                    {/* SUB SUB CATEGORY SECTION END */}
+
                     {/* MEASUREMENT SECTION START */}
                     {measurementField.length > 0 ? (
                       <li>
                         {measurementField.map((inputF) => {
                           return (
                             <input
+                              key={inputF.id}
                               type="text"
                               id="#"
                               name="belt"
