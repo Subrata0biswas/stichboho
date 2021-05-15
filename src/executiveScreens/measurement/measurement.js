@@ -80,6 +80,21 @@ class Measurement extends React.Component {
       });
   };
 
+  inputChange = (evt, index) => {
+    const { value } = evt.target;
+    this.setState((previousState) => {
+      const measurementField = [...previousState.measurementField];
+      measurementField[index] = { ...measurementField[index], value: value };
+      return { measurementField };
+    });
+  };
+
+  submitMeasurement = (evt) => {
+    evt.preventDefault();
+    let data = JSON.stringify(this.state.measurementField);
+    console.log("m data", data);
+  };
+
   render() {
     //const { firstName, lastName } = this.props.user; //getting props from app .js in route
     const {
@@ -90,6 +105,7 @@ class Measurement extends React.Component {
       subSubCategory,
       measurementField,
     } = this.state;
+    console.log("measurementField", measurementField);
     return (
       <main>
         {loader ? (
@@ -195,92 +211,30 @@ class Measurement extends React.Component {
                     {/* MEASUREMENT SECTION START */}
                     {measurementField.length > 0 ? (
                       <li>
-                        {measurementField.map((inputF) => {
+                        {measurementField.map((inputF, index) => {
                           return (
                             <input
-                              key={inputF.id}
-                              type="text"
-                              id="#"
-                              name="belt"
-                              placeholder="Belt Loop"
+                              key={index}
+                              type="number"
+                              id={index}
+                              name={inputF.name}
+                              placeholder={inputF.name}
+                              onChange={(evt) => this.inputChange(evt, index)}
+                              style={{
+                                marginBottom: 10,
+                              }}
                             />
                           );
                         })}
 
-                        <input type="submit" value="Finish" />
+                        <input
+                          type="submit"
+                          value="Finish"
+                          onClick={(evt) => this.submitMeasurement(evt)}
+                        />
                       </li>
                     ) : null}
                     {/* MEASUREMENT SECTION END */}
-
-                    {/*
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="wast-belt"
-                      placeholder="Waist Belt"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="fly-piece"
-                      placeholder="Fly piece/zipper fly"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="back-pocket"
-                      placeholder="Back Pocket"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="cross"
-                      placeholder="Cross/Crutch Point"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="under-side"
-                      placeholder="Under Side"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="top-side"
-                      placeholder="Top Side"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="leg-opening"
-                      placeholder="Leg Opening"
-                    />
-                  </li>
-
-                  <li>
-                    <textarea
-                      id="subject"
-                      name="subject"
-                      placeholder="Comments"
-                      style={{ height: 200 }}
-                    ></textarea>
-                  </li>
-              <li className="submit-outer">
-                <input type="submit" value="Finish" />
-              </li> */}
                   </ul>
                 </form>
               </div>
