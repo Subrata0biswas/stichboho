@@ -3,7 +3,7 @@ import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 
 // import component
-import { Service, API } from "../../config/service";
+import { API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 
@@ -19,7 +19,6 @@ class ExecutiveTaskList extends React.Component {
 
   componentDidMount() {
     this.getExesutiveDashboardData();
-    console.log("kalsdfldasf", this.props.props.match.params.type);
   }
 
   getExesutiveDashboardData = () => {
@@ -31,7 +30,6 @@ class ExecutiveTaskList extends React.Component {
           status: this.props.props.match.params.type,
         })
         .then((res) => {
-          console.log("list res", res);
           this.setState({ loader: false, user: user });
           if (res.data.code === 200) {
             this.setState({

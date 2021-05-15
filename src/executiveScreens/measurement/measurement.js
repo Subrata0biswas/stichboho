@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
-import base64 from "react-native-base64";
+import Skeleton from "react-loading-skeleton";
 
 // import component
 import { Service, API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
-import NoDataFound from "../../components/noDataFound/noDataFound";
-import { ReactReduxContext } from "react-redux";
 
 class Measurement extends React.Component {
   constructor(props) {
@@ -14,13 +12,17 @@ class Measurement extends React.Component {
     this.state = {
       loader: true,
       client: this.props.props.location.state
-        ? this.props.props.location.state.client
+        ? this.props.props.location.state.client //getting data from previous page to submit order.
         : "",
       types: [],
-      selectedType: "",
+      // selectedType: "",
       category: [],
+      // selectedCate: "",
+      subCategory: [],
+      measurementField: [],
     };
   }
+
   componentDidMount() {
     this.getCategory();
   }
@@ -28,7 +30,6 @@ class Measurement extends React.Component {
   getCategory = () => {
     Service("GET", "api/homepage/", "").then((res) => {
       this.setState({ loader: false });
-      console.log("mes res", res);
       if (res.data.code === 200) {
         this.setState({
           types: res.data.Category,
@@ -43,106 +44,135 @@ class Measurement extends React.Component {
   };
 
   onChangeGetCategory = (evt, field) => {
-    this.setState(
-      {
-        [evt.target.name]: evt.target.value,
-      },
-      () => {
-        axios
-          .post(API + "api/subcategory", {
-            categoryId: this.state[evt.target.name],
-          })
-          .then((res) => {
-            if (res.data.code === 200) {
-              this.setState({
-                [field]: res.data.subCategory,
-              });
-            } else {
-              Toast({
-                type: "warning",
-                message: res.data.message,
-              });
-            }
-          })
-          .catch((err) => {
-            let errMsg = JSON.parse(JSON.stringify(err));
-            Toast({
-              type: "error",
-              message: errMsg.message,
-            });
+    axios
+      .post(API + "api/subcategory", {
+        categoryId: evt.target.value,
+      })
+      .then((res) => {
+        this.setState({ loader: false });
+        if (res.data.code === 200) {
+          this.setState({
+            [field]: res.data.subCategory,
           });
-      }
-    );
+        } else {
+          Toast({
+            type: "warning",
+            message: res.data.message,
+          });
+        }
+      })
+      .catch((err) => {
+        let errMsg = JSON.parse(JSON.stringify(err));
+        this.setState({ loader: false });
+        Toast({
+          type: "error",
+          message: errMsg.message,
+        });
+      });
   };
 
   render() {
-    const { firstName, lastName } = this.props.user; //getting props from app .js in route
-    const { client, loader, types, selectedType, category } = this.state;
-    console.log("measurement", category);
+    //const { firstName, lastName } = this.props.user; //getting props from app .js in route
+    const { loader, types, category, subCategory, measurementField } =
+      this.state;
     return (
       <main>
-        <div className="main-border">
-          <div className="dash-title">
-            <h2>Field Executive Measurement</h2>
-            <p>
-              Welcome Mr. {firstName} {lastName}
-            </p>
-          </div>
-        </div>
+        {loader ? (
+          <Skeleton count={10} />
+        ) : (
+          <div className="main-border">
+            <div className="contact-container cms-con mesurement">
+              <h2 className="title">Measurement</h2>
+              <div className="contact-frm-outer mesurement-outer">
+                <form>
+                  <ul>
+                    {/* TYPE SECTION START */}
+                    {types.length > 0 ? (
+                      <li className="men-drop">
+                        <label style={{ fontWeight: "bold" }}>Type</label>
+                        <select
+                          //name="selectedType"
+                          onChange={(evt) =>
+                            this.onChangeGetCategory(evt, "category")
+                          }
+                        >
+                          <option value="">Select type</option>
+                          {types.map((type) => {
+                            return (
+                              <option key={type.id} value={type.id}>
+                                {type.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </li>
+                    ) : null}
+                    {/* TYPE SECTION END */}
+                    {/* CATEGORY SECTION END */}
+                    {category.length > 0 ? (
+                      <li className="category-drop">
+                        <label>Category</label>
+                        <select
+                          // name="selectedCate"
+                          onChange={(evt) =>
+                            this.onChangeGetCategory(evt, "subCategory")
+                          }
+                        >
+                          <option value="">Select category</option>
+                          {category.map((cate) => {
+                            return (
+                              <option key={cate.id} value={cate.id}>
+                                {cate.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </li>
+                    ) : null}
+                    {/* CATEGORY SECTION END */}
+                    {/* SUB CATEGORY SECTION START */}
+                    {subCategory.length > 0 ? (
+                      <li className="sub-category-drop">
+                        <label>Sub Category</label>
+                        <select
+                          //  name="selectedCate"
+                          onChange={(evt) =>
+                            this.onChangeGetCategory(evt, "measurementField")
+                          }
+                        >
+                          <option value="">Select Sub Category</option>
+                          {subCategory.map((subCat) => {
+                            return (
+                              <option key={subCat.id} value={subCat.id}>
+                                {subCat.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </li>
+                    ) : null}
+                    {/* SUB CATEGORY SECTION END */}
 
-        <div className="main-border">
-          <div className="contact-container cms-con mesurement">
-            <h2 className="title">Measurement</h2>
-            <div className="contact-frm-outer mesurement-outer">
-              <form>
-                <ul>
-                  {/* TYPE SECTION START */}
-                  {types.length > 0 ? (
-                    <li className="men-drop">
-                      <label style={{ fontWeight: "bold" }}>Type</label>
-                      <select
-                        name="selectedType"
-                        onChange={(evt) =>
-                          this.onChangeGetCategory(evt, "category")
-                        }
-                      >
-                        <option value="">Select type</option>
-                        {types.map((type) => {
+                    {/* MEASUREMENT SECTION START */}
+                    {measurementField.length > 0 ? (
+                      <li>
+                        {measurementField.map((inputF) => {
                           return (
-                            <option key={type.id} value={type.id}>
-                              {type.name}
-                            </option>
+                            <input
+                              type="text"
+                              id="#"
+                              name="belt"
+                              placeholder="Belt Loop"
+                            />
                           );
                         })}
-                      </select>
-                    </li>
-                  ) : null}
-                  {/* TYPE SECTION END */}
 
-                  <li className="category-drop">
-                    <label>Category</label>
-                    <select>
-                      <option>Pant</option>
-                      <option>Pant 1</option>
-                      <option>Pant 2</option>
-                    </select>
-                  </li>
-                  <li className="sub-category-drop">
-                    <label>Sub Category</label>
-                    <select>
-                      <option>Pant</option>
-                      <option>Pant 1</option>
-                      <option>Pant 2</option>
-                    </select>
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="#"
-                      name="belt"
-                      placeholder="Belt Loop"
-                    />
-                  </li>
+                        <input type="submit" value="Finish" />
+                      </li>
+                    ) : null}
+                    {/* MEASUREMENT SECTION END */}
+
+                    {/*
                   <li>
                     <input
                       type="text"
@@ -208,14 +238,15 @@ class Measurement extends React.Component {
                       style={{ height: 200 }}
                     ></textarea>
                   </li>
-                  <li className="submit-outer">
-                    <input type="submit" value="Finish" />
-                  </li>
-                </ul>
-              </form>
+              <li className="submit-outer">
+                <input type="submit" value="Finish" />
+              </li> */}
+                  </ul>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
     );
   }

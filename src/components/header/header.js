@@ -1,5 +1,4 @@
 import React from "react";
-import base64 from "react-native-base64";
 
 class Header extends React.Component {
   constructor(props) {

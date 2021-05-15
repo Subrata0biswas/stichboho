@@ -35,7 +35,7 @@ import ExecutiveTaskList from "./executiveScreens/executiveTaskList/executiveTas
 
 class App extends React.Component {
   render() {
-    const { userType, isLogin, user } = checkAuth();
+    const { user } = checkAuth();
     return (
       <Router>
         <Switch>
@@ -140,7 +140,7 @@ const GeneralRoute = ({ component: Component, ...rest }) => {
 
 // check executive route
 const LoginRoute = ({ component: Component, ...rest }) => {
-  const { userType, isLogin } = checkAuth();
+  const { isLogin } = checkAuth();
   return (
     <Route
       {...rest}
