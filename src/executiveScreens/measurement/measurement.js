@@ -6,21 +6,79 @@ import base64 from "react-native-base64";
 import { Service, API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
+import { ReactReduxContext } from "react-redux";
 
 class Measurement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loader: true,
       client: this.props.props.location.state
         ? this.props.props.location.state.client
         : "",
+      types: [],
+      selectedType: "",
+      category: [],
     };
   }
+  componentDidMount() {
+    this.getCategory();
+  }
+
+  getCategory = () => {
+    Service("GET", "api/homepage/", "").then((res) => {
+      this.setState({ loader: false });
+      console.log("mes res", res);
+      if (res.data.code === 200) {
+        this.setState({
+          types: res.data.Category,
+        });
+      } else {
+        Toast({
+          type: res.data.status || "error",
+          message: res.message || res.data.message,
+        });
+      }
+    });
+  };
+
+  onChangeGetCategory = (evt, field) => {
+    this.setState(
+      {
+        [evt.target.name]: evt.target.value,
+      },
+      () => {
+        axios
+          .post(API + "api/subcategory", {
+            categoryId: this.state[evt.target.name],
+          })
+          .then((res) => {
+            if (res.data.code === 200) {
+              this.setState({
+                [field]: res.data.subCategory,
+              });
+            } else {
+              Toast({
+                type: "warning",
+                message: res.data.message,
+              });
+            }
+          })
+          .catch((err) => {
+            let errMsg = JSON.parse(JSON.stringify(err));
+            Toast({
+              type: "error",
+              message: errMsg.message,
+            });
+          });
+      }
+    );
+  };
 
   render() {
     const { firstName, lastName } = this.props.user; //getting props from app .js in route
-    const { client } = this.state;
-    console.log("measurement", client);
+    const { client, loader, types, selectedType, category } = this.state;
+    console.log("measurement", category);
     return (
       <main>
         <div className="main-border">
@@ -36,14 +94,31 @@ class Measurement extends React.Component {
           <div className="contact-container cms-con mesurement">
             <h2 className="title">Measurement</h2>
             <div className="contact-frm-outer mesurement-outer">
-              <form action="#">
+              <form>
                 <ul>
-                  <li className="men-drop">
-                    <select>
-                      <option>Men</option>
-                      <option>Women</option>
-                    </select>
-                  </li>
+                  {/* TYPE SECTION START */}
+                  {types.length > 0 ? (
+                    <li className="men-drop">
+                      <label style={{ fontWeight: "bold" }}>Type</label>
+                      <select
+                        name="selectedType"
+                        onChange={(evt) =>
+                          this.onChangeGetCategory(evt, "category")
+                        }
+                      >
+                        <option value="">Select type</option>
+                        {types.map((type) => {
+                          return (
+                            <option key={type.id} value={type.id}>
+                              {type.name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </li>
+                  ) : null}
+                  {/* TYPE SECTION END */}
+
                   <li className="category-drop">
                     <label>Category</label>
                     <select>
