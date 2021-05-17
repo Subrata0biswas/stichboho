@@ -128,23 +128,40 @@ class Measurement extends React.Component {
         message: "Enter value in " + result.name + " field",
       });
     } else {
-      axios
-        .post(`${API}api/post-messurement`, {
-          orderId: this.props.props.location.state.order.id,
-          subcatid: this.state.selectedSubCate,
-          subcatchild: this.state.subSubType,
-          messurement: JSON.stringify(this.state.measurementField),
-        })
-        .then((res) => {
-          console.log("res", res);
-        })
-        .catch((err) => {
-          let errMsg = JSON.parse(JSON.stringify(err));
-          Toast({
-            type: "error",
-            message: errMsg.message,
+      let isCorrect = window.confirm("All data are correct?");
+      console.log("is", isCorrect);
+      if (isCorrect) {
+        axios
+          .post(`${API}api/post-messurement`, {
+            orderId: this.props.props.location.state.order.id,
+            subcatid: this.state.selectedSubCate,
+            subcatchild: this.state.subSubType,
+            messurement: JSON.stringify(this.state.measurementField),
+          })
+          .then((res) => {
+            console.log("res", res);
+            if (res.data.code === 200) {
+              this.props.props.history.goBack();
+              Toast({
+                type: "success",
+                message: res.data.message,
+              });
+            } else {
+              Toast({
+                type: "error",
+                message: res.data.message,
+              });
+            }
+          })
+          .catch((err) => {
+            console.log("err", err);
+            let errMsg = JSON.parse(JSON.stringify(err));
+            Toast({
+              type: "error",
+              message: errMsg.message,
+            });
           });
-        });
+      }
     }
   };
 
