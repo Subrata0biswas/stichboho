@@ -7,13 +7,13 @@ import { API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 
-class ExecutiveTaskList extends React.Component {
+class ExecutiveorderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: "",
       loader: true,
-      taskList: [],
+      orderList: [],
     };
   }
 
@@ -31,9 +31,10 @@ class ExecutiveTaskList extends React.Component {
         })
         .then((res) => {
           this.setState({ loader: false, user: user });
+          console.log("res", res);
           if (res.data.code === 200) {
             this.setState({
-              taskList: res.data.data.tasklist,
+              orderList: res.data.data.tasklist,
             });
           } else {
             Toast({
@@ -60,19 +61,19 @@ class ExecutiveTaskList extends React.Component {
     }
   };
 
-  toRedirect = (list) => {
+  toRedirect = (order) => {
     this.props.props.history.push("/executive/measurement", {
-      client: list,
+      order: order,
     });
   };
 
   render() {
-    const { loader, taskList, user } = this.state;
+    const { loader, orderList, user } = this.state;
     return (
       <main>
         {loader ? (
           <Skeleton count={10} />
-        ) : taskList.length > 0 ? (
+        ) : orderList.length > 0 ? (
           <div className="main-border">
             <div className="dash-title">
               <h2>Field Executive Task List</h2>
@@ -83,15 +84,15 @@ class ExecutiveTaskList extends React.Component {
             <div className=" dashbord-ban">
               <img src="images/dashbord-img.jpg" alt="" />
             </div>
-            {taskList.map((list) => {
+            {orderList.map((order) => {
               return (
                 <div
-                  key={list.id}
+                  key={order.id}
                   style={{
                     // flexDirection: "row",
                     alignItems: "center",
                   }}
-                  onClick={() => this.toRedirect(list)}
+                  onClick={() => this.toRedirect(order)}
                 >
                   <div
                     style={{
@@ -100,7 +101,7 @@ class ExecutiveTaskList extends React.Component {
                       marginBottom: 8,
                     }}
                   >
-                    {list.name}
+                    {order.name}
                   </div>
                 </div>
               );
@@ -120,4 +121,4 @@ class ExecutiveTaskList extends React.Component {
   }
 }
 
-export default ExecutiveTaskList;
+export default ExecutiveorderList;

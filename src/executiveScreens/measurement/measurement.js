@@ -11,14 +11,15 @@ class Measurement extends React.Component {
     super(props);
     this.state = {
       loader: true,
-      client: this.props.props.location.state
-        ? this.props.props.location.state.client //getting data from previous page to submit order.
+      order: this.props.props.location.state
+        ? this.props.props.location.state.order //getting data from previous page to submit order.
         : "",
       types: [],
       // selectedType: "",
       category: [],
       // selectedCate: "",
       subCategory: [],
+      selectedSubCate: "",
       subSubCategory: [],
       subSubType: "",
       measurementField: [],
@@ -46,38 +47,60 @@ class Measurement extends React.Component {
   };
 
   onChangeGetCategory = (evt, field) => {
-    let varientApi =
-      field === "measurementField" ? "api/get-messurement" : "api/subcategory";
-    axios
-      .post(API + varientApi, {
-        categoryId: evt.target.value,
-      })
-      .then((res) => {
-        this.setState({ loader: false });
-        if (res.data.code === 200) {
-          this.setState({
-            [field]:
-              field === "measurementField"
-                ? res.data.data.messurement
-                : res.data.subCategory,
-            subSubCategory:
-              field === "measurementField" ? res.data.data.categoryTypes : [],
+    const { name, value } = evt.target;
+    console.log("nae", field);
+    const { subCategory, subSubCategory, measurementField } = this.state;
+    this.setState(
+      {
+        [name]: value,
+        subCategory: field === "category" ? [] : subCategory,
+        subSubCategory:
+          field === "category" || field === "subCategory" ? [] : subSubCategory,
+        measurementField:
+          field === "category" || field === "subCategory"
+            ? []
+            : measurementField,
+      },
+      () => {
+        let varientApi =
+          field === "measurementField"
+            ? "api/get-messurement"
+            : "api/subcategory";
+        axios
+          .post(API + varientApi, {
+            categoryId: evt.target.value,
+          })
+          .then((res) => {
+            console.log("res", res);
+            this.setState({ loader: false });
+            if (res.data.code === 200) {
+              this.setState({
+                [field]:
+                  field === "measurementField"
+                    ? res.data.data.messurement
+                    : res.data.subCategory,
+                subSubCategory:
+                  field === "measurementField"
+                    ? res.data.data.categoryTypes
+                    : [],
+              });
+            } else {
+              Toast({
+                type: "warning",
+                message: res.data.message,
+              });
+            }
+          })
+          .catch((err) => {
+            let errMsg = JSON.parse(JSON.stringify(err));
+            this.setState({ loader: false });
+            Toast({
+              type: "error",
+              message: errMsg.message,
+            });
           });
-        } else {
-          Toast({
-            type: "warning",
-            message: res.data.message,
-          });
-        }
-      })
-      .catch((err) => {
-        let errMsg = JSON.parse(JSON.stringify(err));
-        this.setState({ loader: false });
-        Toast({
-          type: "error",
-          message: errMsg.message,
-        });
-      });
+      }
+    );
   };
 
   inputChange = (evt, index) => {
@@ -91,8 +114,38 @@ class Measurement extends React.Component {
 
   submitMeasurement = (evt) => {
     evt.preventDefault();
-    let data = JSON.stringify(this.state.measurementField);
-    console.log("m data", data);
+    const result = this.state.measurementField.find((measurement) => {
+      return measurement.value === undefined || measurement.value == "";
+    });
+    if (this.state.subSubType.trim().length <= 0) {
+      Toast({
+        type: "warning",
+        message: "Select sub category type.",
+      });
+    } else if (result) {
+      Toast({
+        type: "warning",
+        message: "Enter value in " + result.name + " field",
+      });
+    } else {
+      axios
+        .post(`${API}api/post-messurement`, {
+          orderId: this.props.props.location.state.order.id,
+          subcatid: this.state.selectedSubCate,
+          subcatchild: this.state.subSubType,
+          messurement: JSON.stringify(this.state.measurementField),
+        })
+        .then((res) => {
+          console.log("res", res);
+        })
+        .catch((err) => {
+          let errMsg = JSON.parse(JSON.stringify(err));
+          Toast({
+            type: "error",
+            message: errMsg.message,
+          });
+        });
+    }
   };
 
   render() {
@@ -105,7 +158,7 @@ class Measurement extends React.Component {
       subSubCategory,
       measurementField,
     } = this.state;
-    console.log("measurementField", measurementField);
+    console.log("measurementField", this.props.props.location.state.order);
     return (
       <main>
         {loader ? (
@@ -168,7 +221,7 @@ class Measurement extends React.Component {
                       <li className="sub-category-drop">
                         <label>Sub Category</label>
                         <select
-                          //  name="selectedCate"
+                          name="selectedSubCate"
                           onChange={(evt) =>
                             this.onChangeGetCategory(evt, "measurementField")
                           }
@@ -189,7 +242,7 @@ class Measurement extends React.Component {
                     {/* SUB SUB CATEGORY SECTION START */}
                     {subSubCategory.length > 0 ? (
                       <li className="sub-category-drop">
-                        <label>Sub Category</label>
+                        <label>Category Type</label>
                         <select
                           onChange={(evt) =>
                             this.setState({ subSubType: evt.target.value })
