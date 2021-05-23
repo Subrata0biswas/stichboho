@@ -162,7 +162,7 @@ const ExecutiveRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isLogin && userType === "executive" ? (
+        isLogin && (userType === "executive" || "tailor") ? (
           <Layout>
             <Component {...props} isLogin={isLogin} userType={userType} />
           </Layout>

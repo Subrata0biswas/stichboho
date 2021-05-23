@@ -23,7 +23,6 @@ class ExecutiveDashboard extends React.Component {
   }
 
   getExesutiveDashboardData = () => {
-    const { user } = this.props; //getting form app.js
     const getUser = window.localStorage.getItem("user");
     if (getUser) {
       let user = JSON.parse(base64.decode(getUser));
@@ -32,6 +31,7 @@ class ExecutiveDashboard extends React.Component {
           executiveId: user.id,
         })
         .then((res) => {
+          console.log("res", res);
           this.setState({ loader: false, user: user });
           if (res.data.code === 200) {
             this.setState({
@@ -75,7 +75,11 @@ class ExecutiveDashboard extends React.Component {
         ) : data ? (
           <div className="main-border">
             <div className="dash-title">
-              <h2>Field Executive Dashboard</h2>
+              {user.type === "executive" ? (
+                <h2>Field Executive Dashboard</h2>
+              ) : user.type === "tailor" ? (
+                <h2>Tailor Dashboard</h2>
+              ) : null}
               <p>
                 Welcome Mr. {user.firstName} {user.lastName}
               </p>
@@ -121,6 +125,16 @@ class ExecutiveDashboard extends React.Component {
                         Order
                       </p>
                       <h2>{data.totalOrder}</h2>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div className="border">
+                      <p>
+                        Ready for <br />
+                        Trail
+                      </p>
+                      <h2>{data.readyForTrial}</h2>
                     </div>
                   </li>
                 </ul>

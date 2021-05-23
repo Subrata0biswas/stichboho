@@ -48,6 +48,7 @@ class LoginComponent extends React.Component {
           password: password,
         })
         .then((res) => {
+          console.log("res", res);
           if (res.data.code === 200) {
             let user = base64.encode(
               JSON.stringify({
@@ -64,10 +65,7 @@ class LoginComponent extends React.Component {
             // redirect to dashboard or colose modal
             if (this.props.closeLoginModal) {
               this.props.closeLoginModal();
-            } else if (
-              res.data.type === "executive" ||
-              res.data.type === "tailor"
-            ) {
+            } else if (res.data.type === "executive" || "tailor") {
               this.props.history.replace("/executive/dashboard");
             } else if (res.data.type === "user") {
               this.props.history.replace("/user/dashboard");
