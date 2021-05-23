@@ -151,8 +151,14 @@ class Footer extends React.Component {
             <div className="footer-con">
               <h2 className="title">Contact Us</h2>
               <p>
-                Lorem Ipsum is simply dummy text of the printing andtypesetting
-                industry. Lorem Ipsum has been the industry's standard{" "}
+                CONTACT :
+                banthankeoffficial@gmail.com
+
+                OFFICE ADDRESS :
+
+                238, NSC BOSE ROAD,
+                KOLKATA – 700040, West Bengal
+                Opposite Agricultural office.
               </p>
             </div>
           </div>

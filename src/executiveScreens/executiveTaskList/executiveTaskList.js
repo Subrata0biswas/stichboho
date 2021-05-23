@@ -84,28 +84,49 @@ class ExecutiveorderList extends React.Component {
             <div className=" dashbord-ban">
               <img src="images/dashbord-img.jpg" alt="" />
             </div>
-            {orderList.map((order) => {
-              return (
-                <div
-                  key={order.id}
-                  style={{
-                    // flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                  onClick={() => this.toRedirect(order)}
-                >
-                  <div
-                    style={{
-                      backgroundColor: "gray",
-                      padding: 5,
-                      marginBottom: 8,
-                    }}
-                  >
-                    {order.name}
-                  </div>
+            <div class="main-border">
+              <div class="from-list-outer">
+                <div class="frm-list task-list">
+                  <table>
+                    <tr>
+                      <th>Order Name</th>
+                      <th>Address</th>
+                    </tr>
+                    {orderList.map((order) => {
+                      return (
+                        // <div
+                        //   key={order.id}
+                        //   style={{
+                        //     // flexDirection: "row",
+                        //     alignItems: "center",
+                        //   }}
+                        //   onClick={() => this.toRedirect(order)}
+                        // >
+                        //   <div
+                        //     style={{
+                        //       backgroundColor: "gray",
+                        //       padding: 5,
+                        //       marginBottom: 8,
+                        //     }}
+                        //   >
+                        //     {order.name}
+                        //   </div>
+                        // </div>
+
+                        <tr>
+                          <td><a onClick={() => this.toRedirect(order)}>{order.name}</a></td>
+                          <td>{order.address}</td>
+                        </tr>
+
+                      );
+                    })}
+
+
+
+                  </table>
                 </div>
-              );
-            })}
+              </div>
+            </div>
 
             <span className="cut-item top-left"></span>
             <span className="cut-item left-bottom"></span>
@@ -114,8 +135,8 @@ class ExecutiveorderList extends React.Component {
             <span className="cut-item bottom"></span>
           </div>
         ) : (
-          <NoDataFound />
-        )}
+              <NoDataFound />
+            )}
       </main>
     );
   }

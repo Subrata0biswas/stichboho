@@ -13,25 +13,24 @@ class Career extends React.Component {
           <div className="cms-con">
             <h2 className="title">Career</h2>
             <p className="con">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              <li>
+
+                1. Design Interns – We look for fashion design students to represent Ban Than Ke as an executive. If you are perusing fashion design irrespective of your year, you can apply for a paid internship with us. Send your CV’s at banthankerecruitment@gmail.com
+      </li>
+              <li>2. Marketing students – We look for student pursuing marketing either in under graduation or post-graduation to represent. Ban Than Ke as a sales executive. If you are pursuing marketing irrespective of your year, you can apply for a paid internship with us. Send your CV’s at banthankerecruitment@gmail.com
+              </li>
+              <li>
+                3. Tailoring units – In order to expand, we search for established tailoring units with at least one Master Ji for men, women and kids. Individual specialization will be paid utmost attention to. Please contact at banthankeoffical@gmail.com
+              </li>
+              <li>
+                4. Salesperson – We look for people with good convincing power and fluency in their respective languages to represent us as sales executives. They need to have a fine knowledge about each type of fabrics. If you possess the required knowledge and are willing to work under Ban Than Ke, drop in your contact details at banthankerecruitment@gmail.com
+              </li>
+              <li>
+                5. Measurer – We look for people who are well versed with taking body measurements to represent Ban Than Ke as our measurement executive. If you possess the required knowledge and are willing to work under Ban Than Ke, drop in your contact details at banthankerecruitment@gmail.com
+              </li>
+              <li>
+                6.  Admin – We are looking for an individual well versed with handling a website and coordinating between all the executives. If you possess the required knowledge and are willing to work under Ban Than Ke, drop in your contact details at banthankerecruitment@gmail.com.
+              </li>
             </p>
           </div>
           <span className="cut-item top-left"></span>

@@ -462,7 +462,7 @@ header {
   margin-bottom: 10px;
 }
 .contact-frm-outer ul li input[type="text"],
-.contact-frm-outer ul li input[type="tel"],.contact-frm-outer ul li input[type="email"],.contact-frm-outer ul li input[type="password"],
+.contact-frm-outer ul li input[type="tel"],.contact-frm-outer ul li input[type="email"],.contact-frm-outer ul li input[type="password"],.contact-frm-outer ul li input[type="number"],
 .contact-frm-outer ul li textarea{
   height: 35px;
   padding: 5px 10px;
@@ -796,6 +796,33 @@ header {
 .dash-title h2{     font-size: 30px; margin-bottom:20px;}
 .dash-title p{font-size: 18px;}
 
+/*-------------from-list-------*/
+.from-list-outer{     padding: 50px;     background: #ccc;}
+.frm-list{     max-width: 700px;     margin: 0 auto;     background: #fff;     padding: 50px; box-shadow: 0 0 10px #00000094;}
+.frm-list ul{ margin:0 0; padding:0 0; list-style:none;}
+.frm-list ul li{    background: #ccc;     margin-bottom: 10px;     padding: 12px 10px;     border-radius: 5px;     cursor: pointer;     display: inline-block;     width: 16%;     text-align: center;     margin: 0 2px;}
+.frm-list ul li:hover{ background: #b7b5b5;}
+
+/*----------190521---------*/
+.task-list table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.task-list td, .task-list th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+      width: 50%;
+}
+
+.task-list tr:nth-child(even) {
+  background-color: #dddddd47;
+}
+
+
+
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   header .logo img {
@@ -1105,6 +1132,8 @@ header {
   .we-work-inr{ background-size:cover; padding: 35px 0; background-position: center;     border-radius: 5px;}
   .we-work-inr > div:first-child span, .we-work-inr > div:nth-child(2) span, .we-work-inr > div:nth-child(3) span { margin: 19px auto 0;}
   .we-work-inr > div span{     margin: 28px auto 0;}
+  .from-list-outer,.frm-list{     padding: 20px;}
+  .frm-list ul li{     width: 90%;     text-align: center;     margin: 0 2px 7px;}
 }
 
 @media only screen and (max-width: 480px) {
@@ -1156,6 +1185,7 @@ header {
     bottom: 7px;
   }
   /*----------220421-THE WAY WE WORK--end---------*/
+  
 }
 
 .febric-outer {
