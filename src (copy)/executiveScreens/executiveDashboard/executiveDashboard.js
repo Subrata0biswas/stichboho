@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
-import base64 from "react-native-base64";
 
 // import component
 import { API } from "../../config/service";
@@ -24,9 +23,7 @@ class ExecutiveDashboard extends React.Component {
 
   getExesutiveDashboardData = () => {
     const { user } = this.props; //getting form app.js
-    const getUser = window.localStorage.getItem("user");
-    if (getUser) {
-      let user = JSON.parse(base64.decode(getUser));
+    if (user) {
       axios
         .post(`${API}api/executive-dashboard/`, {
           executiveId: user.id,

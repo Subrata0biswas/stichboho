@@ -1,20 +1,19 @@
 import React from "react";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
-import base64 from "react-native-base64";
 
 // import component
 import { API } from "../../config/service";
 import Toast from "../../components/toastMessage/toast";
 import NoDataFound from "../../components/noDataFound/noDataFound";
 
-class ExecutiveDashboard extends React.Component {
+class ExecutiveorderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loader: true,
-      data: "",
       user: "",
+      loader: true,
+      orderList: [],
     };
   }
 
@@ -24,18 +23,18 @@ class ExecutiveDashboard extends React.Component {
 
   getExesutiveDashboardData = () => {
     const { user } = this.props; //getting form app.js
-    const getUser = window.localStorage.getItem("user");
-    if (getUser) {
-      let user = JSON.parse(base64.decode(getUser));
+    if (user) {
       axios
-        .post(`${API}api/executive-dashboard/`, {
+        .post(`${API}api/executive-task/`, {
           executiveId: user.id,
+          status: this.props.props.match.params.type,
         })
         .then((res) => {
           this.setState({ loader: false, user: user });
+          console.log("res", res);
           if (res.data.code === 200) {
             this.setState({
-              data: res.data.data,
+              orderList: res.data.data.tasklist,
             });
           } else {
             Toast({
@@ -62,20 +61,22 @@ class ExecutiveDashboard extends React.Component {
     }
   };
 
-  toRedirect = (status) => {
-    this.props.props.history.push(`/executive/task-list/${status}`);
+  toRedirect = (order) => {
+    this.props.props.history.push("/executive/measurement", {
+      order: order,
+    });
   };
 
   render() {
-    const { loader, data, user } = this.state;
+    const { loader, orderList, user } = this.state;
     return (
       <main>
         {loader ? (
           <Skeleton count={10} />
-        ) : data ? (
+        ) : orderList.length > 0 ? (
           <div className="main-border">
             <div className="dash-title">
-              <h2>Field Executive Dashboard</h2>
+              <h2>Field Executive Task List</h2>
               <p>
                 Welcome Mr. {user.firstName} {user.lastName}
               </p>
@@ -83,49 +84,29 @@ class ExecutiveDashboard extends React.Component {
             <div className=" dashbord-ban">
               <img src="images/dashbord-img.jpg" alt="" />
             </div>
-            <div className="list-product-outer dash-list">
-              <div className="container">
-                <ul className="pro-grid">
-                  <li className="active">
-                    <div
-                      className="border"
-                      onClick={() => this.toRedirect("new")}
-                    >
-                      <p>
-                        New <br /> Order
-                      </p>
-                      <h2>{data.newOrder}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Work In <br />
-                        Process
-                      </p>
-                      <h2>{data.workinProgress}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Completed <br /> Orders
-                      </p>
-                      <h2>{data.completedOrders}</h2>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="border">
-                      <p>
-                        Total <br />
-                        Order
-                      </p>
-                      <h2>{data.totalOrder}</h2>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {orderList.map((order) => {
+              return (
+                <div
+                  key={order.id}
+                  style={{
+                    // flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                  onClick={() => this.toRedirect(order)}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "gray",
+                      padding: 5,
+                      marginBottom: 8,
+                    }}
+                  >
+                    {order.name}
+                  </div>
+                </div>
+              );
+            })}
+
             <span className="cut-item top-left"></span>
             <span className="cut-item left-bottom"></span>
             <span className="cut-item top-right"></span>
@@ -140,4 +121,4 @@ class ExecutiveDashboard extends React.Component {
   }
 }
 
-export default ExecutiveDashboard;
+export default ExecutiveorderList;

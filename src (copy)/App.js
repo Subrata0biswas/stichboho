@@ -81,7 +81,9 @@ class App extends React.Component {
           <ExecutiveRoute
             exact
             path="/executive/dashboard"
-            component={ExecutiveDashboard}
+            component={(props) => (
+              <ExecutiveDashboard user={user} props={props} />
+            )}
           />
           <ExecutiveRoute
             path="/executive/task-list/:type"

@@ -64,10 +64,7 @@ class LoginComponent extends React.Component {
             // redirect to dashboard or colose modal
             if (this.props.closeLoginModal) {
               this.props.closeLoginModal();
-            } else if (
-              res.data.type === "executive" ||
-              res.data.type === "tailor"
-            ) {
+            } else if (res.data.type === "executive") {
               this.props.history.replace("/executive/dashboard");
             } else if (res.data.type === "user") {
               this.props.history.replace("/user/dashboard");
