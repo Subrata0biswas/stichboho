@@ -154,7 +154,7 @@ class LoginComponent extends React.Component {
             </div>
             <input type="radio" name="loginType" value="executiveLogin" />
             <div style={{ display: "inline-block", marginLeft: 5 }}>
-              Executive Login
+              Executive / Tailor Login
             </div>
           </div>
         )}
