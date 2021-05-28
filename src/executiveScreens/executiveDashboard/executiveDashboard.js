@@ -63,7 +63,8 @@ class ExecutiveDashboard extends React.Component {
   };
 
   toRedirect = (status) => {
-    this.props.props.history.push(`/executive/task-list/${status}`);
+    console.log("props", this.props);
+    this.props.history.push(`/executive/task-list/${status}`);
   };
 
   render() {

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import base64 from "react-native-base64";
 
 // import component
 import { API } from "../../config/service";
@@ -22,14 +23,16 @@ class ExecutiveorderList extends React.Component {
   }
 
   getExesutiveDashboardData = () => {
-    const { user } = this.props; //getting form app.js
-    if (user) {
+    const getUser = window.localStorage.getItem("user");
+    if (getUser) {
+      let user = JSON.parse(base64.decode(getUser));
       axios
         .post(`${API}api/executive-task/`, {
           executiveId: user.id,
-          status: this.props.props.match.params.type,
+          status: this.props.match.params.type,
         })
         .then((res) => {
+          console.log("res", res);
           this.setState({ loader: false, user: user });
           console.log("res", res);
           if (res.data.code === 200) {
@@ -62,7 +65,7 @@ class ExecutiveorderList extends React.Component {
   };
 
   toRedirect = (order) => {
-    this.props.props.history.push("/executive/measurement", {
+    this.props.history.push("/executive/measurement", {
       order: order,
     });
   };
@@ -94,35 +97,16 @@ class ExecutiveorderList extends React.Component {
                     </tr>
                     {orderList.map((order) => {
                       return (
-                        // <div
-                        //   key={order.id}
-                        //   style={{
-                        //     // flexDirection: "row",
-                        //     alignItems: "center",
-                        //   }}
-                        //   onClick={() => this.toRedirect(order)}
-                        // >
-                        //   <div
-                        //     style={{
-                        //       backgroundColor: "gray",
-                        //       padding: 5,
-                        //       marginBottom: 8,
-                        //     }}
-                        //   >
-                        //     {order.name}
-                        //   </div>
-                        // </div>
-
-                        <tr>
-                          <td><a onClick={() => this.toRedirect(order)}>{order.name}</a></td>
+                        <tr key={order.id}>
+                          <td>
+                            <a onClick={() => this.toRedirect(order)}>
+                              {order.name}
+                            </a>
+                          </td>
                           <td>{order.address}</td>
                         </tr>
-
                       );
                     })}
-
-
-
                   </table>
                 </div>
               </div>
@@ -135,8 +119,8 @@ class ExecutiveorderList extends React.Component {
             <span className="cut-item bottom"></span>
           </div>
         ) : (
-              <NoDataFound />
-            )}
+          <NoDataFound />
+        )}
       </main>
     );
   }

@@ -11,8 +11,8 @@ class Measurement extends React.Component {
     super(props);
     this.state = {
       loader: true,
-      order: this.props.props.location.state
-        ? this.props.props.location.state.order //getting data from previous page to submit order.
+      order: this.props.location.state
+        ? this.props.location.state.order //getting data from previous page to submit order.
         : "",
       types: [],
       // selectedType: "",
@@ -133,7 +133,7 @@ class Measurement extends React.Component {
       if (isCorrect) {
         axios
           .post(`${API}api/post-messurement`, {
-            orderId: this.props.props.location.state.order.id,
+            orderId: this.props.location.state.order.id,
             subcatid: this.state.selectedSubCate,
             subcatchild: this.state.subSubType,
             messurement: JSON.stringify(this.state.measurementField),
@@ -141,7 +141,7 @@ class Measurement extends React.Component {
           .then((res) => {
             console.log("res", res);
             if (res.data.code === 200) {
-              this.props.props.history.goBack();
+              this.props.history.goBack();
               Toast({
                 type: "success",
                 message: res.data.message,
@@ -166,7 +166,6 @@ class Measurement extends React.Component {
   };
 
   render() {
-    //const { firstName, lastName } = this.props.user; //getting props from app .js in route
     const {
       loader,
       types,
@@ -175,7 +174,6 @@ class Measurement extends React.Component {
       subSubCategory,
       measurementField,
     } = this.state;
-    console.log("measurementField", this.props.props.location.state.order);
     return (
       <main>
         {loader ? (
